@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipeWeapon : MonoBehaviour
 {
     [SerializeField] GameObject RightHand;
-    [SerializeField] GameObject LeftHand;
+    [SerializeField] GameObject LeftLowerArm;
     [SerializeField] GameObject Weapon;
     [SerializeField] GameObject Shield;
     [SerializeField] GameObject Pelvis;
@@ -39,7 +39,7 @@ public class EquipeWeapon : MonoBehaviour
             Weapon.transform.localPosition = weaponPickUpPosition;
             Weapon.transform.localEulerAngles = weaponPickUpRotation;
             
-            Shield.transform.parent = LeftHand.transform;
+            Shield.transform.parent = LeftLowerArm.transform;
             Shield.transform.localPosition = shieldPickUpPosition;
             Shield.transform.localEulerAngles = shieldPickUpRotation;
 
