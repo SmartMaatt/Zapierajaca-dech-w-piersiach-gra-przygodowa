@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothY;
     private float rotY = 0.0f;
     private float rotX = 0.0f;
-    // Start is called before the first frame update
+
     void Start()
     {
         Vector3 rot = transform.localRotation.eulerAngles;
@@ -33,11 +33,9 @@ public class CameraFollow : MonoBehaviour
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        //float inputX = Input.GetAxis("RightStickHorizontal");
-        //float inputZ = Input.GetAxis("RightStickVertical");
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
         finalInputX = mouseX;

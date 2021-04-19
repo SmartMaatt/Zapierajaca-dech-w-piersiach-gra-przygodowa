@@ -11,11 +11,18 @@ public class CameraCollision : MonoBehaviour
     public float distance;
 
     Vector3 dollyDir;
+    static float x;
+    static float y;
+    static float z;
 
     void Awake()
     {
         dollyDir = transform.localPosition.normalized;
         distance = transform.localPosition.magnitude;
+        
+        x = Mathf.Tan(Camera.main.fieldOfView / 2) * Camera.main.nearClipPlane;
+        y = x / Camera.main.aspect;
+        z = Camera.main.nearClipPlane;
     }
 
     void Update()
@@ -23,13 +30,27 @@ public class CameraCollision : MonoBehaviour
         Vector3 desireCameraPos = transform.parent.TransformPoint(dollyDir * maxDistance);
         RaycastHit hit;
 
-        if(Physics.Linecast(transform.parent.position, desireCameraPos, out hit))
+        distance = maxDistance;
+
+        if (Physics.Linecast(transform.parent.position, desireCameraPos + new Vector3(x, y, z), out hit))
         {
-            distance = Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance);
+            if (distance > Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance))
+                distance = Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance);
         }
-        else
+        if (Physics.Linecast(transform.parent.position, desireCameraPos + new Vector3(x, -y, z), out hit))
         {
-            distance = maxDistance;
+            if (distance > Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance))
+                distance = Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance);
+        }
+        if (Physics.Linecast(transform.parent.position, desireCameraPos + new Vector3(-x, y, z), out hit))
+        {
+            if (distance > Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance))
+                distance = Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance);
+        }
+        if (Physics.Linecast(transform.parent.position, desireCameraPos + new Vector3(-x, -y, z), out hit))
+        {
+            if (distance > Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance))
+                distance = Mathf.Clamp(hit.distance * 0.9f, minDistance, maxDistance);
         }
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * distance, Time.deltaTime * smooth);
