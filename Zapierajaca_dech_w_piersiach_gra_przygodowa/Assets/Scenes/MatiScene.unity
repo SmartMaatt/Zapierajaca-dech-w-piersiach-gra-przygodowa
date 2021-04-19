@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RightHand: {fileID: 2069486664}
-  LeftHand: {fileID: 67968715}
+  LeftLowerArm: {fileID: 0}
   Weapon: {fileID: 1702505015}
   Shield: {fileID: 669903506}
   Pelvis: {fileID: 1132031796}
@@ -398,12 +398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1.5
---- !u!1 &67968715 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1961297318054092, guid: 88570bf1d957b6a4d9b002b2e4f02292,
-    type: 3}
-  m_PrefabInstance: {fileID: 1228906568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &100372888
 GameObject:
   m_ObjectHideFlags: 0
