@@ -4,22 +4,7 @@ using UnityEngine;
 
 public class EquipeWeapon : MonoBehaviour
 {
-    [SerializeField] GameObject RightHand;
-    [SerializeField] GameObject LeftLowerArm;
-    [SerializeField] GameObject Weapon;
-    [SerializeField] GameObject Shield;
-    [SerializeField] GameObject Pelvis;
-    [SerializeField] GameObject Back;
-
-    public Vector3 weaponPickUpPosition;
-    public Vector3 weaponPickUpRotation;
-    public Vector3 weaponPutAwayPosition;
-    public Vector3 weaponPutAwayRotation;
-
-    public Vector3 shieldPickUpPosition;
-    public Vector3 shieldPickUpRotation;
-    public Vector3 shieldPutAwayPosition;
-    public Vector3 shieldPutAwayRotation;
+    public List<EquippedItem> equippedItems;
 
     private bool isEquiped;
     private Animator _animator;
@@ -27,7 +12,6 @@ public class EquipeWeapon : MonoBehaviour
     public void Start()
     {
         _animator = GetComponent<Animator>();
-        Debug.Log(weaponPickUpPosition.x);
     }
 
     public void Operate()
@@ -35,27 +19,38 @@ public class EquipeWeapon : MonoBehaviour
         isEquiped = !isEquiped;
         if(isEquiped)
         {
-            Weapon.transform.parent = RightHand.transform;
-            Weapon.transform.localPosition = weaponPickUpPosition;
-            Weapon.transform.localEulerAngles = weaponPickUpRotation;
-            
-            Shield.transform.parent = LeftLowerArm.transform;
-            Shield.transform.localPosition = shieldPickUpPosition;
-            Shield.transform.localEulerAngles = shieldPickUpRotation;
+            //pick up each item
+            foreach (EquippedItem equippedItem in equippedItems)
+            {
+                equippedItem.Item.transform.parent = equippedItem.PickUpParent.transform;
+                equippedItem.Item.transform.localPosition = equippedItem.pickUpPosition;
+                equippedItem.Item.transform.localEulerAngles = equippedItem.pickUpRotation;
+            }
 
             _animator.SetBool("WeaponEquipped", true);
         }
         else
         {
-            Weapon.transform.parent = Pelvis.transform;
-            Weapon.transform.localPosition = weaponPutAwayPosition;
-            Weapon.transform.localEulerAngles = weaponPutAwayRotation;
-
-            Shield.transform.parent = Back.transform;
-            Shield.transform.localPosition = shieldPutAwayPosition;
-            Shield.transform.localEulerAngles = shieldPutAwayRotation;
-
+            //put away each item
+            foreach (EquippedItem equippedItem in equippedItems)
+            {
+                equippedItem.Item.transform.parent = equippedItem.PutAwayParent.transform;
+                equippedItem.Item.transform.localPosition = equippedItem.putAwayPosition;
+                equippedItem.Item.transform.localEulerAngles = equippedItem.putAwayRotation;
+            }
             _animator.SetBool("WeaponEquipped", false);
         }
+    }
+
+    [System.Serializable]
+    public class EquippedItem
+    {
+        public GameObject Item;
+        public GameObject PickUpParent;
+        public GameObject PutAwayParent;
+        public Vector3 pickUpPosition;
+        public Vector3 pickUpRotation;
+        public Vector3 putAwayPosition;
+        public Vector3 putAwayRotation;
     }
 }
