@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-
     public float CameraMoveSpeed = 120f;
     public GameObject CameraFollowObj;
     Vector3 FollowPOS;
@@ -21,16 +20,22 @@ public class CameraFollow : MonoBehaviour
     public float finalInputZ;
     public float smoothX;
     public float smoothY;
+
     private float rotY = 0.0f;
     private float rotX = 0.0f;
+
+    [SerializeField]private bool cursorDebugMode = false;
 
     void Start()
     {
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (!cursorDebugMode)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
 

@@ -6,14 +6,15 @@ public class CameraCollision : MonoBehaviour
 {
     public float minDistance = 1f;
     public float maxDistance = 4f;
-    public float smooth = 10f;
+    public float smooth = 150f;
     public Vector3 dollyDirAdjusted;
-    public float distance;
+    
 
     Vector3 dollyDir;
     static float x;
     static float y;
     static float z;
+    private float distance;
 
     void Awake()
     {
