@@ -1,45 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class DoorOpenDevice : MonoBehaviour
+public class DoorOpenDevice : MonoBehaviour, InteractOperator
 {
     [SerializeField] private Vector3 dPos;
+    public bool requireKey;
+    public string keyName;
 
     private bool _open = false;
-    
+
+    void Start()
+    {
+        dPos = new Vector3(0, 0.1f -transform.lossyScale.y, 0);
+    }
+
     public void Operate()
     {
+        //if(requireKey && Managers.Inventory.equippedItem == )
         if(_open)
         {
-            Vector3 pos = transform.position - dPos;
-            transform.position = pos;
+            transform.position = transform.position - dPos;
         }
         else
         {
-            Vector3 pos = transform.position + dPos;
-            transform.position = pos;
+            transform.position = transform.position + dPos;
         }
         _open = !_open;
     }
+}
 
-    public void Activate()
+[CustomEditor(typeof(DoorOpenDevice))]
+public class MyScriptEditor : Editor
+{
+    override public void OnInspectorGUI()
     {
-        if(!_open)
-        {
-            Vector3 pos = transform.position + dPos;
-            transform.position = pos;
-            _open = true;
-        }
-    }
+        var myScript = target as DoorOpenDevice;
 
-    public void Deactivate()
-    {
-        if (_open)
-        {
-            Vector3 pos = transform.position - dPos;
-            transform.position = pos;
-            _open = false;
-        }
+        myScript.requireKey = GUILayout.Toggle(myScript.requireKey, " Key required");
+
+        if (myScript.requireKey)
+            myScript.keyName = EditorGUILayout.TextField("Key name", myScript.keyName);
+
     }
 }
