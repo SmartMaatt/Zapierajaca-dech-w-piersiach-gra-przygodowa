@@ -5,15 +5,19 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(TargetHeadAim))]
 public class EnemyAI : MonoBehaviour {
 
     private Animator _animator;
+    private TargetHeadAim _sightTargetManager;
     private float _currentMoveSpeed;
+    const float _standStill = 0.0f;
     private float _health;
 
     [Header("References")]
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Transform player;
+        public Vector3 headHeight;
         public LayerMask SolidGround, PlayerLayer;
         public float obstacleRange = 0.5f;
 
@@ -33,14 +37,15 @@ public class EnemyAI : MonoBehaviour {
         public float timeBetweenAttacks;
         public float attackMoveSpeed;
         public float attackRange;
-        bool alreadyAttacked, playerInAttackRange, isChasing;
+        bool alreadyAttacked, playerInAttackRange, isChasing, isAttacking;
         //public GameObject projectile;
 
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _currentMoveSpeed = patrolMoveSpeed;
+        _currentMoveSpeed = _standStill;
+        _sightTargetManager = GetComponent<TargetHeadAim>();
 
         player = FindObjectsOfType<RelativeMovement>()[0].transform;
         agent = GetComponent<NavMeshAgent>();
@@ -74,7 +79,7 @@ public class EnemyAI : MonoBehaviour {
     private void Patroling()
     {
         if (!walkPointSet && !enemyReadyToPatrol) { SearchWalkPoint(); }
-        else if(walkPointSet && enemyReadyToPatrol) { agent.SetDestination(_walkPoint); }
+        else if(walkPointSet && enemyReadyToPatrol) { goToPoint(); }
 
         Vector3 distanceToWalkPoint = transform.position - _walkPoint;
 
@@ -94,12 +99,24 @@ public class EnemyAI : MonoBehaviour {
 
         _walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(_walkPoint, -transform.up, 2f, SolidGround)) {
+        if (Physics.Raycast(_walkPoint, -transform.up, 2f, SolidGround) && Vector2.Angle(new Vector2(_walkPoint.x, _walkPoint.z), new Vector2(transform.position.x, transform.position.z)) < 120) {
             walkPointSet = true;
-            _currentMoveSpeed = 0.0f;
-            StartCoroutine(enemyWalkingPause());
+            _currentMoveSpeed = _standStill;
+            rotateEnemyToPoint(_walkPoint);
+
+            StartCoroutine(enemyWalkingPause(Random.Range(minRestTime, maxRestTime)));
         } 
     }
+
+
+    private void goToPoint()
+    {
+        agent.SetDestination(_walkPoint);
+        _sightTargetManager.changeWeight(0.0f, 0.0f);
+    }
+
+
+    /*************************************************/
 
 
     private void ChasePlayer()
@@ -111,14 +128,28 @@ public class EnemyAI : MonoBehaviour {
         isChasing = true;
         _currentMoveSpeed = attackMoveSpeed;
         _animator.SetBool("Attack", false);
+
+        _sightTargetManager.changeCurrentTargetPos(new Vector3(player.position.x, player.position.y + 1.7f, player.position.z));
+        _sightTargetManager.changeWeight(1.0f, 1.0f);
     }
+
+
+    /*************************************************/
 
 
     private void AttackPlayer()
     {
-        //transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+        _walkPoint = player.position;
+        agent.SetDestination(_walkPoint);
+
+        enemyReadyToPatrol = false;
+        isChasing = false;
+        _currentMoveSpeed = _standStill;
         _animator.SetBool("Attack", true);
-        isChasing = true;
+        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+
+        _sightTargetManager.changeCurrentTargetPos(new Vector3(player.position.x, player.position.y + 1.7f, player.position.z));
+        _sightTargetManager.changeWeight(1.0f, 1.0f);
 
         if (!alreadyAttacked)
         {
@@ -158,13 +189,20 @@ public class EnemyAI : MonoBehaviour {
     }
 
 
+    /*************************************************/
+
+    private void rotateEnemyToPoint(Vector3 pointToRotate)
+    {
+        Vector3 lookrotation = pointToRotate - transform.position;
+        if (lookrotation != Vector3.zero)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookrotation), 20f * Time.deltaTime);
+    }
+
     private void checkWhatIsInFrontOf()
     {
-        Vector3 lookrotation = agent.steeringTarget - transform.position;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookrotation), 20f * Time.deltaTime);
-
         if (isChasing)
         {
+            rotateEnemyToPoint(agent.steeringTarget);
             Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z), transform.forward);
             RaycastHit hit = new RaycastHit();
 
@@ -180,7 +218,7 @@ public class EnemyAI : MonoBehaviour {
                     }
                 }
                 else if(hitObject.GetComponent<RelativeMovement>() != null)
-                { 
+                {
                     transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
                 }
             }
@@ -241,10 +279,26 @@ public class EnemyAI : MonoBehaviour {
         }
 
 
-    private IEnumerator enemyWalkingPause()
+    private IEnumerator enemyWalkingPause(float timeOfRest)
     {
-        float timeDelay = Random.Range(minRestTime, maxRestTime);
-        yield return new WaitForSeconds(timeDelay);
+        Debug.Log(timeOfRest);
+        float elapsedTime = 0;
+        _sightTargetManager.changeWeight(1.0f, 1.0f);
+        Vector3 startingPos = new Vector3(transform.position.x + headHeight.x, transform.position.y + headHeight.y, transform.position.z + headHeight.z) + transform.forward * 1.0f;
+
+        int index = 0;
+        float[] x = new float[] { 0.0f, -1.0f, 0.0f, 1.0f };
+        float[] y = new float[] { -1.0f, 0.0f, 1.0f, 0.0f };
+
+        while (elapsedTime < 4)
+        {
+            Debug.Log("Target orb state" + index + " " + elapsedTime);
+            elapsedTime += Time.deltaTime/(timeOfRest/4);
+            _sightTargetManager.changeCurrentTargetPos(startingPos + transform.right * Mathf.Lerp(x[index], y[index], elapsedTime%1));
+            index = (int)(elapsedTime);
+            yield return new WaitForEndOfFrame();
+        }
+
         _currentMoveSpeed = patrolMoveSpeed;
         enemyReadyToPatrol = true;
     }
