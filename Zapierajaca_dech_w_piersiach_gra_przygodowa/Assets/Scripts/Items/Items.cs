@@ -16,8 +16,8 @@ public class Items : MonoBehaviour, InteractOperator
 
     public void Operate()
     {
-        Managers.Inventory.AddItem(this);
-        Destroy(this.gameObject);
+        if(Managers.Inventory.AddItem(this))
+            Destroy(this.gameObject);
     }
 
    

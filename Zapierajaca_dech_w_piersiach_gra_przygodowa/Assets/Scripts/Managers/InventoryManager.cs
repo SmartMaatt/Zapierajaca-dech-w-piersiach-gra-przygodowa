@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour, IGameManager
 {
@@ -13,11 +14,16 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     private Dictionary<Items, int> _items;
 
+    [SerializeField] private Text error;
+    [SerializeField] private int inventorySize = 60;
+
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera magazynu...");
         _items = new Dictionary<Items, int>();
+        error.enabled = false;
         status = ManagerStatus.Started;
+        
     }
 
     private void DisplayItems()
@@ -45,13 +51,22 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return suma;
     }
 
-    public void AddItem(Items item)
+    public bool AddItem(Items item)
     {
-        if (_items.ContainsKey(item))
-            _items[item] += 1;
+        if (_items.Count < inventorySize)
+        {
+            if (_items.ContainsKey(item))
+                _items[item] += 1;
+            else
+                _items[item] = 1;
+            DisplayItems();
+            return true;
+        }
         else
-            _items[item] = 1;
-        DisplayItems();
+        {
+            StartCoroutine(errorPopup());
+            return false;
+        }
     }
 
     public bool EquipItem(Items item)
@@ -92,13 +107,6 @@ public class InventoryManager : MonoBehaviour, IGameManager
                 return false;
         }
         return false;
-        //if(_items.ContainsKey(item) && equippedItem != item.itemName)
-        //{
-        //    equippedItem = item.itemName;
-        //    return true;
-        //}
-        //equippedItem = null;
-        //return false;
     }
 
     public bool ConsumeItem(Items item)
@@ -126,5 +134,12 @@ public class InventoryManager : MonoBehaviour, IGameManager
                 return item;
         }
         return null;
+    }
+
+    private IEnumerator errorPopup()
+    {
+        error.enabled = true;
+        yield return new WaitForSeconds(2.5f);
+        error.enabled = false;
     }
 }
