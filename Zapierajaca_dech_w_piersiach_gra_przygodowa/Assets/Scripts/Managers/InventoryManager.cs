@@ -122,7 +122,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     {
         foreach(Items item in _items.Keys)
         {
-            if (item.itemName == name)
+            if (item.itemName + item.type == name)
                 return item;
         }
         return null;
