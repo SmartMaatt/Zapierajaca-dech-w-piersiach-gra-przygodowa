@@ -26,14 +26,6 @@ public class InventoryManager : MonoBehaviour, IGameManager
         
     }
 
-    private void DisplayItems()
-    {
-        string itemDisplay = "Przedmioty: ";
-        foreach (KeyValuePair<Items, int> item in _items)
-            itemDisplay += item.Key.itemName + "(" + item.Value + ") ";
-        Debug.Log(itemDisplay);
-    }
-
     public List<Items> GetItemList()
     {
         List<Items> list = new List<Items>(_items.Keys);
@@ -141,5 +133,13 @@ public class InventoryManager : MonoBehaviour, IGameManager
         error.enabled = true;
         yield return new WaitForSeconds(2.5f);
         error.enabled = false;
+    }
+
+    private void DisplayItems()
+    {
+        string itemDisplay = "Przedmioty: ";
+        foreach (KeyValuePair<Items, int> item in _items)
+            itemDisplay += item.Key.itemName + "(" + item.Value + ") ";
+        Debug.Log(itemDisplay);
     }
 }

@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour, IGameManager
+public class PlayerManager : AbstractCharacter, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
-    [SerializeField] private int _health = 100;
-    [SerializeField] private int _maxHealth = 100;
     public int health { get; private set; }
     public int maxHealth { get; private set; }
 
@@ -30,5 +28,10 @@ public class PlayerManager : MonoBehaviour, IGameManager
             health = 0;
 
         Debug.Log("Kondycja: " + health + " / " + maxHealth);
+    }
+
+    public override void die()
+    {
+        throw new System.NotImplementedException();
     }
 }

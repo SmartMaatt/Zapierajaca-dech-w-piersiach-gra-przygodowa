@@ -10,7 +10,7 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
     public string keyName;
 
     private bool _open = false;
-
+    
     void Start()
     {
         dPos = new Vector3(0, 0.1f -transform.lossyScale.y, 0);
@@ -18,7 +18,6 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
 
     public void Operate()
     {
-        //if(requireKey && Managers.Inventory.equippedItem == )
         if(_open)
         {
             transform.position = transform.position - dPos;
