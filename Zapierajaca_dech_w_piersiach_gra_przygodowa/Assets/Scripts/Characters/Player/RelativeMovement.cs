@@ -17,6 +17,8 @@ public class RelativeMovement : MonoBehaviour
     public float minFall = -1.5f;
     public float pusForce = 3.0f;
 
+    public LayerMask enemyLayer;
+
     private float _vertSpeed;
     private ControllerColliderHit _contact;
     private Animator _animator;
@@ -31,7 +33,7 @@ public class RelativeMovement : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
 
         if (_animator.GetBool("Attacking") == true)
             return;
@@ -66,7 +68,7 @@ public class RelativeMovement : MonoBehaviour
         _animator.SetFloat("Speed", movement.sqrMagnitude);
 
         if (hitGround)
-        {
+        { 
             if (Input.GetButtonDown("Jump"))
             {
                 _vertSpeed = jumpSpeed;
@@ -114,6 +116,13 @@ public class RelativeMovement : MonoBehaviour
             _animator.SetBool("Attacking", true);
             StartCoroutine(StopAttack());
         }
+
+        if (Physics.Raycast(transform.position, -transform.up, 2f, enemyLayer))
+        {
+            Debug.Log("Zombie colision");
+            movement += Vector3.forward * 1f;    
+        }
+
         _charController.Move(movement);
     }
 

@@ -23,10 +23,10 @@ public class MakeDamge : MonoBehaviour
                 Vector3 direction = hitCollider.transform.position - transform.position;
                 if (Vector3.Dot(transform.forward, direction) > 0.5f)
                 {
-                    TakeDamage target = hitCollider.GetComponent<TakeDamage>();
+                    AbstractCharacter target = hitCollider.GetComponent<AbstractCharacter>();
                     if (target != null)
                     {
-                        target.Operate();
+                        target.getHit(10);
                     }
                     else
                     {

@@ -34,4 +34,24 @@ public class PlayerManager : AbstractCharacter, IGameManager
     {
         throw new System.NotImplementedException();
     }
+
+    public override void getHit(int damage)
+    {
+        Debug.Log("Player get hit: " + damage);
+    }
+
+    public override float getWalkSpeed()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override float getRunSpeed()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void attack()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -6,10 +6,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(TargetHeadAim))]
+[RequireComponent(typeof(AbstractCharacter))]
 public class EnemyAI : MonoBehaviour {
 
     private Animator _animator;
     private TargetHeadAim _sightTargetManager;
+    private AbstractCharacter _characterController;
+
     private float _currentMoveSpeed;
     const float _standStill = 0.0f;
     private float _health;
@@ -23,7 +26,6 @@ public class EnemyAI : MonoBehaviour {
 
     [Header("Patroling")]
         public float walkPointRange;
-        public float patrolMoveSpeed;
         public float hearRange; 
         public float sightRange;
         [Range(10,180)]
@@ -35,7 +37,6 @@ public class EnemyAI : MonoBehaviour {
 
     [Header("Attacking")]
         public float timeBetweenAttacks;
-        public float attackMoveSpeed;
         public float attackRange;
         bool alreadyAttacked, playerInAttackRange, isChasing, isAttacking;
         //public GameObject projectile;
@@ -44,12 +45,12 @@ public class EnemyAI : MonoBehaviour {
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _currentMoveSpeed = _standStill;
         _sightTargetManager = GetComponent<TargetHeadAim>();
-
         player = FindObjectsOfType<RelativeMovement>()[0].transform;
         agent = GetComponent<NavMeshAgent>();
+        _characterController = GetComponent<AbstractCharacter>();
 
+        _currentMoveSpeed = _standStill;
         _walkPoint = transform.position;
         walkPointSet = false;
         enemyReadyToPatrol = false;
@@ -126,7 +127,7 @@ public class EnemyAI : MonoBehaviour {
 
         enemyReadyToPatrol = false;
         isChasing = true;
-        _currentMoveSpeed = attackMoveSpeed;
+        _currentMoveSpeed = _characterController.getRunSpeed();
         _animator.SetBool("Attack", false);
 
         _sightTargetManager.changeCurrentTargetPos(new Vector3(player.position.x, player.position.y + 1.7f, player.position.z));
@@ -145,49 +146,21 @@ public class EnemyAI : MonoBehaviour {
         enemyReadyToPatrol = false;
         isChasing = false;
         _currentMoveSpeed = _standStill;
-        _animator.SetBool("Attack", true);
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+
+        _animator.SetBool("Attack", true);
 
         _sightTargetManager.changeCurrentTargetPos(new Vector3(player.position.x, player.position.y + 1.7f, player.position.z));
         _sightTargetManager.changeWeight(1.0f, 1.0f);
 
         if (!alreadyAttacked)
         {
-            /*
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
+            _characterController.attack();
 
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            */
+            StartCoroutine(resetAttack());
         }
     }
-
-
-    /*
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
-
-
-    public void TakeDamage(int damage)
-    {
-        _health -= damage;
-
-        if (_health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    */
-
-
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
 
     /*************************************************/
 
@@ -279,6 +252,12 @@ public class EnemyAI : MonoBehaviour {
         }
 
 
+    private IEnumerator resetAttack()
+    {
+        yield return new WaitForSeconds(timeBetweenAttacks);
+        alreadyAttacked = false;
+    }
+
     private IEnumerator enemyWalkingPause(float timeOfRest)
     {
         Debug.Log(timeOfRest);
@@ -299,7 +278,7 @@ public class EnemyAI : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
 
-        _currentMoveSpeed = patrolMoveSpeed;
+        _currentMoveSpeed = _characterController.getWalkSpeed();
         enemyReadyToPatrol = true;
     }
 }

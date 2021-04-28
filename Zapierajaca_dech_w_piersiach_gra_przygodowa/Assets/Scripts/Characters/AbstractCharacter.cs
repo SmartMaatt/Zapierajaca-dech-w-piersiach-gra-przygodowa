@@ -4,14 +4,19 @@ using UnityEngine;
 
 public abstract class AbstractCharacter: MonoBehaviour
 {
+    [Header("Health and armor")]
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected int _health;
     [SerializeField] protected int _armour;
     [SerializeField] protected int _damage;
-    [SerializeField] protected int _lowSpeed;
-    [SerializeField] protected int _highSpeed;
     [SerializeField] protected bool _blocking;
+    [SerializeField] protected bool _immortal = false;
 
+    [Header("Speed of moving")]
+    [SerializeField] protected float _walkSpeed;
+    [SerializeField] protected float _runSpeed;
+
+    [Header("Looting")]
     public List<DropInformation> dropList;
 
     public void drop(Vector3 characterPosition)
@@ -35,8 +40,13 @@ public abstract class AbstractCharacter: MonoBehaviour
         _health += value;
         if (_health > _maxHealth)
             _health = _maxHealth;
-        else if (_health < 0)
+        else if (_health <= 0)
+        { 
             _health = 0;
+            die();
+        }
+
+        Debug.Log("Current health: " + _health);
     }
     
     public bool isDead()
@@ -58,8 +68,6 @@ public abstract class AbstractCharacter: MonoBehaviour
         _damage = change;
     }
 
-    public abstract void die();
-
     [System.Serializable]
     public class DropInformation
     {
@@ -68,4 +76,11 @@ public abstract class AbstractCharacter: MonoBehaviour
         public float dropRate;
         public int maxAmount;
     }
+
+    /************ABSTRACT************/
+    public abstract void die();
+    public abstract void getHit(int damage);
+    public abstract float getWalkSpeed();
+    public abstract float getRunSpeed();
+    public abstract void attack();
 }
