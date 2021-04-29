@@ -15,6 +15,8 @@ public abstract class AbstractCharacter: MonoBehaviour
     [Header("Speed of moving")]
     [SerializeField] protected float _walkSpeed;
     [SerializeField] protected float _runSpeed;
+    [SerializeField] protected float _acceleration;
+    [SerializeField] protected float _accelerationChaseBonus;
 
     [Header("Looting")]
     public List<DropInformation> dropList;
@@ -73,6 +75,7 @@ public abstract class AbstractCharacter: MonoBehaviour
     {
         public Items item;
         [Tooltip("In Percentes")]
+        [Range(0,100)]
         public float dropRate;
         public int maxAmount;
     }
@@ -82,5 +85,8 @@ public abstract class AbstractCharacter: MonoBehaviour
     public abstract void getHit(int damage);
     public abstract float getWalkSpeed();
     public abstract float getRunSpeed();
+    public abstract float getAcceleration(bool isChasing);
     public abstract void attack();
+    public abstract void setStateMachine(int state, int postState, float specialInfo);
+    
 }

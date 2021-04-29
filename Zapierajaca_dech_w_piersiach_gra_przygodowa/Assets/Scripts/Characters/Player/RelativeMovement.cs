@@ -120,7 +120,7 @@ public class RelativeMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, -transform.up, 2f, enemyLayer))
         {
             Debug.Log("Zombie colision");
-            movement += Vector3.forward * 1f;    
+            movement += -Vector3.forward * 1f;    
         }
 
         _charController.Move(movement);

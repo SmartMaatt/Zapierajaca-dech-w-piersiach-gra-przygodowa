@@ -54,4 +54,14 @@ public class PlayerManager : AbstractCharacter, IGameManager
     {
         throw new System.NotImplementedException();
     }
+
+    public override float getAcceleration(bool isChasing)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void setStateMachine(int state, int postState, float specialInfo)
+    {
+        throw new System.NotImplementedException();
+    }
 }
