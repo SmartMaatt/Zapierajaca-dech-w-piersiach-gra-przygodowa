@@ -13,9 +13,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        foreach (var enemy in FindObjectsOfType<ZombieDefault>())
+        AbstractCharacter[] tmp = CheckType();
+        if (tmp != null)
         {
-           _enemyList.Add(enemy.transform.gameObject);
+            foreach (var enemy in tmp)
+            {
+                _enemyList.Add(enemy.transform.gameObject);
+            }
         }
     }
 
@@ -29,5 +33,21 @@ public class EnemySpawner : MonoBehaviour
             _enemyList[_enemyList.Count - 1].transform.Rotate(0, angle, 0);
         }
         _enemyList = _enemyList.Where(x => x != null).ToList();
+    }
+
+    AbstractCharacter[] CheckType()
+    {
+        if(enemyPrefab.GetComponent<ZombieDefault>() != null)
+        {
+            return FindObjectsOfType<ZombieDefault>();
+        }
+        else if(enemyPrefab.GetComponent<ZombieGirl>() != null)
+        {
+            return FindObjectsOfType<ZombieGirl>();
+        }
+        else
+        {
+            return null;
+        }
     }
 }
