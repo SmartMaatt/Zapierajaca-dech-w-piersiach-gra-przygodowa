@@ -31,4 +31,9 @@ public class Items : MonoBehaviour, InteractOperator
         _item.GetComponent<Items>().type = type;
         _item.GetComponent<Items>().itemPrefab = itemPrefab;
     }
+
+    public void equip()
+    {
+        Managers.Inventory.EquipItem(this);
+    }
 }

@@ -20,7 +20,7 @@ public abstract class AbstractCharacter: MonoBehaviour
 
     [Header("Looting")]
     public List<DropInformation> dropList;
-
+    
     public void drop(Vector3 characterPosition)
     {
         Vector3 dropPosition;
