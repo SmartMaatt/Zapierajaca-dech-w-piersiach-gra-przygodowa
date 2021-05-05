@@ -85,7 +85,9 @@ public class EnemyAI : MonoBehaviour {
         else if(walkPointSet && enemyReadyToPatrol) { goToPoint(); }
 
         Vector3 distanceToWalkPoint = transform.position - _walkPoint;
-        if (distanceToWalkPoint.magnitude < 1f) {
+
+        //Debug.Log("Magnitude: " + distanceToWalkPoint.magnitude);
+        if (distanceToWalkPoint.magnitude < 1f || isChasing) {
             walkPointSet = false; enemyReadyToPatrol = false;
         }
 
@@ -129,7 +131,6 @@ public class EnemyAI : MonoBehaviour {
         _walkPoint = player.position;
         agent.SetDestination(_walkPoint);
 
-        enemyReadyToPatrol = false;
         isChasing = true;
 
         _characterController.setStateMachine(1, 0, 0);
@@ -150,7 +151,6 @@ public class EnemyAI : MonoBehaviour {
         isChasing = false;
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
-
         _currentMaxSpeed = _standStill;
         _animator.SetBool("Attack", !alreadyAttacked);
         _characterController.setStateMachine(2, 0, 0);
@@ -158,7 +158,6 @@ public class EnemyAI : MonoBehaviour {
         if (!alreadyAttacked)
         {
             _characterController.attack();
-
             alreadyAttacked = true;
             StartCoroutine(resetAttack());
         }
@@ -247,11 +246,13 @@ public class EnemyAI : MonoBehaviour {
                 if (Physics.SphereCast(ray, 0.75f, out hit))
                 {
                     GameObject hitObject = hit.transform.gameObject;
-                    if (hitObject.GetComponent<RelativeMovement>() != null)
+
+                    if (hitObject.GetComponent<AbstractCharacter>())
                     {
                         return true;
                     }
                 }
+
             }
         }
         return false;
@@ -276,6 +277,11 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
+    public GameObject getPlayerObject()
+    {
+        return player.gameObject;
+    }
+
     private IEnumerator resetAttack()
     {
         yield return new WaitForSeconds(timeBetweenAttacks);
@@ -285,6 +291,7 @@ public class EnemyAI : MonoBehaviour {
 
     private IEnumerator enemyWalkingPause(float timeOfRest)
     {
+        Debug.Log(timeOfRest);
         yield return new WaitForSeconds(timeOfRest);
         enemyReadyToPatrol = true;
     }

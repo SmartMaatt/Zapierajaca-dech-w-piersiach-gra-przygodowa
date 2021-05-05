@@ -14,8 +14,6 @@ public class ZombieDefault : AbstractCharacter
     TargetHeadAim _headTarget;
 
     [Header("Special - Zombie")]
-    public float attackRadius;
-    public float dieAwaitTime;
     public float hitCoolDownTime;
 
     void Awake()

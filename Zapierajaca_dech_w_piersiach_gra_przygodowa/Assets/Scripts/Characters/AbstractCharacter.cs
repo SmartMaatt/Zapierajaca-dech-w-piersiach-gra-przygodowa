@@ -7,6 +7,7 @@ public abstract class AbstractCharacter: MonoBehaviour
     [Header("Health and armor")]
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected int _health;
+    [SerializeField] protected float dieAwaitTime;
     [SerializeField] protected int _armour;
     [SerializeField] protected int _damage;
     [SerializeField] protected bool _blocking;
@@ -17,10 +18,11 @@ public abstract class AbstractCharacter: MonoBehaviour
     [SerializeField] protected float _runSpeed;
     [SerializeField] protected float _acceleration;
     [SerializeField] protected float _accelerationChaseBonus;
+    [SerializeField] protected float attackRadius;
 
     [Header("Looting")]
     public List<DropInformation> dropList;
-    
+
     public void drop(Vector3 characterPosition)
     {
         Vector3 dropPosition;

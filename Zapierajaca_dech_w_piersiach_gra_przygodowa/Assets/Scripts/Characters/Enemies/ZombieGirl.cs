@@ -14,8 +14,6 @@ public class ZombieGirl : AbstractCharacter
     Renderer _rendererComponent;
 
     [Header("Special - Zombie")]
-    public float attackRadius;
-    public float dieAwaitTime;
     public float turboGirlSpeed;
 
     void Awake()
