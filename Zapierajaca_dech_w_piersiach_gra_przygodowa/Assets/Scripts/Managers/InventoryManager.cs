@@ -170,7 +170,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     {
         if (itemType != null)
         {
-            GameObject prevEquip = new GameObject();
+            GameObject prevEquip;
             prevEquip = InventoryView.transform.Find(itemType + item.type + "_slot").gameObject;
             bool activIcon = !prevEquip.GetComponent<EquipButtonClick>().iconActiv;
             prevEquip.GetComponent<EquipButtonClick>().iconActiv = activIcon;
@@ -190,7 +190,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     private void addInventorySlot(Items item)
     {
-        GameObject newItemSlot = new GameObject();
+        GameObject newItemSlot;
         newItemSlot = Instantiate(itemSlotPrefab).gameObject;
         newItemSlot.GetComponent<EquipButtonClick>().item = item;
         newItemSlot.name = item.itemName + item.type + "_slot";
