@@ -47,7 +47,7 @@ public class Mage : AbstractCharacter
         _animator = GetComponent<Animator>();
         _enemyInteligence = GetComponent<EnemyAI>();
         _headTarget = GetComponent<TargetHeadAim>();
-        _player = _enemyInteligence.getPlayerObject();
+        _player = FindObjectsOfType<RelativeMovement>()[0].transform.gameObject;
         _fireBallCasting = false;
         _handAttackCasting = false;
         _areaAttackCasting = false;
