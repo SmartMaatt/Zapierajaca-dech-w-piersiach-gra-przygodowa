@@ -14,8 +14,17 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     private Dictionary<Items, int> _items;
 
+    public GameObject itemSlotPrefab;
+
+    public GameObject InventoryView;
+
+    GameObject itemSlotName;
+    GameObject itemSlotCount;
+    GameObject itemSlotIcon;
+
     [SerializeField] private Text error;
     [SerializeField] private int inventorySize = 60;
+    
 
     public void Startup()
     {
@@ -43,15 +52,34 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return suma;
     }
 
+
     public bool AddItem(Items item)
     {
         if (_items.Count < inventorySize)
         {
+            if (GetItemCount(item) >= 1)
+            {
+                string name = item.itemName + item.type + "_slot";
+                GameObject ItemSlot = InventoryView.transform.Find(name).gameObject;
+                if (ItemSlot != null)
+                    addInventoryCount(ItemSlot, item);
+                else
+                {
+                    adjustUI();
+                    addInventorySlot(item);
+                }
+            }
+            else
+            {
+                adjustUI();
+                addInventorySlot(item);
+            }
+
             if (_items.ContainsKey(item))
                 _items[item] += 1;
             else
                 _items[item] = 1;
-            DisplayItems();
+
             return true;
         }
         else
@@ -68,6 +96,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
             case Items.itemType.WEAPON:
                 if (_items.ContainsKey(item) && equippedWeapon != item.itemName)
                 {
+                    changeEquippedItem(equippedWeapon, item);
                     equippedWeapon = item.itemName;
                     return true;
                 }
@@ -76,6 +105,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
             case Items.itemType.SHIELD:
                 if (_items.ContainsKey(item) && equippedShield != item.itemName)
                 {
+                    changeEquippedItem(equippedShield, item);
                     equippedShield = item.itemName;
                     return true;
                 }
@@ -84,6 +114,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
             case Items.itemType.POTION:
                 if (_items.ContainsKey(item) && equippedPotion != item.itemName)
                 {
+                    changeEquippedItem(equippedPotion, item);
                     equippedPotion = item.itemName;
                     return true;
                 }
@@ -92,6 +123,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
             case Items.itemType.SPECIAL:
                 if (_items.ContainsKey(item) && equippedSpecial != item.itemName)
                 {
+                    changeEquippedItem(equippedSpecial, item);
                     equippedSpecial = item.itemName;
                     return true;
                 }
@@ -114,7 +146,6 @@ public class InventoryManager : MonoBehaviour, IGameManager
             Debug.Log("Nie można użyć przedmiotu " + name);
             return false;
         }
-        DisplayItems();
         return true;
     }
 
@@ -135,11 +166,59 @@ public class InventoryManager : MonoBehaviour, IGameManager
         error.enabled = false;
     }
 
-    private void DisplayItems()
+    private void changeEquippedItem(string itemType, Items item)
     {
-        string itemDisplay = "Przedmioty: ";
-        foreach (KeyValuePair<Items, int> item in _items)
-            itemDisplay += item.Key.itemName + "(" + item.Value + ") ";
-        Debug.Log(itemDisplay);
+        if (itemType != null)
+        {
+            GameObject prevEquip;
+            prevEquip = InventoryView.transform.Find(itemType + item.type + "_slot").gameObject;
+            bool activIcon = !prevEquip.GetComponent<EquipButtonClick>().iconActiv;
+            prevEquip.GetComponent<EquipButtonClick>().iconActiv = activIcon;
+            GameObject icon = prevEquip.transform.Find("Icon").gameObject;
+            icon.SetActive(activIcon);
+        }
+    }
+
+    private void addInventoryCount(GameObject ItemSlot, Items item)
+    {
+        itemSlotCount = ItemSlot.transform.Find("ItemCount").gameObject;
+        if (itemSlotCount != null)
+        {
+            itemSlotCount.GetComponentInChildren<Text>().text = (GetItemCount(item) + 1).ToString();
+        }
+    }
+
+    private void addInventorySlot(Items item)
+    {
+        GameObject newItemSlot;
+        newItemSlot = Instantiate(itemSlotPrefab).gameObject;
+        newItemSlot.GetComponent<EquipButtonClick>().item = item;
+        newItemSlot.name = item.itemName + item.type + "_slot";
+        newItemSlot.transform.SetParent(InventoryView.transform);
+        itemSlotName = newItemSlot.transform.Find("ItemName").gameObject;
+        if (itemSlotName != null)
+        {
+            itemSlotName.GetComponentInChildren<Text>().text = item.itemName;
+        }
+        itemSlotCount = newItemSlot.transform.Find("ItemCount").gameObject;
+        if (itemSlotCount != null)
+        {
+            itemSlotCount.GetComponentInChildren<Text>().text = "1";
+        }
+        itemSlotIcon = newItemSlot.transform.Find("Icon").gameObject;
+        if (itemSlotCount != null)
+        {
+            itemSlotIcon.SetActive(false);
+            newItemSlot.GetComponent<EquipButtonClick>().icon = itemSlotIcon;
+        }
+    }
+
+    private void adjustUI()
+    {
+        if (_items.Count >= 7)
+        {
+            InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y - 110);
+            Debug.Log("Ustawiam bottom na: " + InventoryView.GetComponent<RectTransform>().offsetMin.y);
+        }
     }
 }

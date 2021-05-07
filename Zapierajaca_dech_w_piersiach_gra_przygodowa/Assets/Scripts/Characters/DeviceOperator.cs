@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class DeviceOperator : MonoBehaviour
 {
-
     public float radius = 1.5f;
 
-
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetButtonDown("Fire3"))
