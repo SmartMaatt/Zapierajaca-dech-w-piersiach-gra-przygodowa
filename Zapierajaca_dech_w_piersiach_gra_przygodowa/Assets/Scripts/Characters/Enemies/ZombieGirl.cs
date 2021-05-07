@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(EnemyAI))]
@@ -42,7 +43,20 @@ public class ZombieGirl : AbstractCharacter
     private IEnumerator dieAwait(float dieAwaitTime)
     {
         _enemyInteligence.enabled = false;
-        yield return new WaitForSeconds(dieAwaitTime);
+        yield return new WaitForSeconds(1f);
+        GetComponent<NavMeshAgent>().enabled = false;
+
+        float elampsedTime = 0.0f;
+        float min = transform.position.y;
+        float max = min - 1f;
+
+        while (elampsedTime < 1)
+        {
+            elampsedTime += Time.deltaTime / dieAwaitTime;
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(min, max, elampsedTime), transform.position.z);
+            yield return new WaitForEndOfFrame();
+        }
+
         Destroy(this.gameObject);
     }
 

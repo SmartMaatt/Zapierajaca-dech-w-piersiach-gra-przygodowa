@@ -38,7 +38,6 @@ public class EnemyAI : MonoBehaviour {
         public float timeBetweenAttacks;
         public float attackRange;
         bool alreadyAttacked, playerInAttackRange, isChasing, isAttacking;
-        //public GameObject projectile;
 
 
     private void Awake()
@@ -86,7 +85,6 @@ public class EnemyAI : MonoBehaviour {
 
         Vector3 distanceToWalkPoint = transform.position - _walkPoint;
 
-        //Debug.Log("Magnitude: " + distanceToWalkPoint.magnitude);
         if (distanceToWalkPoint.magnitude < 1f || isChasing) {
             walkPointSet = false; enemyReadyToPatrol = false;
         }
@@ -159,7 +157,7 @@ public class EnemyAI : MonoBehaviour {
         {
             _characterController.attack();
             alreadyAttacked = true;
-            StartCoroutine(resetAttack());
+            StartCoroutine(resetAttack(timeBetweenAttacks));
         }
     }
 
@@ -282,11 +280,16 @@ public class EnemyAI : MonoBehaviour {
         return player.gameObject;
     }
 
-    private IEnumerator resetAttack()
+    public void setAlreadyAttack(bool state)
     {
-        yield return new WaitForSeconds(timeBetweenAttacks);
+        alreadyAttacked = state;
+        StartCoroutine(resetAttack(timeBetweenAttacks));
+    }
+
+    public IEnumerator resetAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
         alreadyAttacked = false;
- 
     }
 
     private IEnumerator enemyWalkingPause(float timeOfRest)

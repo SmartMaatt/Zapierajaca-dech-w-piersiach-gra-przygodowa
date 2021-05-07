@@ -6,6 +6,7 @@ using UnityEngine;
 public class MakeDamge : MonoBehaviour
 {
     public float radius = 1.5f;
+    [SerializeField] GameObject shieldMarker;
 
     private Animator _animator;
 
@@ -23,10 +24,22 @@ public class MakeDamge : MonoBehaviour
                 Vector3 direction = hitCollider.transform.position - transform.position;
                 if (Vector3.Dot(transform.forward, direction) > 0.5f)
                 {
-                    AbstractCharacter target = hitCollider.GetComponent<AbstractCharacter>();
-                    if (target != null)
+                    AbstractCharacter enemy = hitCollider.GetComponent<AbstractCharacter>();
+                    ShieldCollisionBehaviour shield = hitCollider.GetComponent<ShieldCollisionBehaviour>();
+                    if (enemy)
                     {
-                        target.getHit(10);
+                        enemy.getHit(10);
+                    }
+                    else if (shield)
+                    {
+                        Vector3 playerShowder = new Vector3(transform.position.x, transform.position.y + 1.4f, transform.position.z);
+                        Ray ray = new Ray(playerShowder, direction);
+                        RaycastHit hit;
+                        if (Physics.SphereCast(ray, 0.75f, out hit))
+                        {
+                            var collInfo = new CollisionInfo { Hit = hit};
+                            shield.ShieldCollisionEnter(collInfo);
+                        }
                     }
                     else
                     {
