@@ -4,10 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InventoryManager))]
+[RequireComponent(typeof(DialogueManager))]
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
+    public static DialogueManager Dialogue { get; private set; }
+    public static QuestManager Quest { get; private set; }
 
     private List<IGameManager> _startSequence;
 
@@ -15,10 +18,14 @@ public class Managers : MonoBehaviour
     {
         Player = GetComponent<PlayerManager>();
         Inventory = GetComponent<InventoryManager>();
+        Dialogue = GetComponent<DialogueManager>();
+        Quest = GetComponent<QuestManager>();
 
         _startSequence = new List<IGameManager>();
         _startSequence.Add(Player);
         _startSequence.Add(Inventory);
+        _startSequence.Add(Dialogue);
+        _startSequence.Add(Quest);
 
         StartCoroutine(StartupManagers());
     }
