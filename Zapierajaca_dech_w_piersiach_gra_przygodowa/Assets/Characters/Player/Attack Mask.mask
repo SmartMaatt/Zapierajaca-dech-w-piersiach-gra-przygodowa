@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Attack Mask
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/elbow_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/elbow_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/foot_ik_l
+    m_Weight: 0
+  - m_Path: Soi_Knight_Armature/foot_ik_l/knee_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/foot_ik_r
+    m_Weight: 0
+  - m_Path: Soi_Knight_Armature/foot_ik_r/knee_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/hand_ik_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/hand_ik_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis
+    m_Weight: 0
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/frontguard_01
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/frontguard_01/frontguard_02
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/sideguard_01_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/sideguard_01_l/sideguard_02_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/sideguard_01_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/sideguard_01_r/sideguard_02_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/backguard_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/index_01_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/index_01_l/index_02_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/index_01_l/index_02_l/index_03_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/middle_01_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/middle_01_l/middle_02_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/middle_01_l/middle_02_l/middle_03_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/pinky_01_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/pinky_01_l/pinky_02_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/pinky_01_l/pinky_02_l/pinky_03_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/ring_01_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/ring_01_l/ring_02_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/ring_01_l/ring_02_l/ring_03_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/thumb_01_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/thumb_01_l/thumb_02_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_l/upperarm_l/lowerarm_l/hand_l/thumb_01_l/thumb_02_l/thumb_03_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/backguard_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/index_01_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/index_01_r/index_02_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/index_01_r/index_02_r/index_03_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/middle_01_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/middle_01_r/middle_02_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/middle_01_r/middle_02_r/middle_03_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/pinky_01_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/pinky_01_r/pinky_02_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/pinky_01_r/pinky_02_r/pinky_03_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/ring_01_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/ring_01_r/ring_02_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/ring_01_r/ring_02_r/ring_03_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/thumb_01_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/thumb_01_r/thumb_02_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/thumb_01_r/thumb_02_r/thumb_03_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/neck_01
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/spine_01/spine_02/spine_03/neck_01/head
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_l/calf_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_l/calf_l/foot_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_l/calf_l/foot_l/ball_l
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_r/calf_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_r/calf_r/foot_r
+    m_Weight: 1
+  - m_Path: Soi_Knight_Armature/pelvis/thigh_r/calf_r/foot_r/ball_r
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Boots
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Frontuards
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Gloves
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Helmet
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Hood
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Kneeguards
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Sideguards
+    m_Weight: 1
+  - m_Path: Soi_SimpleArmor_Spaulders
+    m_Weight: 1

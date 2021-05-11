@@ -26,6 +26,8 @@ public class Mage : AbstractCharacter
     public int FireballDamage;
     public float coolDownHand;
     public float timeOfHeal;
+    public float explosionRadius;
+    public float explosionPower;
     [Space]
     [Header("Fire attacks")]
     [SerializeField] GameObject fireballPrefab;
@@ -59,11 +61,11 @@ public class Mage : AbstractCharacter
     {
         if (!_immortal)
         {
-            _animator.SetTrigger("isHit");
+            StartCoroutine(isHit());
             changeHealth(-damage);
 
-            cancelFireball();
-            cancelBurstOnArmor();
+            //cancelFireball();
+            //cancelBurstOnArmor();
         }
 
         if (_health <= _maxHealth * 0.3 && _health > 0 && Random.Range(1,10) <= 3)
@@ -88,7 +90,7 @@ public class Mage : AbstractCharacter
         float min = transform.position.y;
         float max = min - 1f;
 
-        Instantiate(soulPrefab, transform.position, Quaternion.identity).GetComponent<EffectSettings>().MoveVector = new Vector3(transform.position.x, transform.position.y + 100f, transform.position.z);
+        Instantiate(soulPrefab, transform.position + new Vector3(0,0.5f,0), Quaternion.identity).GetComponent<EffectSettings>().MoveVector = new Vector3(transform.position.x, transform.position.y + 100f, transform.position.z);
         while(elampsedTime < 1)
         {
             elampsedTime += Time.deltaTime / dieAwaitTime;
@@ -165,7 +167,15 @@ public class Mage : AbstractCharacter
             }
             else
             {
-                StartCoroutine(burstOnArmor());
+                float combatRand = Random.Range(0, 5);
+                if (combatRand > 2)
+                {
+                    StartCoroutine(burstOnArmor());
+                }
+                else
+                {
+                    StartCoroutine(Explosion());
+                }
             }
         }
     }
@@ -178,18 +188,21 @@ public class Mage : AbstractCharacter
         _immortal = true;
         fireShield.SetActive(true);
         magicPower -= limitOfPowerToBoost;
+
+        float rememberAttackRange = _enemyInteligence.attackRange;
         float rememberMagicPower = magicPower;
 
         _walkSpeed = 0.0f;
         _runSpeed = 0.0f;
-
-        if(Vector2.Distance(convertToFlat(transform.position), convertToFlat(_player.transform.position)) < 1.5f)
-            _player.transform.position = _player.transform.position + _player.transform.forward * -3f;
+        _enemyInteligence.attackRange = 0.0f;
 
         _animator.SetInteger("AttackType", 2);
         yield return new WaitForSeconds(1f);
         Instantiate(fireGlyph, transform.position, Quaternion.identity);
         GameObject fireArea = Instantiate(areaSpellPrefab, transform.position, Quaternion.Euler(-90, 0, 0));
+
+        if(Vector2.Distance(convertToFlat(transform.position), convertToFlat(_player.transform.position)) < 1.5f)
+            StartCoroutine(_player.GetComponent<RelativeMovement>().Explosion(1f, 0.1f, 0.1f, -0.1f, 0.15f));
 
         yield return new WaitForSeconds(1f);
 
@@ -209,11 +222,9 @@ public class Mage : AbstractCharacter
         }
 
         yield return new WaitForSeconds(1f);
+        _enemyInteligence.attackRange = rememberAttackRange;
         fireArea.GetComponent<ParticleSystem>().Stop();
         fireArea.transform.GetChild(1).transform.gameObject.GetComponent<fireAreaLightShother>().startReducing = true;
-
-        _walkSpeed = _remWalkSpeed;
-        _runSpeed = _remRunSpeed;
 
         yield return new WaitForSeconds(2f);
         Destroy(fireArea);
@@ -222,6 +233,8 @@ public class Mage : AbstractCharacter
         _immortal = false;
         _areaAttackCasting = false;
         fireShield.SetActive(false);
+        _walkSpeed = _remWalkSpeed;
+        _runSpeed = _remRunSpeed;
         _animator.SetTrigger("leaveAreaSpell");
         magicPower = rememberMagicPower;
     }
@@ -229,8 +242,8 @@ public class Mage : AbstractCharacter
     private void cancelFireball()
     {
         _fireBallCasting = false;
-        int leftBall = leftHand.transform.GetChildCount();
-        int rightBall = rightHand.transform.GetChildCount();
+        int leftBall = leftHand.transform.childCount;
+        int rightBall = rightHand.transform.childCount;
 
         Debug.Log(leftBall + " " + rightBall);
 
@@ -311,9 +324,6 @@ public class Mage : AbstractCharacter
     {
         _immortal = true;
         float maxHealth = (float)_maxHealth;
-
-        float walkSpeed = _walkSpeed;
-        float runSpeed = _runSpeed;
         float attackRange = _enemyInteligence.attackRange;
 
         _walkSpeed = 0.0f;
@@ -330,8 +340,8 @@ public class Mage : AbstractCharacter
 
         healSpell.GetComponent<EffectSettings>().IsVisible = false;
 
-        _walkSpeed = walkSpeed;
-        _runSpeed = runSpeed;
+        _walkSpeed = _remWalkSpeed;
+        _runSpeed = _remRunSpeed;
         _enemyInteligence.attackRange = attackRange;
 
         yield return new WaitForSeconds(2f);
@@ -341,6 +351,11 @@ public class Mage : AbstractCharacter
         healSpell.SetActive(false);
     }
 
+    IEnumerator isHit()
+    {
+        yield return new WaitForSeconds(0.3f);
+        _animator.SetTrigger("isHit");
+    }
 
     /***ADDITIONAL***/
     private void fireHands(bool flame)
@@ -357,5 +372,25 @@ public class Mage : AbstractCharacter
     private Vector2 convertToFlat(Vector3 currentVec)
     {
         return new Vector2(currentVec.x, currentVec.z);
+    }
+
+    private IEnumerator Explosion()
+    {
+        _animator.SetInteger("AttackType", 3);
+        magicPower += Random.Range(5f, 10f);
+
+        GameObject _fireBall = Instantiate(fireballPrefabNonAttack, leftHand.transform.position + leftHand.transform.forward * 0.1f, Quaternion.identity);
+        _fireBall.transform.SetParent(leftHand.transform);
+        GameObject _fireBallRight = Instantiate(fireballPrefabNonAttack, rightHand.transform.position + rightHand.transform.forward * 0.1f, Quaternion.identity);
+        _fireBallRight.transform.SetParent(rightHand.transform);
+
+        Instantiate(fireburstPrefab, sightPosition(_player.transform.position) + _player.transform.forward * 0.2f, Quaternion.identity);
+
+        StartCoroutine(_player.GetComponent<RelativeMovement>().Explosion(1f, 0.1f, 0.15f, -0.1f, 0.15f));
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(_fireBall);
+        Destroy(_fireBallRight);
     }
 }

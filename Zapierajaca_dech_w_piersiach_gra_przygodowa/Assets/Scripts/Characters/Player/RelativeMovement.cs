@@ -3,140 +3,157 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CharacterController))]
 public class RelativeMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    //Variables
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private float rotSpeed;
 
-    public float rotSpeed = 15.0f;
-    public float moveSpeed = 6.0f;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool isAttacking;
+    [SerializeField] private bool isJumping;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private float gravity;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask wallMask;
 
-    public float jumpSpeed = 15.0f;
-    public float gravity = -9.81f;
-    public float terminalVelocity = -10.0f;
-    public float minFall = -1.5f;
-    public float pusForce = 3.0f;
+    [SerializeField] private float jumpHeight;
 
-    public LayerMask enemyLayer;
+    private Vector3 _moveDirection;
+    private Vector3 _velocity;
 
-    private float _vertSpeed;
-    private ControllerColliderHit _contact;
+    //References
+    private CharacterController _controller;
+    private MakeDamage _damageScript;
     private Animator _animator;
-
-    private CharacterController _charController;
 
     private void Start()
     {
-        _vertSpeed = minFall; // inicjalizacja do minimalnej prędkości spadania
-        _charController = GetComponent<CharacterController>(); // uzyskanie dostępu do CharacterController
+        _controller = GetComponent<CharacterController>();
+        _damageScript = GetComponent<MakeDamage>();
         _animator = GetComponent<Animator>();
     }
 
-    void Update()
-    { 
+    private void Update()
+    {
+        Move();
+    }
 
-        if (_animator.GetBool("Attacking") == true)
-            return;
-        Vector3 movement = Vector3.zero; // Vector3.zero to (0, 0, 0)
+    private void Move()
+    { 
+        if(Physics.CheckSphere(transform.position, groundCheckDistance, groundMask) || Physics.CheckSphere(transform.position, groundCheckDistance, wallMask))
+            isGrounded = true;
+        else
+            isGrounded = false;
+
+        if (isGrounded && _velocity.y < 0)
+        {
+            _velocity.y = -2f;
+            isJumping = false;
+        }
+       
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
+        _moveDirection = new Vector3(horInput, 0, vertInput);
 
-        if (horInput != 0 || vertInput != 0)
+        if (!_damageScript.isAttacting())
         {
-            movement.x = horInput * moveSpeed;
-            movement.z = vertInput * moveSpeed;
-            movement = Vector3.ClampMagnitude(movement, moveSpeed); // ograniczenie prędkości ruchu po przekątnej
-
-            Quaternion tmp = target.rotation; // zachowanie początkowej rotacji
-            target.eulerAngles = new Vector3(0, target.eulerAngles.y, 0);
-            movement = target.TransformDirection(movement); // zmiana kierunku ruchu z lokalnych na globalne
-            target.rotation = tmp;
-
-            //transform.rotation = Quaternion.LookRotation(movement); // obliczane kwternionu aby skierować obiekt w stronę movement
-            Quaternion direction = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Lerp(transform.rotation, direction, rotSpeed * Time.deltaTime);
-        }
-
-        bool hitGround = false;
-        RaycastHit hit;
-        if (_vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-            float check = (_charController.height + _charController.radius) / 1.9f - _charController.center.y;
-            hitGround = hit.distance <= check;
-        }
-
-        _animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        if (hitGround)
-        { 
-            if (Input.GetButtonDown("Jump"))
+            if (_moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
             {
-                _vertSpeed = jumpSpeed;
+                Walk();
+                Rotate();
             }
-            else
+            else if (_moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
             {
-                _vertSpeed = minFall;
+                Run();
+                Rotate();
             }
-            if (_contact != null)
+            else if (_moveDirection == Vector3.zero)
             {
-                if (_animator.GetBool("Jumping") == true)
-                    _animator.SetBool("Jumping", false);
+                Idle();
             }
         }
         else
         {
-            _vertSpeed += gravity * 5 * Time.deltaTime;
-            if (_vertSpeed < terminalVelocity)
-            {
-                _vertSpeed = terminalVelocity;
-            }
-            if (_contact != null)
-            {
-                _animator.SetBool("Jumping", true);
-            }
-
-            if (_charController.isGrounded)
-            {
-                if (Vector3.Dot(movement, _contact.normal) < 0) // sprawdzenie w jaką stronę zwrócona jest postać
-                {
-                    movement = _contact.normal * moveSpeed;
-                }
-                else
-                {
-                    movement += _contact.normal * moveSpeed;
-                }
-            }
-
+            AttackStop();
         }
-        movement.y = _vertSpeed;
 
-        movement *= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && _animator.GetBool("Jumping") == false && _animator.GetBool("Attacking") == false)
+        _moveDirection *= moveSpeed;
+        _moveDirection = Vector3.ClampMagnitude(_moveDirection, moveSpeed);
+
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            _animator.SetBool("Attacking", true);
-            StartCoroutine(StopAttack());
+            Jump();
         }
 
-        if (Physics.Raycast(transform.position, -transform.up, 2f, enemyLayer))
+        _animator.SetBool("Jumping", isJumping);
+        _velocity.y += gravity * Time.deltaTime;
+
+        _controller.Move(_moveDirection * Time.deltaTime);
+        _controller.Move(_velocity * Time.deltaTime);
+    }
+
+    private void Idle()
+    {
+        _animator.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
+    }
+
+    private void Walk()
+    {
+        moveSpeed = walkSpeed;
+        _animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+    }
+
+    private void Run()
+    {
+        moveSpeed = runSpeed;
+        _animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
+    }
+
+    private void AttackStop()
+    {
+        _animator.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
+        _moveDirection = Vector3.zero;
+    }
+
+    private void Rotate()
+    {
+        Quaternion tmp = cameraTransform.rotation; // zachowanie początkowej rotacji
+        cameraTransform.eulerAngles = new Vector3(0, cameraTransform.eulerAngles.y, 0);
+        _moveDirection = cameraTransform.TransformDirection(_moveDirection); // zmiana kierunku ruchu z lokalnych na globalne
+        cameraTransform.rotation = tmp;
+
+        Quaternion direction = Quaternion.LookRotation(_moveDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, direction, rotSpeed * Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        _velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        isJumping = true;
+    }
+
+    public IEnumerator Explosion(float time, float waitTime, float power, float _min, float _max)
+    {
+        float elapsedTime = 0.0f;
+        float max = _max;
+        float min = _min;
+
+        yield return new WaitForSeconds(waitTime);
+
+        Vector3 moveDirection = -cameraTransform.forward - new Vector3(0, 1f, 0);
+
+        while (elapsedTime < time)
         {
-            Debug.Log("Zombie colision");
-            movement += -Vector3.forward * 1f;    
+            elapsedTime += Time.deltaTime / time;
+            _controller.Move(moveDirection * power + new Vector3(0, Mathf.Lerp(max,min, elapsedTime), 0));
+            yield return new WaitForEndOfFrame();
         }
-
-        _charController.Move(movement);
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        _contact = hit;
-        Rigidbody body = hit.collider.attachedRigidbody; // czy obiekt zderzony posiada fizykę
-        if (body != null && !body.isKinematic)
-            body.velocity = hit.moveDirection * pusForce; // nadanie prędkości obiektowi
-    }
-
-    private IEnumerator StopAttack()
-    {
-        yield return new WaitForSeconds(0.75f);
-        _animator.SetBool("Attacking", false);
-    }
 }

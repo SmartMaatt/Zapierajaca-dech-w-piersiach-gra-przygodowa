@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
     private float rotY = 0.0f;
     private float rotX = 0.0f;
 
-    [SerializeField]private bool cursorDebugMode = false;
+    [SerializeField] private bool cursorDebugMode = false;
 
     void Start()
     {

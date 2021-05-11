@@ -1121,7 +1121,7 @@ MonoBehaviour:
     m_Bits: 256
   obstacleRange: 0.5
   walkPointRange: 20
-  hearRange: 10
+  hearRange: 12
   sightRange: 15
   sightConeRange: 130
   maxRestTime: 10

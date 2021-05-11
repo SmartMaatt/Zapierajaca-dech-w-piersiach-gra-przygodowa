@@ -201,8 +201,16 @@ public class ProjectileCollisionBehaviour : MonoBehaviour
       if (hit.transform != null) {
         var shield = hit.transform.GetComponent<ShieldCollisionBehaviour>();
         var player = hit.transform.GetComponent<AbstractCharacter>();
+
         if (shield != null) shield.ShieldCollisionEnter(collInfo);
-        if (player) player.getHit(damage);
+        if (player)
+        {
+            player.getHit(damage);
+
+            RelativeMovement moveScript = player.GetComponent<RelativeMovement>();
+            if (moveScript)        
+                StartCoroutine(moveScript.Explosion(0.5f, 0f, 0.15f, -0.1f, 0.1f));
+        }
       }
     }
     onCollision = true;
