@@ -21,6 +21,9 @@ public class CameraFollow : MonoBehaviour
     public float smoothX;
     public float smoothY;
 
+    public bool isDead;
+    public bool deadAnimationPlaying;
+
     private float rotY = 0.0f;
     private float rotX = 0.0f;
 
@@ -41,17 +44,20 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
-        finalInputX = mouseX;
-        finalInputZ = -mouseY;
+        if (!isDead)
+        {
+            mouseX = Input.GetAxis("Mouse X");
+            mouseY = Input.GetAxis("Mouse Y");
+            finalInputX = mouseX;
+            finalInputZ = -mouseY;
 
-        rotY += finalInputX * inputSensitivity * Time.deltaTime;
-        rotX += finalInputZ * inputSensitivity * Time.deltaTime;
+            rotY += finalInputX * inputSensitivity * Time.deltaTime;
+            rotX += finalInputZ * inputSensitivity * Time.deltaTime;
 
-        rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
-        transform.rotation = localRotation;
+            rotX = Mathf.Clamp(rotX, -clampAngle, clampAngle);
+            Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
+            transform.rotation = localRotation;
+        }
     }
 
     void LateUpdate()
@@ -61,11 +67,40 @@ public class CameraFollow : MonoBehaviour
 
     void CameraUpdater()
     {
-        // set the target object to follow
-        Transform target = CameraFollowObj.transform;
+        if (!isDead && !deadAnimationPlaying)
+        {
+            // set the target object to follow
+            Transform target = CameraFollowObj.transform;
 
-        // move toword game object that is the target
-        float step = CameraMoveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+            // move toword game object that is the target
+            float step = CameraMoveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        }
+        else if(isDead && !deadAnimationPlaying)
+        {
+            StartCoroutine(deadAnimation(15f));
+        }
+    }
+
+
+    IEnumerator deadAnimation(float time)
+    {
+        float elapsedTime = 0.0f;
+        deadAnimationPlaying = true;
+
+        transform.LookAt(CameraFollowObj.transform);
+        transform.eulerAngles = new Vector3(90, 180, 0);
+
+        float min = 0.5f;
+        float max = 5f;
+
+        while(elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime / time;
+            transform.position = CameraFollowObj.transform.position + new Vector3(0, Mathf.Lerp(min,max,elapsedTime), 0);
+            transform.Rotate(0, 0, 0.05f);
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

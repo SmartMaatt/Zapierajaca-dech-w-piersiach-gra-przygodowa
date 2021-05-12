@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerManager : AbstractCharacter, IGameManager
 {
     public ManagerStatus status { get; private set; }
     public int health { get; private set; }
     public int maxHealth { get; private set; }
+
+    [Header("Special - Player")]
+    [SerializeField] CameraFollow cameraScript;
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void Startup()
     {
@@ -18,25 +28,40 @@ public class PlayerManager : AbstractCharacter, IGameManager
         status = ManagerStatus.Started;
     }
 
-    public void ChangeHealth(int value)
-    {
-        health += value;
-        if (health > maxHealth)
-            health = maxHealth;
-        else if (health < 0)
-            health = 0;
-
-        Debug.Log("Kondycja: " + health + " / " + maxHealth);
-    }
-
     public override void die()
     {
-        throw new System.NotImplementedException();
+        _animator.SetTrigger("isDead");
+        GetComponent<MakeDamage>().enabled = false;
+        GetComponent<RelativeMovement>().enabled = false;
+        GetComponent<PlayerManager>().enabled = false;
+        cameraScript.isDead = true;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider hit in colliders)
+        {
+            EnemyAI enemy = hit.GetComponent<EnemyAI>();
+            if (enemy)
+            {
+                Debug.Log(enemy);
+                enemy.attackRange = 0;
+                enemy.hearRange = 0;
+                enemy.sightRange = 0;
+            }
+        }
     }
 
     public override void getHit(int damage)
     {
-        Debug.Log("Player get hit: " + damage);
+        if (!_immortal)
+        {
+            int armorBonus = (100 / _armour) * damage;
+            changeHealth(-damage + armorBonus);
+
+            if(_health > 0)
+            {
+                _animator.SetTrigger("isHit");
+            }
+        }
     }
 
     public override float getWalkSpeed()

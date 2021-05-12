@@ -385,6 +385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1.5
   attackCooldown: 2
+  blockCooldown: 3
+  shieldArmor: 30
+  shieldBlockMaxTime: 7
   shieldMarker: {fileID: 2496592240401330701, guid: 6acd34f7de9b01844ae64262b17c1376,
     type: 3}
 --- !u!114 &44225181
@@ -399,8 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91daaef867232e94987bcbd92ae21fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _health: 0
+  _maxHealth: 150
+  _health: 150
   dieAwaitTime: 0
   _armour: 0
   _damage: 0
@@ -412,6 +415,7 @@ MonoBehaviour:
   _accelerationChaseBonus: 0
   attackRadius: 0
   dropList: []
+  cameraScript: {fileID: 1725935676}
 --- !u!1 &100372888
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +467,17 @@ PrefabInstance:
     - target: {fileID: 2362519512999249380, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362519512999249382, guid: f335f11457359b346b74afdb4c8206b1,
+        type: 3}
+      propertyPath: _health
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362519512999249382, guid: f335f11457359b346b74afdb4c8206b1,
+        type: 3}
+      propertyPath: coolDownHand
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2362519512999249382, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
@@ -478,7 +492,12 @@ PrefabInstance:
     - target: {fileID: 2362519512999249383, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
       propertyPath: hearRange
-      value: 12
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362519512999249383, guid: f335f11457359b346b74afdb4c8206b1,
+        type: 3}
+      propertyPath: sightRange
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3135220393675038558, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
@@ -917,6 +936,8 @@ MonoBehaviour:
   finalInputZ: 0
   smoothX: 0
   smoothY: 0
+  isDead: 0
+  deadAnimationPlaying: 0
   cursorDebugMode: 0
 --- !u!1 &1930306168
 GameObject:
@@ -1806,7 +1827,6 @@ GameObject:
   - component: {fileID: 44225179}
   - component: {fileID: 1457128976035169}
   - component: {fileID: 44225181}
-  - component: {fileID: 1457128976035171}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1830,6 +1850,8 @@ MonoBehaviour:
   moveSpeed: 0
   walkSpeed: 7
   runSpeed: 10
+  runStamina: 5
+  runRestTime: 3
   rotSpeed: 15
   isGrounded: 0
   isAttacking: 0
@@ -1859,19 +1881,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1457128976035171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457128976035168}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 952835e924af5c54ba456dd2904a2894, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RigidbodyPrefab: {fileID: 0}
 --- !u!1 &1480744957572790
 GameObject:
   m_ObjectHideFlags: 0

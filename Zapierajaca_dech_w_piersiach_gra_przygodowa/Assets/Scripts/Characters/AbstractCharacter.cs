@@ -8,6 +8,7 @@ public abstract class AbstractCharacter: MonoBehaviour
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected int _health;
     [SerializeField] protected float dieAwaitTime;
+    [Range(0,100)]
     [SerializeField] protected int _armour;
     [SerializeField] protected int _damage;
     [SerializeField] protected bool _blocking;
@@ -70,6 +71,11 @@ public abstract class AbstractCharacter: MonoBehaviour
     public void changeDamage(int change)
     {
         _damage = change;
+    }
+
+    public void setBlock(bool blocking)
+    {
+        _blocking = blocking;
     }
 
     [System.Serializable]

@@ -12,6 +12,8 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
+    [SerializeField] private float runStamina;
+    [SerializeField] private float runRestTime;
     [SerializeField] private float rotSpeed;
 
     [SerializeField] private bool isGrounded;
@@ -26,6 +28,8 @@ public class RelativeMovement : MonoBehaviour
 
     private Vector3 _moveDirection;
     private Vector3 _velocity;
+    private float _runStaminaCounter;
+    private bool _canSprint;
 
     //References
     private CharacterController _controller;
@@ -37,11 +41,14 @@ public class RelativeMovement : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _damageScript = GetComponent<MakeDamage>();
         _animator = GetComponent<Animator>();
+        _runStaminaCounter = runStamina;
+        _canSprint = true;
     }
 
     private void Update()
     {
         Move();
+        Debug.Log("Spring stamina: " + _runStaminaCounter);
     }
 
     private void Move()
@@ -61,19 +68,19 @@ public class RelativeMovement : MonoBehaviour
         float vertInput = Input.GetAxis("Vertical");
         _moveDirection = new Vector3(horInput, 0, vertInput);
 
-        if (!_damageScript.isAttacting())
+        if (!_damageScript.isAttacting() && !_damageScript.isBlocking())
         {
             if (_moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
             {
                 Walk();
                 Rotate();
             }
-            else if (_moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
+            else if (_canSprint && _moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
             {
                 Run();
                 Rotate();
             }
-            else if (_moveDirection == Vector3.zero)
+            else if (_moveDirection == Vector3.zero || !_canSprint)
             {
                 Idle();
             }
@@ -100,19 +107,30 @@ public class RelativeMovement : MonoBehaviour
 
     private void Idle()
     {
+        moveSpeed = 0.0f;
         _animator.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
+
+        if(_runStaminaCounter < runStamina && _canSprint)
+            _runStaminaCounter += Time.deltaTime;
     }
 
     private void Walk()
     {
         moveSpeed = walkSpeed;
         _animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+
+        if (_runStaminaCounter < runStamina && _canSprint)
+            _runStaminaCounter += Time.deltaTime/2;
     }
 
     private void Run()
     {
         moveSpeed = runSpeed;
+        _runStaminaCounter -= Time.deltaTime;
         _animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
+
+        if (_runStaminaCounter <= 0.0f)
+            StartCoroutine(StopRunning());
     }
 
     private void AttackStop()
@@ -156,4 +174,10 @@ public class RelativeMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator StopRunning()
+    {
+        _canSprint = false;
+        yield return new WaitForSeconds(runRestTime);
+        _canSprint = true;
+    }
 }

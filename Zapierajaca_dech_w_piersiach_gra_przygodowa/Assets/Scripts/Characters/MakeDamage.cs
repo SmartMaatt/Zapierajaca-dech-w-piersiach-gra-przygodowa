@@ -5,22 +5,51 @@ using UnityEngine;
 
 public class MakeDamage : MonoBehaviour
 {
-    public float radius = 1.5f;
+    [SerializeField] private float radius = 1.5f;
     [Range(1,10)]
-    public float attackCooldown = 1.5f;
+    [SerializeField] private float attackCooldown;
+    [Range(1,10)]
+    [SerializeField] private float blockCooldown;
+    [SerializeField] private int shieldArmor;
+    [SerializeField] private float shieldBlockMaxTime;
     [SerializeField] GameObject shieldMarker;
 
     private Animator _animator;
+    private PlayerManager _playerManager;
     private bool _canAttack;
+    private bool _canBlock;
     private bool _isAttacting;
+    private bool _isBlocking;
+    private float _blockStamina;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _playerManager = GetComponent<PlayerManager>();
+
         _canAttack = true;
+        _canBlock = true;
         _isAttacting = false;
+        _isBlocking = false;
+        _blockStamina = shieldBlockMaxTime;
     }
     void Update()
+    {
+        Attack();
+        Block();
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("Weapon equiped!");
+            EquipeWeapon weapon = GetComponent<EquipeWeapon>();
+            if (weapon != null)
+            {
+                weapon.Operate();
+            }
+        }
+    }
+
+    private void Attack()
     {
         if (Input.GetMouseButtonDown(0) && _canAttack)
         {
@@ -61,14 +90,46 @@ public class MakeDamage : MonoBehaviour
             }
             StartCoroutine(attackCooldownCor());
         }
+    }
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+    private void Block()
+    {
+        if (_canBlock)
         {
-            Debug.Log("Weapon equiped!");
-            EquipeWeapon weapon = GetComponent<EquipeWeapon>();
-            if (weapon != null)
+            if (Input.GetMouseButton(1) && _blockStamina > 0.0f)
             {
-                weapon.Operate();
+                if (_animator.GetBool("WeaponEquipped"))
+                {
+                    if (!_isBlocking)
+                    {
+                        _playerManager.changeArmour(shieldArmor);
+                        _playerManager.setBlock(true);
+                    }
+
+                    _isBlocking = true;
+                    _blockStamina -= Time.deltaTime;
+                    _animator.SetBool("isBlocking", true);
+
+                    if (_blockStamina < 0.0f)
+                        StartCoroutine(blockingCooldownCor());
+
+                    Debug.Log("Block: " + _blockStamina);
+                }
+            }
+
+            if (_blockStamina < 0.0f || (!Input.GetMouseButton(1) && _blockStamina < shieldBlockMaxTime))
+            {
+                if (_animator.GetBool("isBlocking"))
+                {
+                    _playerManager.changeArmour(-shieldArmor);
+                    _playerManager.setBlock(false);
+                }
+
+                _isBlocking = false;
+                _blockStamina += Time.deltaTime;
+                _animator.SetBool("isBlocking", false);
+
+                Debug.Log("Not-block: " + _blockStamina);
             }
         }
     }
@@ -78,6 +139,11 @@ public class MakeDamage : MonoBehaviour
         return _isAttacting;
     }
 
+    public bool isBlocking()
+    {
+        return _isBlocking;
+    }
+
     private IEnumerator attackCooldownCor()
     {
         _canAttack = false;
@@ -85,5 +151,14 @@ public class MakeDamage : MonoBehaviour
         _isAttacting = false;
         yield return new WaitForSeconds(attackCooldown - 1f);
         _canAttack = true;
+    }
+
+    private IEnumerator blockingCooldownCor()
+    {
+        _canBlock = false;
+        yield return new WaitForSeconds(1f);
+        _isBlocking = false;
+        yield return new WaitForSeconds(blockCooldown - 1f);
+        _canBlock = true;
     }
 }

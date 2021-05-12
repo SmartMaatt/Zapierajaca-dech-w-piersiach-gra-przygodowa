@@ -168,7 +168,7 @@ public class Mage : AbstractCharacter
             else
             {
                 float combatRand = Random.Range(0, 5);
-                if (combatRand > 2)
+                if (combatRand > 1)
                 {
                     StartCoroutine(burstOnArmor());
                 }
