@@ -22,14 +22,20 @@ public class Items : MonoBehaviour, InteractOperator
             Destroy(this.gameObject);
     }
 
-    public void Drop(Vector3 dropPosition)
+    public void Drop(Vector3 dropPosition, bool playerDrop)
     {
         _item = Instantiate(itemPrefab) as GameObject;
-        _item.transform.position = dropPosition;
+        Vector3 dropRange = new Vector3(Random.Range(-2f, 2f), 0.5f, Random.Range(-2f, 2f));
+        _item.transform.position = dropPosition + dropRange;
 
         _item.GetComponent<Items>().itemName = itemName;
         _item.GetComponent<Items>().type = type;
         _item.GetComponent<Items>().itemPrefab = itemPrefab;
+
+        if(playerDrop)
+        {
+            Managers.Inventory.PlayerDrop(this);
+        }
     }
 
     public void equip()

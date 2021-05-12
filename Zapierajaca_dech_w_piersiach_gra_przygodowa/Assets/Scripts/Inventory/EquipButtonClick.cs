@@ -6,6 +6,7 @@ public class EquipButtonClick : MonoBehaviour
 {
     public Items item;
     public GameObject icon;
+    public GameObject player;
 
     public bool iconActiv = false;
     public void OnClick()
@@ -13,5 +14,15 @@ public class EquipButtonClick : MonoBehaviour
         item.equip();
         iconActiv = !iconActiv;
         icon.SetActive(iconActiv);
+    }
+
+    public void Drop()
+    {
+        if(iconActiv)
+            item.equip();
+
+        item.Drop(player.transform.position, true);
+        this.transform.SetParent(null);
+        Destroy(this.gameObject);
     }
 }

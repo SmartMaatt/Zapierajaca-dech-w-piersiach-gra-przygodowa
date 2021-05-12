@@ -15,12 +15,14 @@ public class InventoryManager : MonoBehaviour, IGameManager
     private Dictionary<Items, int> _items;
 
     public GameObject itemSlotPrefab;
-
     public GameObject InventoryView;
+    public GameObject InventoryMainTitle;
+    public GameObject player;
 
     GameObject itemSlotName;
     GameObject itemSlotCount;
     GameObject itemSlotIcon;
+    GameObject itemSlotType;
 
     [SerializeField] private Text error;
     [SerializeField] private int inventorySize = 60;
@@ -41,6 +43,15 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return list;
     }
 
+    public void ReloadCapacity()
+    {
+        GameObject capacity = InventoryMainTitle.transform.Find("Capacity").gameObject;
+        if (capacity != null)
+        {
+            capacity.GetComponent<Text>().text = Managers.Inventory.GetCapacityInText();
+        }
+    }
+
     public int GetItemCount(Items searchedItem)
     {
         int suma = 0;
@@ -52,6 +63,16 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return suma;
     }
 
+    public void PlayerDrop(Items item)
+    {
+        ConsumeItem(item);
+        ReloadCapacity();
+    }
+
+    public string GetCapacityInText()
+    {
+        return _items.Count + " / " + inventorySize;
+    }
 
     public bool AddItem(Items item)
     {
@@ -65,13 +86,13 @@ public class InventoryManager : MonoBehaviour, IGameManager
                     addInventoryCount(ItemSlot, item);
                 else
                 {
-                    adjustUI();
+                    adjustUI(true);
                     addInventorySlot(item);
                 }
             }
             else
             {
-                adjustUI();
+                adjustUI(true);
                 addInventorySlot(item);
             }
 
@@ -79,7 +100,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
                 _items[item] += 1;
             else
                 _items[item] = 1;
-
+            ReloadCapacity();
             return true;
         }
         else
@@ -139,7 +160,13 @@ public class InventoryManager : MonoBehaviour, IGameManager
         {
             _items[item]--;
             if (_items[item] == 0)
+            {
+                if(_items.Count > 7)
+                {
+                    adjustUI(false);
+                }
                 _items.Remove(item);
+            }
         }
         else
         {
@@ -193,8 +220,10 @@ public class InventoryManager : MonoBehaviour, IGameManager
         GameObject newItemSlot;
         newItemSlot = Instantiate(itemSlotPrefab).gameObject;
         newItemSlot.GetComponent<EquipButtonClick>().item = item;
+        newItemSlot.GetComponent<EquipButtonClick>().player = player;
         newItemSlot.name = item.itemName + item.type + "_slot";
         newItemSlot.transform.SetParent(InventoryView.transform);
+
         itemSlotName = newItemSlot.transform.Find("ItemName").gameObject;
         if (itemSlotName != null)
         {
@@ -206,18 +235,31 @@ public class InventoryManager : MonoBehaviour, IGameManager
             itemSlotCount.GetComponentInChildren<Text>().text = "1";
         }
         itemSlotIcon = newItemSlot.transform.Find("Icon").gameObject;
-        if (itemSlotCount != null)
+        if (itemSlotIcon != null)
         {
             itemSlotIcon.SetActive(false);
             newItemSlot.GetComponent<EquipButtonClick>().icon = itemSlotIcon;
         }
+        itemSlotType = newItemSlot.transform.Find("ItemType").gameObject;
+        if (itemSlotType != null)
+        {
+            itemSlotType.GetComponentInChildren<Text>().text = item.type.ToString();
+        }
     }
 
-    private void adjustUI()
+    private void adjustUI(bool direction)
     {
-        if (_items.Count >= 7)
+        if (direction)
         {
-            InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y - 110);
+            if (_items.Count >= 7)
+            {
+                InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y - 110);
+                Debug.Log("Ustawiam bottom na: " + InventoryView.GetComponent<RectTransform>().offsetMin.y);
+            }
+        }
+        else
+        {
+            InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y + 110);
             Debug.Log("Ustawiam bottom na: " + InventoryView.GetComponent<RectTransform>().offsetMin.y);
         }
     }

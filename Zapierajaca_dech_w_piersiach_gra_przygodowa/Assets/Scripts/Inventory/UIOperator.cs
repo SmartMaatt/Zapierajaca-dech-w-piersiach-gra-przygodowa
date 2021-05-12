@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIOperator : MonoBehaviour
 {
@@ -21,6 +22,16 @@ public class UIOperator : MonoBehaviour
             _activInvetory = !_activInvetory;
             InventoryPanel.SetActive(_activInvetory);
             InventoryMainTitle.SetActive(_activInvetory);
+            ReloadCapacity();
+        }
+    }
+
+    public void ReloadCapacity()
+    {
+        GameObject capacity = InventoryMainTitle.transform.Find("Capacity").gameObject;
+        if (capacity != null)
+        {
+            capacity.GetComponent<Text>().text = Managers.Inventory.GetCapacityInText();
         }
     }
 }
