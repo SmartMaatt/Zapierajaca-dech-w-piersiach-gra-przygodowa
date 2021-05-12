@@ -11,11 +11,13 @@ public class PlayerManager : AbstractCharacter, IGameManager
 
     [Header("Special - Player")]
     [SerializeField] CameraFollow cameraScript;
+    [SerializeField] UIBar _healthBar;
     private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _healthBar.setUpBar(_maxHealth);
     }
 
     public void Startup()
@@ -36,6 +38,9 @@ public class PlayerManager : AbstractCharacter, IGameManager
         GetComponent<PlayerManager>().enabled = false;
         cameraScript.isDead = true;
 
+        UIController UI = FindObjectsOfType<UIController>()[0];
+        if (UI) { UI.playerDiedScene(); }
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
         foreach (Collider hit in colliders)
         {
@@ -54,8 +59,16 @@ public class PlayerManager : AbstractCharacter, IGameManager
     {
         if (!_immortal)
         {
-            int armorBonus = (100 / _armour) * damage;
-            changeHealth(-damage + armorBonus);
+            float armorBonus;
+            if (_armour > 0)
+                armorBonus = (float)_armour / 100 * (float)damage;
+            else
+                armorBonus = 0;
+
+
+            Debug.Log("Armor bonus: " + armorBonus);
+            changeHealth(-damage + (int)armorBonus);
+            _healthBar.setBarValue(_health);
 
             if(_health > 0)
             {

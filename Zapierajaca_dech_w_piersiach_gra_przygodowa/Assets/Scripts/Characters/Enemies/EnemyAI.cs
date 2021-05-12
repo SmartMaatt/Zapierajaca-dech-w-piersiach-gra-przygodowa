@@ -249,6 +249,10 @@ public class EnemyAI : MonoBehaviour {
                     {
                         return true;
                     }
+                    else if (playerInHearRange)
+                    {
+                        _characterController.setStateMachine(2, 1, 0.0f);
+                    }
                 }
 
             }

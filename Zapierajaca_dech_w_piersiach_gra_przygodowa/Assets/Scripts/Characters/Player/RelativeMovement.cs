@@ -19,12 +19,14 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool isAttacking;
     [SerializeField] private bool isJumping;
+    [SerializeField] private float jumpHeight;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float gravity;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask wallMask;
 
-    [SerializeField] private float jumpHeight;
+    [Space]
+    [SerializeField] UIBar _staminaBar;
 
     private Vector3 _moveDirection;
     private Vector3 _velocity;
@@ -43,12 +45,12 @@ public class RelativeMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _runStaminaCounter = runStamina;
         _canSprint = true;
+        _staminaBar.setUpBar((int)(runStamina*100));
     }
 
     private void Update()
     {
         Move();
-        Debug.Log("Spring stamina: " + _runStaminaCounter);
     }
 
     private void Move()
@@ -103,6 +105,7 @@ public class RelativeMovement : MonoBehaviour
 
         _controller.Move(_moveDirection * Time.deltaTime);
         _controller.Move(_velocity * Time.deltaTime);
+        _staminaBar.setBarValue((int)(_runStaminaCounter * 100));
     }
 
     private void Idle()

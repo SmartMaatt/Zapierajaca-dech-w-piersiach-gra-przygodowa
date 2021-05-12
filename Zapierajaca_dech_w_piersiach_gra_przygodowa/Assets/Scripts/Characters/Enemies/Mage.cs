@@ -17,6 +17,7 @@ public class Mage : AbstractCharacter
     bool _handAttackCasting;
     bool _areaAttackCasting;
     float _remWalkSpeed, _remRunSpeed;
+    float _attackRangeRem;
 
     [Header("Special - Mage")]
     public float magicPower;
@@ -55,6 +56,7 @@ public class Mage : AbstractCharacter
         _areaAttackCasting = false;
         _remWalkSpeed = _walkSpeed;
         _remRunSpeed = _runSpeed;
+        _attackRangeRem = _enemyInteligence.attackRange;
     }
 
     public override void getHit(int damage)
@@ -146,9 +148,15 @@ public class Mage : AbstractCharacter
         //Attacking
         else if (state == 2)
         {
+            _enemyInteligence.attackRange = _attackRangeRem;
             _headTarget.changeTargetToPlayer(1.75f);
             _headTarget.changeWeight(1.0f, 1.0f);
             fireHands(true);
+
+            if(postState == 1)
+            {
+                _enemyInteligence.attackRange = 1.0f;
+            }
         }
     }
 

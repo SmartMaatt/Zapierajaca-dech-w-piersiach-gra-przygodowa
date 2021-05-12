@@ -13,6 +13,8 @@ public class MakeDamage : MonoBehaviour
     [SerializeField] private int shieldArmor;
     [SerializeField] private float shieldBlockMaxTime;
     [SerializeField] GameObject shieldMarker;
+    [SerializeField] UIBar swordUI;
+    [SerializeField] UIBar shieldUI;
 
     private Animator _animator;
     private PlayerManager _playerManager;
@@ -32,6 +34,8 @@ public class MakeDamage : MonoBehaviour
         _isAttacting = false;
         _isBlocking = false;
         _blockStamina = shieldBlockMaxTime;
+        swordUI.setUpBar(100);
+        shieldUI.setUpBar((int)shieldBlockMaxTime * 100);
     }
     void Update()
     {
@@ -89,6 +93,7 @@ public class MakeDamage : MonoBehaviour
                 _animator.SetTrigger("Attacking");
             }
             StartCoroutine(attackCooldownCor());
+            StartCoroutine(attackUIChange());
         }
     }
 
@@ -113,7 +118,7 @@ public class MakeDamage : MonoBehaviour
                     if (_blockStamina < 0.0f)
                         StartCoroutine(blockingCooldownCor());
 
-                    Debug.Log("Block: " + _blockStamina);
+                    shieldUI.setBarValue((int)(_blockStamina * 100));
                 }
             }
 
@@ -129,7 +134,7 @@ public class MakeDamage : MonoBehaviour
                 _blockStamina += Time.deltaTime;
                 _animator.SetBool("isBlocking", false);
 
-                Debug.Log("Not-block: " + _blockStamina);
+                shieldUI.setBarValue((int)(_blockStamina * 100));
             }
         }
     }
@@ -151,6 +156,19 @@ public class MakeDamage : MonoBehaviour
         _isAttacting = false;
         yield return new WaitForSeconds(attackCooldown - 1f);
         _canAttack = true;
+    }
+
+    private IEnumerator attackUIChange()
+    {
+        float elapsedTime = 0.0f;
+        while(elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime / attackCooldown;
+            swordUI.setBarValue((int)(elapsedTime*100));
+            Debug.Log(elapsedTime);
+            yield return new WaitForEndOfFrame();
+        }
+        swordUI.setBarValue(100);
     }
 
     private IEnumerator blockingCooldownCor()
