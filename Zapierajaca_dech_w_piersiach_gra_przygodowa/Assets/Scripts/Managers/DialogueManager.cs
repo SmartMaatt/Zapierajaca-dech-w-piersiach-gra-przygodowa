@@ -11,20 +11,22 @@ public class DialogueManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
-    public Canvas dialoguseCanvas;
-    public Image dialogueArea;
-    public GameObject responseButtonPrefab;
-    public GameObject exitButtonPrefab;
-    public List<GameObject> responseButtons;
-    public TextMeshProUGUI characterNameText;
-    public TextMeshProUGUI characterSentenceText;
-    public GameObject player;
-    public new GameObject camera;
+    // ZABRAĆ STĄD NULL
+    public Canvas dialoguseCanvas = null;
+    public Image dialogueArea = null;
+    public GameObject responseButtonPrefab = null;
+    public GameObject exitButtonPrefab = null;
+    public List<GameObject> responseButtons = null;
+    public TextMeshProUGUI characterNameText = null;
+    public TextMeshProUGUI characterSentenceText = null;
+    public GameObject player = null;
+    public new GameObject camera = null;
 
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera dialogów...");
-        dialoguseCanvas.enabled = false;
+        // ODKOMENTOWAĆ TO
+        //dialoguseCanvas.enabled = false;
         status = ManagerStatus.Started;
     }
 

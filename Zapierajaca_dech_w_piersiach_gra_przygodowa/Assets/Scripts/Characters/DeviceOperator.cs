@@ -8,7 +8,7 @@ public class DeviceOperator : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire3"))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius); // zwraca liczbe obiektów w sferze.
             foreach(Collider hitColider in hitColliders)

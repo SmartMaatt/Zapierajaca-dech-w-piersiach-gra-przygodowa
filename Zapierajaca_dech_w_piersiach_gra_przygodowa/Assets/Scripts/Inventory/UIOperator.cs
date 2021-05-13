@@ -6,29 +6,39 @@ using UnityEngine.UI;
 public class UIOperator : MonoBehaviour
 {
     public GameObject InventoryPanel;
-    public GameObject InventoryMainTitle;
 
     bool _activInvetory = false;
 
     void Start()
     {
         InventoryPanel.SetActive(_activInvetory);
-        InventoryMainTitle.SetActive(_activInvetory);
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
             _activInvetory = !_activInvetory;
+            if (!_activInvetory)
+            {
+                Time.timeScale = 1.0f;
+                Cursor.visible = false;
+                Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Time.timeScale = 0.0f;
+                Cursor.visible = true;
+                Cursor.lockState = Cursor.lockState = CursorLockMode.None;
+            }
+
             InventoryPanel.SetActive(_activInvetory);
-            InventoryMainTitle.SetActive(_activInvetory);
             ReloadCapacity();
         }
     }
 
     public void ReloadCapacity()
     {
-        GameObject capacity = InventoryMainTitle.transform.Find("Capacity").gameObject;
+        GameObject capacity = InventoryPanel.transform.Find("PanelForMainText").transform.Find("Capacity").gameObject;
         if (capacity != null)
         {
             capacity.GetComponent<Text>().text = Managers.Inventory.GetCapacityInText();

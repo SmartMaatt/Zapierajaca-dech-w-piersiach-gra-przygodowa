@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerManager))]
+//[RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InventoryManager))]
 [RequireComponent(typeof(DialogueManager))]
 public class Managers : MonoBehaviour
@@ -16,16 +16,17 @@ public class Managers : MonoBehaviour
 
     private void Awake()
     {
-        Player = GetComponent<PlayerManager>();
+        Player = FindObjectsOfType<PlayerManager>()[0].transform.GetComponent<PlayerManager>();
         Inventory = GetComponent<InventoryManager>();
         Dialogue = GetComponent<DialogueManager>();
         Quest = GetComponent<QuestManager>();
 
         _startSequence = new List<IGameManager>();
-        _startSequence.Add(Player);
+        
         _startSequence.Add(Inventory);
         _startSequence.Add(Dialogue);
         _startSequence.Add(Quest);
+        _startSequence.Add(Player);
 
         StartCoroutine(StartupManagers());
     }
@@ -33,7 +34,9 @@ public class Managers : MonoBehaviour
     private IEnumerator StartupManagers()
     {
         foreach (IGameManager manager in _startSequence)
+        {
             manager.Startup();
+        }
 
         yield return null;
 
