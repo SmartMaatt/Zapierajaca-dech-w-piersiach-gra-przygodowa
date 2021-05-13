@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84ee850199abbc4d92cd6a0d0c4a1ca, type: 3}
   m_Name: RatingSetup
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   active: 0
   counter: 0
   lastCheck: 450162.7873962061
+=======
+  active: 1
+  counter: 2
+  lastCheck: 450230.0516174168
+>>>>>>> Stashed changes
