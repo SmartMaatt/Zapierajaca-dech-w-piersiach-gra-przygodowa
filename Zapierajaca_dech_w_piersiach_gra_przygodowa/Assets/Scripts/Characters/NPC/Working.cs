@@ -18,9 +18,6 @@ public class Working : MonoBehaviour
     private int activity = 0;
     private float timeCount = 0.0f;
 
-    private const float minWorkingTime = 2f;
-    private const float maxWorkingTime = 5f;
-
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -73,8 +70,8 @@ public class Working : MonoBehaviour
                 _animator.SetBool("HammerWorking", set);
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WORKING);
                 break;
-            case WorkType.MINNING:
-                _animator.SetBool("Minning", set);
+            case WorkType.MINING:
+                _animator.SetBool("Mining", set);
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WORKING);
                 break;
             case WorkType.SITTING:
@@ -109,9 +106,19 @@ public class Working : MonoBehaviour
     {
         Vector3 currentRotation = transform.rotation.eulerAngles;
         Vector3 pointToRotate = currenTask.workingRotation;
+        if (currentRotation.y < 0)
+        {
+            currentRotation.y += 360;
+        }
+        if (pointToRotate.y < 0)
+        {
+            pointToRotate.y += 360;
+        }
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(pointToRotate), timeCount);
         timeCount += Time.deltaTime / 4;
-        if (currentRotation == pointToRotate)
+
+        Vector3 rotationToWorkingRotation = currentRotation - pointToRotate;
+        if (rotationToWorkingRotation.magnitude < 0.2f)
         {
             timeCount = 0;
             activity++;
@@ -120,7 +127,7 @@ public class Working : MonoBehaviour
 
     private void StartWork()
     {
-        currenTask.workingTime = UnityEngine.Random.Range(minWorkingTime, maxWorkingTime);
+        currenTask.workingTime = UnityEngine.Random.Range(currenTask.minWorkingTime, currenTask.maxWorkingTime);
         SetWorkType(true);
         working = true;
         StartCoroutine(JustWork(currenTask.workingTime));
@@ -149,6 +156,8 @@ public class Working : MonoBehaviour
         public Vector3 workingPlace;
         public Vector3 workingRotation;
         public WorkType workType;
+        public float minWorkingTime;
+        public float maxWorkingTime;
         public float workingTime;
     }
 
@@ -160,7 +169,7 @@ public class Working : MonoBehaviour
         FISHING = 3,
         GATHERING = 4,
         HAMMERWORKING = 5,
-        MINNING = 6,
+        MINING = 6,
         SITTING = 7
     }
 }

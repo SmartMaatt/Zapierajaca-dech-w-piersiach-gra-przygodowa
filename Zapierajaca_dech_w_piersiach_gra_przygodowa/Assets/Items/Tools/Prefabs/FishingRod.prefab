@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &142862793144084017
+--- !u!1 &6442837827888731509
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 770217071694412939}
-  - component: {fileID: 4404388278489740078}
-  - component: {fileID: 1944271376954591204}
+  - component: {fileID: 5918396708172173263}
+  - component: {fileID: 7317652199691944042}
+  - component: {fileID: 4785482172224926880}
+  - component: {fileID: 6172437344368698532}
   m_Layer: 0
-  m_Name: stick
+  m_Name: FishingRod 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &770217071694412939
+--- !u!4 &5918396708172173263
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142862793144084017}
+  m_GameObject: {fileID: 6442837827888731509}
   m_LocalRotation: {x: -0.4425063, y: 0.6283547, z: 0.5953829, w: 0.23425995}
   m_LocalPosition: {x: -0.3534, y: 0.0714, z: 0.2621}
   m_LocalScale: {x: 5.7142863, y: 5.7142873, z: 5.714285}
   m_Children:
-  - {fileID: 3503156796553020916}
+  - {fileID: 7498410511318464176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -107.148, y: 52.059, z: 70.053}
---- !u!33 &4404388278489740078
+--- !u!33 &7317652199691944042
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142862793144084017}
+  m_GameObject: {fileID: 6442837827888731509}
   m_Mesh: {fileID: 7632853808121928550, guid: 3325052671e0bff4e9b9ab4a9d5d8347, type: 3}
---- !u!23 &1944271376954591204
+--- !u!23 &4785482172224926880
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142862793144084017}
+  m_GameObject: {fileID: 6442837827888731509}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -80,12 +81,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1001 &7802412912402325940
+--- !u!114 &6172437344368698532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6442837827888731509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d2181b7143674e8e005ca4e73b240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handingPlaces:
+  - handingParent: {fileID: 0}
+    handingPosition: {x: -0.3534, y: 0.0714, z: 0.2621}
+    handingRotation: {x: -107.148, y: 52.059, z: 70.053}
+    workType: 0
+  - handingParent: {fileID: 0}
+    handingPosition: {x: 0, y: -10, z: 0}
+    handingRotation: {x: 0, y: 0, z: 0}
+    workType: 1
+  - handingParent: {fileID: 0}
+    handingPosition: {x: 0, y: -10, z: 0}
+    handingRotation: {x: 0, y: 0, z: 0}
+    workType: 2
+--- !u!1001 &3807159195758858992
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 770217071694412939}
+    m_TransformParent: {fileID: 5918396708172173263}
     m_Modifications:
     - target: {fileID: 4263416754705372506, guid: 2d22cf32b581f1e49b2a82df983fe80c,
         type: 3}
@@ -212,21 +238,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 59.171
       objectReference: {fileID: 0}
-    - target: {fileID: 7917664295545379461, guid: 2d22cf32b581f1e49b2a82df983fe80c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7917664295545379461, guid: 2d22cf32b581f1e49b2a82df983fe80c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d22cf32b581f1e49b2a82df983fe80c, type: 3}
---- !u!4 &3503156796553020916 stripped
+--- !u!4 &7498410511318464176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6690673114359047232, guid: 2d22cf32b581f1e49b2a82df983fe80c,
     type: 3}
-  m_PrefabInstance: {fileID: 7802412912402325940}
+  m_PrefabInstance: {fileID: 3807159195758858992}
   m_PrefabAsset: {fileID: 0}

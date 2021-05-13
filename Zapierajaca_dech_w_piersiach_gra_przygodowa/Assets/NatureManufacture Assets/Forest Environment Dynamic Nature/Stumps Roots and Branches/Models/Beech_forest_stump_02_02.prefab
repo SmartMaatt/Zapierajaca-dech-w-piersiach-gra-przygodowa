@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9063225026577089824}
   - component: {fileID: 9063225026579956994}
   - component: {fileID: 9063225026578991042}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Beech_forest_stump_02_02_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 9063225026577089826}
   - component: {fileID: 9063225026596049282}
   - component: {fileID: 4338707288681854229}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Beech_forest_stump_02_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 9063225026577089828}
   - component: {fileID: 9063225026579956998}
   - component: {fileID: 9063225026578991046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Beech_forest_stump_02_02_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 9063225026577089830}
   - component: {fileID: 9063225026579956992}
   - component: {fileID: 9063225026578991040}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Beech_forest_stump_02_02_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
