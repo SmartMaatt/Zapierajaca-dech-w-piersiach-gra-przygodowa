@@ -12,17 +12,32 @@ public class MakeDamage : MonoBehaviour
     [SerializeField] private float blockCooldown;
     [SerializeField] private int shieldArmor;
     [SerializeField] private float shieldBlockMaxTime;
+    [SerializeField] private float attackStrength;
     [SerializeField] GameObject shieldMarker;
+    [Header("UI")]
     [SerializeField] UIBar swordUI;
     [SerializeField] UIBar shieldUI;
+    [SerializeField] UIBar magicSwordUI;
+    [Header("Swords")]
+    [SerializeField] GameObject normalSword;
+    [SerializeField] GameObject magicSword;
+    [SerializeField] private float magicSpellTime;
+    [SerializeField] private float magicDamageBonus;
+    [SerializeField] private float magicRadiusBonus;
 
     private Animator _animator;
     private PlayerManager _playerManager;
     private bool _canAttack;
     private bool _canBlock;
+    private bool _canMagic;
     private bool _isAttacting;
     private bool _isBlocking;
+    private bool _isMagic;
+    private bool _isEquiped;
     private float _blockStamina;
+
+    private float _magicRadius = 0.0f;
+    private float _magicAttack = 0.0f;
 
     void Start()
     {
@@ -31,16 +46,24 @@ public class MakeDamage : MonoBehaviour
 
         _canAttack = true;
         _canBlock = true;
+        _canMagic = true;
         _isAttacting = false;
         _isBlocking = false;
+        _isMagic = false;
+        _isEquiped = false;
         _blockStamina = shieldBlockMaxTime;
+        _magicRadius = 0.0f;
+        _magicAttack = 0.0f;
+
         swordUI.setUpBar(100);
         shieldUI.setUpBar((int)shieldBlockMaxTime * 100);
+        magicSwordUI.setUpBar((int)magicSpellTime * 100);
     }
     void Update()
     {
         Attack();
         Block();
+        MagicAttack();
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -48,19 +71,19 @@ public class MakeDamage : MonoBehaviour
             EquipeWeapon weapon = GetComponent<EquipeWeapon>();
             if (weapon != null)
             {
-                weapon.Operate();
+                _isEquiped = weapon.Operate();
             }
         }
     }
 
     private void Attack()
     {
-        if (Input.GetMouseButtonDown(0) && _canAttack)
+        if (Input.GetMouseButtonDown(0) && _canAttack && _isEquiped)
         {
             if (_animator.GetBool("WeaponEquipped"))
             {
                 _isAttacting = true;
-                Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+                Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius + _magicRadius);
                 foreach (Collider hitCollider in hitColliders)
                 {
                     Vector3 direction = hitCollider.transform.position - transform.position;
@@ -71,7 +94,7 @@ public class MakeDamage : MonoBehaviour
 
                         if (enemy)
                         {
-                            enemy.getHit(10);
+                            enemy.getHit((int)(attackStrength + _magicAttack));
                         }
                         else if (shield)
                         {
@@ -101,7 +124,7 @@ public class MakeDamage : MonoBehaviour
     {
         if (_canBlock)
         {
-            if (Input.GetMouseButton(1) && _blockStamina > 0.0f)
+            if (Input.GetMouseButton(1) && _blockStamina > 0.0f && _isEquiped)
             {
                 if (_animator.GetBool("WeaponEquipped"))
                 {
@@ -139,6 +162,21 @@ public class MakeDamage : MonoBehaviour
         }
     }
 
+    private void MagicAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.G) && _canMagic && _isEquiped)
+        {
+            _canMagic = false;
+            normalSword.SetActive(false);
+            magicSword.SetActive(true);
+
+            _magicAttack = magicDamageBonus;
+            _magicRadius = magicRadiusBonus;
+
+            StartCoroutine(MagicColDownCor());
+        }
+    }
+
     public bool isAttacting()
     {
         return _isAttacting;
@@ -147,6 +185,11 @@ public class MakeDamage : MonoBehaviour
     public bool isBlocking()
     {
         return _isBlocking;
+    }
+
+    public bool isEquiped()
+    {
+        return _isEquiped;
     }
 
     private IEnumerator attackCooldownCor()
@@ -178,5 +221,24 @@ public class MakeDamage : MonoBehaviour
         _isBlocking = false;
         yield return new WaitForSeconds(blockCooldown - 1f);
         _canBlock = true;
+    }
+
+    private IEnumerator MagicColDownCor()
+    {
+        float elapsedTime = 0.0f;
+        while(elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime / magicSpellTime;
+            magicSwordUI.setBarValue((int)(elapsedTime * 100 * magicSpellTime));
+            yield return new WaitForEndOfFrame();
+        }
+
+        magicSwordUI.setBarValue((int)magicSpellTime * 100);
+        _canMagic = true;
+        normalSword.SetActive(true);
+        magicSword.SetActive(false);
+
+        _magicAttack = 0.0f;
+        _magicRadius = 0.0f;
     }
 }

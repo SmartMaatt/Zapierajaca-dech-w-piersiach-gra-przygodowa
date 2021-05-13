@@ -914,7 +914,7 @@ MonoBehaviour:
   sightConeRange: 130
   maxRestTime: 7
   minRestTime: 2
-  timeBetweenAttacks: 1.5
+  timeBetweenAttacks: 2.5
   attackRange: 1.5
 --- !u!114 &2018105470060620437
 MonoBehaviour:
@@ -928,9 +928,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81a32462c83ee9498b91811b1f65614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _health: 100
-  dieAwaitTime: 2
+  _maxHealth: 60
+  _health: 60
+  dieAwaitTime: 3
   _armour: 0
   _damage: 10
   _blocking: 0
