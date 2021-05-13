@@ -33195,6 +33195,7 @@ GameObject:
   - component: {fileID: 4782272913002999649}
   - component: {fileID: 4781457898878587037}
   - component: {fileID: 4782272913002999651}
+  - component: {fileID: 8452581428101639396}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -33414,6 +33415,23 @@ MonoBehaviour:
   healSpell: {fileID: 4781457899954080577}
   potionIcon: {fileID: 3225522801743357692}
   healthBar: {fileID: 3225522803627681092}
+--- !u!114 &8452581428101639396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782272913002999648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb57545635624f46ae29ea33dc74c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Water:
+    serializedVersion: 2
+    m_Bits: 16
+  radius: 1
+  waterDamage: 1
 --- !u!1 &4782295317155769728
 GameObject:
   m_ObjectHideFlags: 0

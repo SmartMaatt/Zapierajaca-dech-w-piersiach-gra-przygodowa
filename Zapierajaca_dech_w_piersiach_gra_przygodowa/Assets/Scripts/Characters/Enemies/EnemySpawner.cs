@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private LayerMask SolidGround;
     public int maxActiveMods;
     public int rangeX;
     public int rangeZ;
@@ -36,10 +37,15 @@ public class EnemySpawner : MonoBehaviour
         {
             if (_enemyList.Count < maxActiveMods)
             {
-                _enemyList.Add(Instantiate(enemyPrefab) as GameObject);
-                _enemyList[_enemyList.Count - 1].transform.position = new Vector3(Random.Range(-rangeX, rangeX), 1, Random.Range(-rangeZ, rangeZ));
-                float angle = Random.Range(0, 360);
-                _enemyList[_enemyList.Count - 1].transform.Rotate(0, angle, 0);
+                Vector3 walkPoint = new Vector3(Random.Range(-rangeX, rangeX), 1, Random.Range(-rangeZ, rangeZ));
+
+                if (Physics.Raycast(walkPoint, -transform.up, 2f, SolidGround))
+                {
+                    _enemyList.Add(Instantiate(enemyPrefab) as GameObject);
+                    _enemyList[_enemyList.Count - 1].transform.position = walkPoint;
+                    float angle = Random.Range(0, 360);
+                    _enemyList[_enemyList.Count - 1].transform.Rotate(0, angle, 0);
+                }
             }
             _enemyList = _enemyList.Where(x => x != null).ToList();
         }

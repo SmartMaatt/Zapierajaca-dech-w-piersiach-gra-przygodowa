@@ -915,6 +915,7 @@ GameObject:
   - component: {fileID: 2362519512999249383}
   - component: {fileID: 2362519512999249377}
   - component: {fileID: 2362519512999249382}
+  - component: {fileID: 8424017274875986538}
   m_Layer: 9
   m_Name: Mage
   m_TagString: Untagged
@@ -1175,6 +1176,8 @@ MonoBehaviour:
   FireballDamage: 15
   coolDownHand: 1.5
   timeOfHeal: 7
+  explosionRadius: 0
+  explosionPower: 0
   fireballPrefab: {fileID: 100006, guid: 19d7f76af0512e14c91c7a2486e3724f, type: 3}
   fireballPrefabNonAttack: {fileID: 100006, guid: c2bc1fb968666244aa8a8de22256b2a0,
     type: 3}
@@ -1190,6 +1193,23 @@ MonoBehaviour:
     type: 3}
   leftHand: {fileID: 1326717042258637177}
   rightHand: {fileID: 695685655497594292}
+--- !u!114 &8424017274875986538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362519512999249380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb57545635624f46ae29ea33dc74c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Water:
+    serializedVersion: 2
+    m_Bits: 16
+  radius: 1
+  waterDamage: 30
 --- !u!1 &2478771803943260608
 GameObject:
   m_ObjectHideFlags: 0

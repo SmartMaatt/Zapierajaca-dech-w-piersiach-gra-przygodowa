@@ -2066,6 +2066,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water4Example (Advanced)
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: b544816461f324e56a39767fdeb5b114, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: b544816461f324e56a39767fdeb5b114, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3107,6 +3119,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 458778521}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &489782887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489782888}
+  - component: {fileID: 489782889}
+  - component: {fileID: 489782890}
+  m_Layer: 0
+  m_Name: Scene controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &489782888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489782887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 514.66754, y: 35, z: 522.68896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489782889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489782887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5601ffe853da98a4aaf0dfceda848d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &489782890
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489782887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1500, y: 100, z: 1500}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &518171797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,7 +3664,7 @@ PrefabInstance:
     - target: {fileID: 3225522803631205380, guid: 36830c1a329143c4a8efac35abc76168,
         type: 3}
       propertyPath: m_Name
-      value: Scene player config (Don't touch!)
+      value: Player config (Don't touch!)
       objectReference: {fileID: 0}
     - target: {fileID: 3225522803631205387, guid: 36830c1a329143c4a8efac35abc76168,
         type: 3}
@@ -7155,6 +7224,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1194378639}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1195064793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114,
+    type: 3}
+  m_PrefabInstance: {fileID: 324317651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1195064799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195064793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50, y: 30, z: 30}
+  m_Center: {x: -5, y: -15, z: 10}
 --- !u!1 &1196920574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9d357f2a965a4854c89e2c635a95d349,
@@ -11857,8 +11945,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684959540}
-  m_LocalRotation: {x: 0.21049725, y: 0.52770877, z: 0.13688977, w: -0.8114651}
-  m_LocalPosition: {x: 589.4282, y: 84.15474, z: 587.91895}
+  m_LocalRotation: {x: -0.018294955, y: 0.9313782, z: 0.36050758, w: 0.04726824}
+  m_LocalPosition: {x: 438.5374, y: -548.86847, z: 1328.2971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -66,8 +66,6 @@ public class PlayerManager : AbstractCharacter, IGameManager
             else
                 armorBonus = 0;
 
-
-            Debug.Log("Armor bonus: " + armorBonus);
             changeHealth(-damage + (int)armorBonus);
             _healthBar.setBarValue(_health);
 
