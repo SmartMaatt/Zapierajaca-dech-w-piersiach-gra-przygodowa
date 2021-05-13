@@ -89,7 +89,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216784748403989395}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -201,7 +201,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305969325625515474}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -313,7 +313,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796739940465614974}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 07e4da959f2ba374bb0f8994c9c8688c,
     type: 3}
@@ -425,7 +425,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112507559916463166}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -537,7 +537,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287711342480950634}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -650,7 +650,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533816689982529950}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: c27d353c5b7524c4a9078ae80ab32d46,
     type: 3}
@@ -763,7 +763,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662355421855523572}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: c27d353c5b7524c4a9078ae80ab32d46,
     type: 3}
@@ -875,7 +875,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951379430408985669}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -987,7 +987,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105215173945898312}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -1099,7 +1099,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2227640252681592706}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -1211,7 +1211,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3316066404239518245}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -1323,7 +1323,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3327242162000829006}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -1435,7 +1435,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3397543150306946279}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -1659,7 +1659,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4444104185579174271}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -1772,7 +1772,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4555948903086197415}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: c27d353c5b7524c4a9078ae80ab32d46,
     type: 3}
@@ -1897,7 +1897,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5834157281931647314}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -2010,7 +2010,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7091536361872720728}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: c27d353c5b7524c4a9078ae80ab32d46,
     type: 3}
@@ -2122,7 +2122,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7561834932120328827}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -2287,7 +2287,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8077473265866667958}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -2399,7 +2399,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8432406037824221112}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: 51fb143fec4e30a44a5fcf51a25e391b,
     type: 3}
@@ -2512,7 +2512,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9111928472053007783}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 4299129368205833123, guid: c27d353c5b7524c4a9078ae80ab32d46,
     type: 3}
@@ -2542,6 +2542,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8114667217552285743}
     m_Modifications:
+    - target: {fileID: -5716681864270162303, guid: 07e4da959f2ba374bb0f8994c9c8688c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 07e4da959f2ba374bb0f8994c9c8688c,
         type: 3}
       propertyPath: m_RootOrder
