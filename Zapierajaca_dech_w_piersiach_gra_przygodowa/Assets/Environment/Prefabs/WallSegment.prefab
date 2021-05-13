@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2856253218675763410}
   - component: {fileID: 4992460355436173316}
   - component: {fileID: 4969816864691850478}
-  - component: {fileID: 8160007566723281918}
   - component: {fileID: 9026526513876769328}
-  m_Layer: 0
+  - component: {fileID: 3041537930331471738}
+  m_Layer: 11
   m_Name: Chimney4 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,20 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8160007566723281918
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216784748403989395}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &9026526513876769328
 Animation:
   m_ObjectHideFlags: 0
@@ -113,6 +99,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &3041537930331471738
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216784748403989395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &305969325625515474
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,9 +123,9 @@ GameObject:
   - component: {fileID: 4071353829980449149}
   - component: {fileID: 4215923431467818761}
   - component: {fileID: 2201543970006242558}
-  - component: {fileID: 2617874531095561808}
   - component: {fileID: 6999299299120279198}
-  m_Layer: 0
+  - component: {fileID: 4172809236028151745}
+  m_Layer: 11
   m_Name: Chimney4 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,20 +194,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2617874531095561808
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305969325625515474}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &6999299299120279198
 Animation:
   m_ObjectHideFlags: 0
@@ -226,6 +211,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &4172809236028151745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305969325625515474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &796739940465614974
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,9 +235,9 @@ GameObject:
   - component: {fileID: 8047312909430738169}
   - component: {fileID: 2040102899538294624}
   - component: {fileID: 4176757147817524924}
-  - component: {fileID: 9162039294189629633}
   - component: {fileID: 269580590818113931}
-  m_Layer: 0
+  - component: {fileID: 2923151427284387709}
+  m_Layer: 11
   m_Name: DoorStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,20 +306,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9162039294189629633
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796739940465614974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 07e4da959f2ba374bb0f8994c9c8688c, type: 3}
 --- !u!111 &269580590818113931
 Animation:
   m_ObjectHideFlags: 0
@@ -339,6 +323,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &2923151427284387709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796739940465614974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4614472, y: 2.0339096, z: 0.29525685}
+  m_Center: {x: -0.00000017881398, y: 0.00567019, z: -0.004535117}
 --- !u!1 &1112507559916463166
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,9 +347,9 @@ GameObject:
   - component: {fileID: 4198751518320290085}
   - component: {fileID: 89340397228954259}
   - component: {fileID: 3280736172828558718}
-  - component: {fileID: 3304237575446164915}
   - component: {fileID: 7548042269443519328}
-  m_Layer: 0
+  - component: {fileID: 6400813215847035231}
+  m_Layer: 11
   m_Name: Chimney4 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,20 +418,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3304237575446164915
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112507559916463166}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &7548042269443519328
 Animation:
   m_ObjectHideFlags: 0
@@ -452,6 +435,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &6400813215847035231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112507559916463166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &1287711342480950634
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,9 +459,9 @@ GameObject:
   - component: {fileID: 9114557040202132238}
   - component: {fileID: 3243848598399966466}
   - component: {fileID: 136710067708394236}
-  - component: {fileID: 20363647612697319}
   - component: {fileID: 146449601048148997}
-  m_Layer: 0
+  - component: {fileID: 8819527094919205491}
+  m_Layer: 11
   m_Name: Chimney4 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,20 +530,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &20363647612697319
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287711342480950634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &146449601048148997
 Animation:
   m_ObjectHideFlags: 0
@@ -565,6 +547,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &8819527094919205491
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287711342480950634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &1533816689982529950
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,9 +571,9 @@ GameObject:
   - component: {fileID: 3930719580016901116}
   - component: {fileID: 734252797412958798}
   - component: {fileID: 4519387496773505355}
-  - component: {fileID: 4972237406465578479}
   - component: {fileID: 4700494892177694422}
-  m_Layer: 0
+  - component: {fileID: 3813323683892617515}
+  m_Layer: 11
   m_Name: StonePlatformArches_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,20 +643,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4972237406465578479
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533816689982529950}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c27d353c5b7524c4a9078ae80ab32d46, type: 3}
 --- !u!111 &4700494892177694422
 Animation:
   m_ObjectHideFlags: 0
@@ -679,6 +660,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &3813323683892617515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533816689982529950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3794658, y: 2.6581233, z: 3.3806744}
+  m_Center: {x: 0, y: 1.3299998, z: -0.0006043315}
 --- !u!1 &1662355421855523572
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,9 +684,9 @@ GameObject:
   - component: {fileID: 5045231824015430394}
   - component: {fileID: 7970290772061721887}
   - component: {fileID: 8479358953835169799}
-  - component: {fileID: 8144121175894434013}
   - component: {fileID: 8120003487421279623}
-  m_Layer: 0
+  - component: {fileID: 3198282900837773380}
+  m_Layer: 11
   m_Name: StonePlatformArches_1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,20 +756,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8144121175894434013
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662355421855523572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c27d353c5b7524c4a9078ae80ab32d46, type: 3}
 --- !u!111 &8120003487421279623
 Animation:
   m_ObjectHideFlags: 0
@@ -793,6 +773,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &3198282900837773380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662355421855523572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3794658, y: 2.6581233, z: 3.3806744}
+  m_Center: {x: 0, y: 1.3299998, z: -0.0006043315}
 --- !u!1 &1951379430408985669
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,9 +797,9 @@ GameObject:
   - component: {fileID: 1092378723877207890}
   - component: {fileID: 6540665092095367446}
   - component: {fileID: 1837924102754745846}
-  - component: {fileID: 2739850722926061192}
   - component: {fileID: 4647673337018741554}
-  m_Layer: 0
+  - component: {fileID: 6485489717300245178}
+  m_Layer: 11
   m_Name: Chimney4 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,20 +868,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2739850722926061192
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951379430408985669}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &4647673337018741554
 Animation:
   m_ObjectHideFlags: 0
@@ -906,6 +885,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &6485489717300245178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951379430408985669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &2105215173945898312
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,9 +909,9 @@ GameObject:
   - component: {fileID: 4242285745275894754}
   - component: {fileID: 440485042816773038}
   - component: {fileID: 5650986293911696476}
-  - component: {fileID: 8511264538321398134}
   - component: {fileID: 7563509118487471598}
-  m_Layer: 0
+  - component: {fileID: 6283085839848887620}
+  m_Layer: 11
   m_Name: Chimney4 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,20 +980,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8511264538321398134
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105215173945898312}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &7563509118487471598
 Animation:
   m_ObjectHideFlags: 0
@@ -1019,6 +997,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &6283085839848887620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105215173945898312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &2227640252681592706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,9 +1021,9 @@ GameObject:
   - component: {fileID: 3754198818690345343}
   - component: {fileID: 1425164820008743087}
   - component: {fileID: 2548882148214392458}
-  - component: {fileID: 59947466971297050}
   - component: {fileID: 762230522223032401}
-  m_Layer: 0
+  - component: {fileID: 3004716565406904316}
+  m_Layer: 11
   m_Name: Chimney4 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1101,20 +1092,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &59947466971297050
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2227640252681592706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &762230522223032401
 Animation:
   m_ObjectHideFlags: 0
@@ -1132,6 +1109,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &3004716565406904316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227640252681592706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &3316066404239518245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,9 +1133,9 @@ GameObject:
   - component: {fileID: 6124375240240059197}
   - component: {fileID: 3418519401334083073}
   - component: {fileID: 3144033240868969185}
-  - component: {fileID: 252131678165236356}
   - component: {fileID: 5503763110186403036}
-  m_Layer: 0
+  - component: {fileID: 8591680199288822817}
+  m_Layer: 11
   m_Name: Chimney4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,20 +1204,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &252131678165236356
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3316066404239518245}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &5503763110186403036
 Animation:
   m_ObjectHideFlags: 0
@@ -1245,6 +1221,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &8591680199288822817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316066404239518245}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &3327242162000829006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,9 +1245,9 @@ GameObject:
   - component: {fileID: 6621120676272848194}
   - component: {fileID: 1131296957320480324}
   - component: {fileID: 8083592343272932738}
-  - component: {fileID: 5122990482373036402}
   - component: {fileID: 8369125014385931272}
-  m_Layer: 0
+  - component: {fileID: 7968808697864822551}
+  m_Layer: 11
   m_Name: Chimney4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1327,20 +1316,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5122990482373036402
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327242162000829006}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &8369125014385931272
 Animation:
   m_ObjectHideFlags: 0
@@ -1358,6 +1333,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &7968808697864822551
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327242162000829006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &3397543150306946279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,9 +1357,9 @@ GameObject:
   - component: {fileID: 6906150131746510756}
   - component: {fileID: 4937579465722424958}
   - component: {fileID: 8864948479882153695}
-  - component: {fileID: 7862738856561334935}
   - component: {fileID: 1570566166939108555}
-  m_Layer: 0
+  - component: {fileID: 5162670626709862530}
+  m_Layer: 11
   m_Name: Chimney4 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1440,20 +1428,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7862738856561334935
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3397543150306946279}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &1570566166939108555
 Animation:
   m_ObjectHideFlags: 0
@@ -1471,6 +1445,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &5162670626709862530
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397543150306946279}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &3834194348368983277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,9 +1469,9 @@ GameObject:
   - component: {fileID: 7526912969857489427}
   - component: {fileID: 7266523702871621669}
   - component: {fileID: 1341540175213570476}
-  - component: {fileID: 2346207741228958750}
   - component: {fileID: 7753085280760033642}
-  m_Layer: 0
+  - component: {fileID: 7410811906904676804}
+  m_Layer: 11
   m_Name: Chimney4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,20 +1540,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2346207741228958750
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3834194348368983277}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &7753085280760033642
 Animation:
   m_ObjectHideFlags: 0
@@ -1584,6 +1557,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &7410811906904676804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834194348368983277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &4444104185579174271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,9 +1581,9 @@ GameObject:
   - component: {fileID: 7757332903455668985}
   - component: {fileID: 3067242274368684724}
   - component: {fileID: 3213149096231254541}
-  - component: {fileID: 1822867383029123717}
   - component: {fileID: 119531847064555774}
-  m_Layer: 0
+  - component: {fileID: 1255460657179077483}
+  m_Layer: 11
   m_Name: Chimney4 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1666,20 +1652,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1822867383029123717
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4444104185579174271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &119531847064555774
 Animation:
   m_ObjectHideFlags: 0
@@ -1697,6 +1669,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &1255460657179077483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444104185579174271}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &4555948903086197415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,9 +1693,9 @@ GameObject:
   - component: {fileID: 5784518323376788822}
   - component: {fileID: 364398381916239313}
   - component: {fileID: 3106657263314146882}
-  - component: {fileID: 5410651375169158348}
   - component: {fileID: 554975830926796065}
-  m_Layer: 0
+  - component: {fileID: 3472610662519167172}
+  m_Layer: 11
   m_Name: StonePlatformArches_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1780,20 +1765,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5410651375169158348
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4555948903086197415}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c27d353c5b7524c4a9078ae80ab32d46, type: 3}
 --- !u!111 &554975830926796065
 Animation:
   m_ObjectHideFlags: 0
@@ -1811,6 +1782,32 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &3472610662519167172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4555948903086197415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3794658, y: 2.6581233, z: 3.3806744}
+  m_Center: {x: 0, y: 1.3299998, z: -0.0006043315}
+--- !u!65 &3006936498085165142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676573835022456525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4614472, y: 2.0339096, z: 0.29525685}
+  m_Center: {x: -0.00000017881398, y: 0.00567019, z: -0.004535117}
 --- !u!1 &5834157281931647314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,9 +1819,9 @@ GameObject:
   - component: {fileID: 9095383629921673668}
   - component: {fileID: 4414717601796482423}
   - component: {fileID: 8244567079236187611}
-  - component: {fileID: 2939213508906738350}
   - component: {fileID: 4293818437518078426}
-  m_Layer: 0
+  - component: {fileID: 7585943384490355713}
+  m_Layer: 11
   m_Name: Chimney4 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1893,20 +1890,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2939213508906738350
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834157281931647314}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &4293818437518078426
 Animation:
   m_ObjectHideFlags: 0
@@ -1924,6 +1907,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &7585943384490355713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834157281931647314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &7091536361872720728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,9 +1931,9 @@ GameObject:
   - component: {fileID: 715928438531708137}
   - component: {fileID: 1442389336821276398}
   - component: {fileID: 4863476748084601295}
-  - component: {fileID: 1255545152403474180}
   - component: {fileID: 5720159201945054278}
-  m_Layer: 0
+  - component: {fileID: 7533759730066208076}
+  m_Layer: 11
   m_Name: StonePlatformArches_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2007,20 +2003,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1255545152403474180
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091536361872720728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c27d353c5b7524c4a9078ae80ab32d46, type: 3}
 --- !u!111 &5720159201945054278
 Animation:
   m_ObjectHideFlags: 0
@@ -2038,6 +2020,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &7533759730066208076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091536361872720728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3794658, y: 2.6581233, z: 3.3806744}
+  m_Center: {x: 0, y: 1.3299998, z: -0.0006043315}
 --- !u!1 &7561834932120328827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,9 +2044,9 @@ GameObject:
   - component: {fileID: 3423620856914295691}
   - component: {fileID: 6749034927901463950}
   - component: {fileID: 8707967561195725871}
-  - component: {fileID: 2743225196807466145}
   - component: {fileID: 9054949551640376418}
-  m_Layer: 0
+  - component: {fileID: 9166543644110500690}
+  m_Layer: 11
   m_Name: Chimney4 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2120,20 +2115,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2743225196807466145
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7561834932120328827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &9054949551640376418
 Animation:
   m_ObjectHideFlags: 0
@@ -2151,6 +2132,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &9166543644110500690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7561834932120328827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &8021368449022510379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,7 +2154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8114667217552285743}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2215,9 +2209,9 @@ GameObject:
   - component: {fileID: 7199227487345936700}
   - component: {fileID: 526347189896035683}
   - component: {fileID: 2832848457755919126}
-  - component: {fileID: 2559405378271135895}
   - component: {fileID: 4396474450106570813}
-  m_Layer: 0
+  - component: {fileID: 1624309128295739394}
+  m_Layer: 11
   m_Name: Chimney4 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2286,20 +2280,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2559405378271135895
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8077473265866667958}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &4396474450106570813
 Animation:
   m_ObjectHideFlags: 0
@@ -2317,6 +2297,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &1624309128295739394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077473265866667958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &8432406037824221112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,9 +2321,9 @@ GameObject:
   - component: {fileID: 7377790450710375833}
   - component: {fileID: 4280394622639463936}
   - component: {fileID: 7718149944568080420}
-  - component: {fileID: 7704532953685239397}
   - component: {fileID: 2352168392163698632}
-  m_Layer: 0
+  - component: {fileID: 7257318835160262817}
+  m_Layer: 11
   m_Name: Chimney4 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2399,20 +2392,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7704532953685239397
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8432406037824221112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51fb143fec4e30a44a5fcf51a25e391b, type: 3}
 --- !u!111 &2352168392163698632
 Animation:
   m_ObjectHideFlags: 0
@@ -2430,6 +2409,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &7257318835160262817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432406037824221112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6894408, y: 3.5692976, z: 1.6894393}
+  m_Center: {x: 0, y: -0.19860935, z: 0}
 --- !u!1 &9111928472053007783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,9 +2433,9 @@ GameObject:
   - component: {fileID: 1027945379642174800}
   - component: {fileID: 4372092486668542268}
   - component: {fileID: 6389818435331538347}
-  - component: {fileID: 8902508361497944035}
   - component: {fileID: 4650976972158516149}
-  m_Layer: 0
+  - component: {fileID: 8182906506091271825}
+  m_Layer: 11
   m_Name: StonePlatformArches_1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2513,20 +2505,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8902508361497944035
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9111928472053007783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c27d353c5b7524c4a9078ae80ab32d46, type: 3}
 --- !u!111 &4650976972158516149
 Animation:
   m_ObjectHideFlags: 0
@@ -2544,6 +2522,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!65 &8182906506091271825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9111928472053007783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3794658, y: 2.6581233, z: 3.3806744}
+  m_Center: {x: 0, y: 1.3299998, z: -0.0006043315}
 --- !u!1001 &3731067598413565892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2626,8 +2617,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorStone (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: -927199367670048503, guid: 07e4da959f2ba374bb0f8994c9c8688c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -6860895033569716450, guid: 07e4da959f2ba374bb0f8994c9c8688c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07e4da959f2ba374bb0f8994c9c8688c, type: 3}
+--- !u!1 &4676573835022456525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 07e4da959f2ba374bb0f8994c9c8688c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3731067598413565892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8556240027933254878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 07e4da959f2ba374bb0f8994c9c8688c,

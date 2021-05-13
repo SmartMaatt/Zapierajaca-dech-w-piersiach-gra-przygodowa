@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractCharacter: MonoBehaviour
+public abstract class AbstractCharacter : MonoBehaviour
 {
     [Header("Health and armor")]
     [SerializeField] protected int _maxHealth;
     [SerializeField] protected int _health;
     [SerializeField] protected float dieAwaitTime;
-    [Range(0,100)]
+    [Range(0, 100)]
     [SerializeField] protected int _armour;
     [SerializeField] protected int _damage;
     [SerializeField] protected bool _blocking;
@@ -46,14 +46,14 @@ public abstract class AbstractCharacter: MonoBehaviour
         if (_health > _maxHealth)
             _health = _maxHealth;
         else if (_health <= 0)
-        { 
+        {
             _health = 0;
             die();
         }
 
         Debug.Log("Current health: " + _health);
     }
-    
+
     public bool isDead()
     {
         if (_health == 0)
@@ -83,7 +83,7 @@ public abstract class AbstractCharacter: MonoBehaviour
     {
         public Items item;
         [Tooltip("In Percentes")]
-        [Range(0,100)]
+        [Range(0, 100)]
         public float dropRate;
         public int maxAmount;
     }
@@ -96,5 +96,5 @@ public abstract class AbstractCharacter: MonoBehaviour
     public abstract float getAcceleration(bool isChasing);
     public abstract void attack();
     public abstract void setStateMachine(int state, int postState, float specialInfo);
-    
+
 }

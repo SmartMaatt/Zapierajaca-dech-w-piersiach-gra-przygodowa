@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2153844408445465568}
-  m_Layer: 0
+  - component: {fileID: 540515050833989287}
+  m_Layer: 11
   m_Name: House 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +61,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &540515050833989287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153844408445465569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12, y: 14, z: 19}
+  m_Center: {x: 0, y: 7, z: 0}
 --- !u!1001 &2153844406541824861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +84,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 60b0fb6e79d4f534e951d8a2040cd103, type: 3}
       propertyPath: m_Name
       value: House 1 Left down 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b0fb6e79d4f534e951d8a2040cd103, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b0fb6e79d4f534e951d8a2040cd103, type: 3}
       propertyPath: m_RootOrder
@@ -122,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house 1 wall 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -172,6 +194,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
@@ -224,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Wall Window 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -274,6 +304,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
@@ -326,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Ledge 8
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -377,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house 1 wall 5
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -427,6 +469,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_Name
       value: House 1 Roof Ledge 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_RootOrder
@@ -483,6 +529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Left down 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 60b0fb6e79d4f534e951d8a2040cd103, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 60b0fb6e79d4f534e951d8a2040cd103, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -533,6 +583,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
@@ -585,6 +639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Left End Corner Roof 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c7614320f3ccb314189ab079b446b329, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c7614320f3ccb314189ab079b446b329, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -635,6 +693,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_Name
       value: House 1 Roof Ledge 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_RootOrder
@@ -691,6 +753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house 1 wall 4
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -741,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 161baab178ad3ef4c9c6b839a997b24f, type: 3}
       propertyPath: m_Name
       value: House 1 Wall Door 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 161baab178ad3ef4c9c6b839a997b24f, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 161baab178ad3ef4c9c6b839a997b24f, type: 3}
       propertyPath: m_RootOrder
@@ -793,6 +863,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Ledge 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -844,6 +918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house 1 wall 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -894,6 +972,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_Name
       value: House 1 Roof Ledge 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_RootOrder
@@ -950,6 +1032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Right End Corner Roof 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8caf2338356729f4fa82b7a25c151ff9, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8caf2338356729f4fa82b7a25c151ff9, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -1000,6 +1086,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
@@ -1052,6 +1142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house 1 wall 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 04a1a87be70c3d44c8e17ac44e6fcd22, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1102,6 +1196,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
@@ -1154,6 +1252,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Wall Window 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -1204,6 +1306,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
@@ -1256,6 +1362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Ledge 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -1307,6 +1417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Left End Corner Roof 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c7614320f3ccb314189ab079b446b329, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c7614320f3ccb314189ab079b446b329, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1357,6 +1471,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_Name
       value: House 1 Roof Ledge 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 103cac65a872a2644a2a82b62f258e67, type: 3}
       propertyPath: m_RootOrder
@@ -1413,6 +1531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Wall Window 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1463,6 +1585,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8caf2338356729f4fa82b7a25c151ff9, type: 3}
       propertyPath: m_Name
       value: House 1 Right End Corner Roof 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8caf2338356729f4fa82b7a25c151ff9, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8caf2338356729f4fa82b7a25c151ff9, type: 3}
       propertyPath: m_RootOrder
@@ -1515,6 +1641,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 1 Wall Window 4
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c1c224a158cf4940b001eb619d0a13e, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1565,6 +1695,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_Name
       value: House 1 Ledge 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e78e192d9f0de84d89f897991b110dc, type: 3}
       propertyPath: m_RootOrder
