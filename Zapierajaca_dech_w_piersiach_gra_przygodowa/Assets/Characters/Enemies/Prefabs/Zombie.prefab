@@ -915,7 +915,7 @@ MonoBehaviour:
   sightConeRange: 130
   maxRestTime: 7
   minRestTime: 2
-  timeBetweenAttacks: 1.5
+  timeBetweenAttacks: 2.5
   attackRange: 1.5
 --- !u!114 &2018105470060620437
 MonoBehaviour:
