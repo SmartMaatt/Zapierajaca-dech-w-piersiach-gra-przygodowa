@@ -17,14 +17,4 @@ public class UIBar : MonoBehaviour
     {
         slider.value = health;
     }
-
-    public void addBarValue(int health)
-    {
-        slider.value += health;
-    }
-
-    public float getBarValue()
-    {
-        return slider.value;
-    }
 }

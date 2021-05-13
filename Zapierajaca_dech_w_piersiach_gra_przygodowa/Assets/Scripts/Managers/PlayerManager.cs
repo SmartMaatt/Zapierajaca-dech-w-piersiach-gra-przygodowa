@@ -18,7 +18,6 @@ public class PlayerManager : AbstractCharacter, IGameManager
     {
         _animator = GetComponent<Animator>();
         _healthBar.setUpBar(_maxHealth);
-        _healthBar.setBarValue(_health);
     }
 
     public void Startup()

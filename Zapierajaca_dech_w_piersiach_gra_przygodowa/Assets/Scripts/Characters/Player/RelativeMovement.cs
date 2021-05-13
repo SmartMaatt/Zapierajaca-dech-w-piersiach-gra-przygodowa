@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(MakeDamage))]
 [RequireComponent(typeof(CharacterController))]
 public class RelativeMovement : MonoBehaviour
 {
@@ -44,7 +43,6 @@ public class RelativeMovement : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _damageScript = GetComponent<MakeDamage>();
         _animator = GetComponent<Animator>();
-
         _runStaminaCounter = runStamina;
         _canSprint = true;
         _staminaBar.setUpBar((int)(runStamina*100));
@@ -125,23 +123,14 @@ public class RelativeMovement : MonoBehaviour
         _animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
 
         if (_runStaminaCounter < runStamina && _canSprint)
-        {
-            if (_damageScript.isEquiped())
-                _runStaminaCounter += Time.deltaTime / 4;
-            else
-                _runStaminaCounter += Time.deltaTime / 2;
-        }
+            _runStaminaCounter += Time.deltaTime/2;
     }
 
     private void Run()
     {
         moveSpeed = runSpeed;
+        _runStaminaCounter -= Time.deltaTime;
         _animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
-
-        if(_damageScript.isEquiped())
-            _runStaminaCounter -= Time.deltaTime * 2;
-        else
-            _runStaminaCounter -= Time.deltaTime;
 
         if (_runStaminaCounter <= 0.0f)
             StartCoroutine(StopRunning());

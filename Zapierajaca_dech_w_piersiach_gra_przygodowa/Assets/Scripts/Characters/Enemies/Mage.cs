@@ -386,7 +386,6 @@ public class Mage : AbstractCharacter
     {
         _animator.SetInteger("AttackType", 3);
         magicPower += Random.Range(5f, 10f);
-        _player.GetComponent<AbstractCharacter>().getHit(_damage);
 
         GameObject _fireBall = Instantiate(fireballPrefabNonAttack, leftHand.transform.position + leftHand.transform.forward * 0.1f, Quaternion.identity);
         _fireBall.transform.SetParent(leftHand.transform);

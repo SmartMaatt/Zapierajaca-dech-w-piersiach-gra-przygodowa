@@ -78,11 +78,6 @@ public abstract class AbstractCharacter: MonoBehaviour
         _blocking = blocking;
     }
 
-    public void setImmortal(bool immortal)
-    {
-        _immortal = immortal;
-    }
-
     [System.Serializable]
     public class DropInformation
     {

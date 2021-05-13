@@ -14,7 +14,7 @@ public class EquipeWeapon : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public bool Operate()
+    public void Operate()
     {
         isEquiped = !isEquiped;
         if(isEquiped)
@@ -40,8 +40,6 @@ public class EquipeWeapon : MonoBehaviour
             }
             _animator.SetBool("WeaponEquipped", false);
         }
-
-        return isEquiped;
     }
 
     [System.Serializable]

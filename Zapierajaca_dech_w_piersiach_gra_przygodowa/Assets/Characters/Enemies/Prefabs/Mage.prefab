@@ -1120,9 +1120,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   obstacleRange: 0.5
-  walkPointRange: 25
-  hearRange: 15
-  sightRange: 20
+  walkPointRange: 20
+  hearRange: 12
+  sightRange: 15
   sightConeRange: 130
   maxRestTime: 10
   minRestTime: 5
@@ -1175,8 +1175,6 @@ MonoBehaviour:
   FireballDamage: 15
   coolDownHand: 1.5
   timeOfHeal: 7
-  explosionRadius: 0
-  explosionPower: 0
   fireballPrefab: {fileID: 100006, guid: 19d7f76af0512e14c91c7a2486e3724f, type: 3}
   fireballPrefabNonAttack: {fileID: 100006, guid: c2bc1fb968666244aa8a8de22256b2a0,
     type: 3}
