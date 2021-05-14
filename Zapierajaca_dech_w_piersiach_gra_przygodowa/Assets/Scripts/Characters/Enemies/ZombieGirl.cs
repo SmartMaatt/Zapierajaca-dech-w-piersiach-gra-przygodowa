@@ -36,6 +36,7 @@ public class ZombieGirl : AbstractCharacter
 
     public override void die()
     {
+        drop(transform.position);
         _animator.SetTrigger("isDead");
         StartCoroutine(dieAwait(dieAwaitTime));
     }
