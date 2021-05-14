@@ -118,11 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795420a1ab479b84bb52839db66fc3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 150
-  _health: 150
+  _maxHealth: 3000
+  _health: 3000
   dieAwaitTime: 3
   _armour: 0
-  _damage: 20
+  _damage: 40
   _blocking: 0
   _immortal: 0
   _walkSpeed: 10
