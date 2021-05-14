@@ -74,6 +74,16 @@ public class MakeDamage : MonoBehaviour
                 _isEquiped = weapon.Operate();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Managers.Save.Save(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Managers.Save.Load();
+        }
     }
 
     private void Attack()

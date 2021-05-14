@@ -5,21 +5,27 @@ using UnityEngine;
 //[RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InventoryManager))]
 [RequireComponent(typeof(DialogueManager))]
+[RequireComponent(typeof(QuestManager))]
+[RequireComponent(typeof(SaveManager))]
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
     public static DialogueManager Dialogue { get; private set; }
     public static QuestManager Quest { get; private set; }
+    public static SaveManager Save { get; private set; }
+    public static bool allLoaded { get; private set; }
 
     private List<IGameManager> _startSequence;
 
     private void Awake()
     {
+        allLoaded = false;
         Player = FindObjectsOfType<PlayerManager>()[0].transform.GetComponent<PlayerManager>();
         Inventory = GetComponent<InventoryManager>();
         Dialogue = GetComponent<DialogueManager>();
         Quest = GetComponent<QuestManager>();
+        Save = GetComponent<SaveManager>();
 
         _startSequence = new List<IGameManager>();
         
@@ -27,6 +33,7 @@ public class Managers : MonoBehaviour
         _startSequence.Add(Dialogue);
         _startSequence.Add(Quest);
         _startSequence.Add(Player);
+        _startSequence.Add(Save);
 
         StartCoroutine(StartupManagers());
     }
@@ -60,5 +67,6 @@ public class Managers : MonoBehaviour
             yield return null;
         }
         Debug.Log("Wszystkie menadżery uruchomione");
+        allLoaded = true;
     }
 }

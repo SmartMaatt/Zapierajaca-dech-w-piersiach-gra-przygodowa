@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerManager : AbstractCharacter, IGameManager
@@ -12,13 +13,29 @@ public class PlayerManager : AbstractCharacter, IGameManager
     [Header("Special - Player")]
     [SerializeField] CameraFollow cameraScript;
     [SerializeField] UIBar _healthBar;
+    [SerializeField] TMP_Text moneyText;
+    [SerializeField] TMP_Text levelText;
+    [Space]
+    public int money;
+    public int exp;
+    public int firstXPFactor;
+    public int level;
+
     private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _healthBar.setUpBar(_maxHealth);
-        _healthBar.setBarValue(_health);
+        if (_healthBar)
+        {
+            _healthBar.setUpBar(_maxHealth);
+            _healthBar.setBarValue(_health);
+        }
+        if(moneyText)
+            moneyText.text = money.ToString();
+
+        if(levelText)
+            levelText.text = level.ToString();
     }
 
     public void Startup()

@@ -11,8 +11,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     public string equippedShield { get; private set; }
     public string equippedPotion { get; private set; }
     public string equippedSpecial { get; private set; }
-
-    private Dictionary<int, int> _items;
+    public Dictionary<int, int> _items { get; private set; }
 
     public GameObject itemSlotPrefab;
     public GameObject InventoryView;
@@ -33,9 +32,9 @@ public class InventoryManager : MonoBehaviour, IGameManager
     {
         Debug.Log("Uruchomienie menadżera magazynu...");
         _items = new Dictionary<int, int>();
-        error.enabled = false;
         status = ManagerStatus.Started;
-        
+        if (error)
+            error.enabled = false;
     }
 
     public List<int> GetItemList()
@@ -81,6 +80,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     public bool AddItem(int item)
     {
+        Debug.Log("Add item: " + item);
         if (_items.Count < inventorySize)
         {
             if (GetItemCount(item) >= 1)
@@ -274,5 +274,23 @@ public class InventoryManager : MonoBehaviour, IGameManager
             InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y + 110);
             Debug.Log("Ustawiam bottom na: " + InventoryView.GetComponent<RectTransform>().offsetMin.y);
         }
+    }
+
+    public void clearInventory()
+    {
+        int children = InventoryView.transform.childCount;
+
+        for (int i = children - 1; i >= 0; i--)
+        {
+            GameObject.DestroyImmediate(InventoryView.transform.GetChild(i).gameObject);
+        }
+
+        GameObject capacity = InventoryMainTitle.transform.Find("Capacity").gameObject;
+        if (capacity != null)
+        {
+            capacity.GetComponent<Text>().text = "0 / " + inventorySize.ToString();
+        }
+
+        _items.Clear();
     }
 }
