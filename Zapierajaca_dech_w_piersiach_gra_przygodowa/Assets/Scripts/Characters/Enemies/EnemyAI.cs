@@ -37,8 +37,9 @@ public class EnemyAI : MonoBehaviour {
     [Header("Attacking")]
         public float timeBetweenAttacks;
         public float attackRange;
+        public float minTimeAttackStartDelay;
+        public float maxTimeAttackStartDelay;
         bool alreadyAttacked, playerInAttackRange, isChasing, isAttacking;
-
 
     private void Awake()
     {
@@ -150,15 +151,23 @@ public class EnemyAI : MonoBehaviour {
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
         _currentMaxSpeed = _standStill;
-        _animator.SetBool("Attack", !alreadyAttacked);
+        _animator.SetBool("Attack", false);
         _characterController.setStateMachine(2, 0, 0);
 
         if (!alreadyAttacked)
         {
-            _characterController.attack();
+            StartCoroutine(AttackDesorientation());
             alreadyAttacked = true;
             StartCoroutine(resetAttack(timeBetweenAttacks));
         }
+    }
+
+    private IEnumerator AttackDesorientation()
+    {
+        float DesorientationTime = UnityEngine.Random.Range(minTimeAttackStartDelay, maxTimeAttackStartDelay);
+        yield return new WaitForSeconds(DesorientationTime);
+        _animator.SetBool("Attack", true);
+        _characterController.attack();
     }
 
     /*************************************************/

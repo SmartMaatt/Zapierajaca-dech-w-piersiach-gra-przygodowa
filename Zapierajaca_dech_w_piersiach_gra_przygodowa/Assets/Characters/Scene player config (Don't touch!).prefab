@@ -178,8 +178,8 @@ MonoBehaviour:
   radius: 1.5
   attackCooldown: 1.5
   blockCooldown: 3
-  shieldArmor: 70
-  shieldBlockMaxTime: 7
+  shieldArmor: 100
+  shieldBlockMaxTime: 1.3
   attackStrength: 10
   shieldMarker: {fileID: 2496592240401330701, guid: 6acd34f7de9b01844ae64262b17c1376,
     type: 3}
@@ -25184,7 +25184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3283455346953364209
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1129,6 +1129,8 @@ MonoBehaviour:
   minRestTime: 5
   timeBetweenAttacks: 3
   attackRange: 8
+  minTimeAttackStartDelay: 0
+  maxTimeAttackStartDelay: 1
 --- !u!114 &2362519512999249377
 MonoBehaviour:
   m_ObjectHideFlags: 0
