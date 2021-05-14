@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class EquipButtonClick : MonoBehaviour
 {
-    public Items item;
+    public int itemIndex;
     public GameObject icon;
     public GameObject player;
 
     public bool iconActiv = false;
+
     public void OnClick()
     {
-        item.equip();
+        Managers.Inventory.ItemsPrefabs[itemIndex].GetComponent<Items>().equip();
         iconActiv = !iconActiv;
         icon.SetActive(iconActiv);
     }
 
     public void Drop()
     {
-        if(iconActiv)
-            item.equip();
+        Managers.Inventory.ItemsPrefabs[itemIndex].GetComponent<Items>().Drop(player.transform.position, true);
 
-        item.Drop(player.transform.position, true);
-        this.transform.SetParent(null);
-        Destroy(this.gameObject);
+        Debug.Log(Managers.Inventory.GetItemCount(itemIndex));
+        if (Managers.Inventory.GetItemCount(itemIndex) < 1)
+        {
+            if (iconActiv)
+                Managers.Inventory.ItemsPrefabs[itemIndex].GetComponent<Items>().equip();
+
+            this.transform.SetParent(null);
+            Destroy(this.gameObject);
+        }
     }
 }

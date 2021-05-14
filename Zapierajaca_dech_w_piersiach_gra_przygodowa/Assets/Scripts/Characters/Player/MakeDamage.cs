@@ -208,7 +208,6 @@ public class MakeDamage : MonoBehaviour
         {
             elapsedTime += Time.deltaTime / attackCooldown;
             swordUI.setBarValue((int)(elapsedTime*100));
-            Debug.Log(elapsedTime);
             yield return new WaitForEndOfFrame();
         }
         swordUI.setBarValue(100);

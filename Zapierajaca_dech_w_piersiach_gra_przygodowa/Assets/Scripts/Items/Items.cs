@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Items : MonoBehaviour, InteractOperator
 {
+    public int id;
     public string itemName;
     public itemType type;
     public GameObject itemPrefab;
@@ -18,7 +19,7 @@ public class Items : MonoBehaviour, InteractOperator
     
     public void Operate()
     {
-        if(Managers.Inventory.AddItem(this))
+        if(Managers.Inventory.AddItem(id))
             Destroy(this.gameObject);
     }
 
@@ -34,12 +35,12 @@ public class Items : MonoBehaviour, InteractOperator
 
         if(playerDrop)
         {
-            Managers.Inventory.PlayerDrop(this);
+            Managers.Inventory.PlayerDrop(id);
         }
     }
 
     public void equip()
     {
-        Managers.Inventory.EquipItem(this);
+        Managers.Inventory.EquipItem(id);
     }
 }

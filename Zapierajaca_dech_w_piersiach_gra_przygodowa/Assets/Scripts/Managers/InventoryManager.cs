@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     public string equippedPotion { get; private set; }
     public string equippedSpecial { get; private set; }
 
-    private Dictionary<Items, int> _items;
+    private Dictionary<int, int> _items;
 
     public GameObject itemSlotPrefab;
     public GameObject InventoryView;
@@ -26,20 +26,21 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     [SerializeField] private Text error;
     [SerializeField] private int inventorySize = 60;
+    public GameObject[] ItemsPrefabs = new GameObject[2];
     
 
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera magazynu...");
-        _items = new Dictionary<Items, int>();
+        _items = new Dictionary<int, int>();
         error.enabled = false;
         status = ManagerStatus.Started;
         
     }
 
-    public List<Items> GetItemList()
+    public List<int> GetItemList()
     {
-        List<Items> list = new List<Items>(_items.Keys);
+        List<int> list = new List<int>(_items.Keys);
         return list;
     }
 
@@ -52,21 +53,25 @@ public class InventoryManager : MonoBehaviour, IGameManager
         }
     }
 
-    public int GetItemCount(Items searchedItem)
+    public int GetItemCount(int searchedItem)
     {
         int suma = 0;
-        foreach (Items item in _items.Keys)
+        foreach (int item in _items.Keys)
         {
-            if (item.itemName == searchedItem.itemName && item.type == searchedItem.type)
+            if (item == searchedItem)
                 suma++;
         }
         return suma;
     }
 
-    public void PlayerDrop(Items item)
+    public void PlayerDrop(int item)
     {
         ConsumeItem(item);
         ReloadCapacity();
+
+        Items targetItem = ItemsPrefabs[item].GetComponent<Items>();
+        GameObject prevEquip = InventoryView.transform.Find(targetItem.itemName + targetItem.type + "_slot").gameObject;
+        addInventoryCount(prevEquip, item, 0);
     }
 
     public string GetCapacityInText()
@@ -74,16 +79,18 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return _items.Count + " / " + inventorySize;
     }
 
-    public bool AddItem(Items item)
+    public bool AddItem(int item)
     {
         if (_items.Count < inventorySize)
         {
             if (GetItemCount(item) >= 1)
             {
-                string name = item.itemName + item.type + "_slot";
+                Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
+                string name = thisItem.itemName + thisItem.type + "_slot";
                 GameObject ItemSlot = InventoryView.transform.Find(name).gameObject;
+
                 if (ItemSlot != null)
-                    addInventoryCount(ItemSlot, item);
+                    addInventoryCount(ItemSlot, item, 1);
                 else
                 {
                     adjustUI(true);
@@ -100,6 +107,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
                 _items[item] += 1;
             else
                 _items[item] = 1;
+
             ReloadCapacity();
             return true;
         }
@@ -110,42 +118,43 @@ public class InventoryManager : MonoBehaviour, IGameManager
         }
     }
 
-    public bool EquipItem(Items item)
+    public bool EquipItem(int item)
     {
-        switch(item.type)
+        Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
+        switch (thisItem.type)
         {
             case Items.itemType.WEAPON:
-                if (_items.ContainsKey(item) && equippedWeapon != item.itemName)
+                if (_items.ContainsKey(item) && equippedWeapon != thisItem.itemName)
                 {
                     changeEquippedItem(equippedWeapon, item);
-                    equippedWeapon = item.itemName;
+                    equippedWeapon = thisItem.itemName;
                     return true;
                 }
                 equippedWeapon = null;
                 return false;
             case Items.itemType.SHIELD:
-                if (_items.ContainsKey(item) && equippedShield != item.itemName)
+                if (_items.ContainsKey(item) && equippedShield != thisItem.itemName)
                 {
                     changeEquippedItem(equippedShield, item);
-                    equippedShield = item.itemName;
+                    equippedShield = thisItem.itemName;
                     return true;
                 }
                 equippedShield = null;
                 return false;
             case Items.itemType.POTION:
-                if (_items.ContainsKey(item) && equippedPotion != item.itemName)
+                if (_items.ContainsKey(item) && equippedPotion != thisItem.itemName)
                 {
                     changeEquippedItem(equippedPotion, item);
-                    equippedPotion = item.itemName;
+                    equippedPotion = thisItem.itemName;
                     return true;
                 }
                 equippedPotion = null;
                 return false;
             case Items.itemType.SPECIAL:
-                if (_items.ContainsKey(item) && equippedSpecial != item.itemName)
+                if (_items.ContainsKey(item) && equippedSpecial != thisItem.itemName)
                 {
                     changeEquippedItem(equippedSpecial, item);
-                    equippedSpecial = item.itemName;
+                    equippedSpecial = thisItem.itemName;
                     return true;
                 }
                 equippedSpecial = null;
@@ -154,14 +163,14 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return false;
     }
 
-    public bool ConsumeItem(Items item)
+    public bool ConsumeItem(int item)
     {
-        if(_items.ContainsKey(item))
+        if (_items.ContainsKey(item))
         {
             _items[item]--;
             if (_items[item] == 0)
             {
-                if(_items.Count > 7)
+                if (_items.Count > 7)
                 {
                     adjustUI(false);
                 }
@@ -178,10 +187,10 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     public Items getItem(string name)
     {
-        foreach(Items item in _items.Keys)
+        for(int i=0; i<ItemsPrefabs.Length; i++)
         {
-            if (item.itemName + item.type == name)
-                return item;
+            if (ItemsPrefabs[i].GetComponent<Items>().itemName + ItemsPrefabs[i].GetComponent<Items>().type == name)
+                return ItemsPrefabs[i].GetComponent<Items>();
         }
         return null;
     }
@@ -193,12 +202,13 @@ public class InventoryManager : MonoBehaviour, IGameManager
         error.enabled = false;
     }
 
-    private void changeEquippedItem(string itemType, Items item)
+    private void changeEquippedItem(string itemType, int item)
     {
         if (itemType != null)
         {
+            Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
             GameObject prevEquip;
-            prevEquip = InventoryView.transform.Find(itemType + item.type + "_slot").gameObject;
+            prevEquip = InventoryView.transform.Find(itemType + thisItem.type + "_slot").gameObject;
             bool activIcon = !prevEquip.GetComponent<EquipButtonClick>().iconActiv;
             prevEquip.GetComponent<EquipButtonClick>().iconActiv = activIcon;
             GameObject icon = prevEquip.transform.Find("Icon").gameObject;
@@ -206,28 +216,30 @@ public class InventoryManager : MonoBehaviour, IGameManager
         }
     }
 
-    private void addInventoryCount(GameObject ItemSlot, Items item)
+    private void addInventoryCount(GameObject ItemSlot, int item, int amount)
     {
         itemSlotCount = ItemSlot.transform.Find("ItemCount").gameObject;
         if (itemSlotCount != null)
         {
-            itemSlotCount.GetComponentInChildren<Text>().text = (GetItemCount(item) + 1).ToString();
+            itemSlotCount.GetComponentInChildren<Text>().text = (GetItemCount(item) + amount).ToString();
         }
     }
 
-    private void addInventorySlot(Items item)
+    private void addInventorySlot(int item)
     {
         GameObject newItemSlot;
         newItemSlot = Instantiate(itemSlotPrefab).gameObject;
-        newItemSlot.GetComponent<EquipButtonClick>().item = item;
+        newItemSlot.GetComponent<EquipButtonClick>().itemIndex = item;
         newItemSlot.GetComponent<EquipButtonClick>().player = player;
-        newItemSlot.name = item.itemName + item.type + "_slot";
+
+        Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
+        newItemSlot.name = thisItem.itemName + thisItem.type + "_slot";
         newItemSlot.transform.SetParent(InventoryView.transform);
 
         itemSlotName = newItemSlot.transform.Find("ItemName").gameObject;
         if (itemSlotName != null)
         {
-            itemSlotName.GetComponentInChildren<Text>().text = item.itemName;
+            itemSlotName.GetComponentInChildren<Text>().text = thisItem.itemName;
         }
         itemSlotCount = newItemSlot.transform.Find("ItemCount").gameObject;
         if (itemSlotCount != null)
@@ -243,7 +255,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
         itemSlotType = newItemSlot.transform.Find("ItemType").gameObject;
         if (itemSlotType != null)
         {
-            itemSlotType.GetComponentInChildren<Text>().text = item.type.ToString();
+            itemSlotType.GetComponentInChildren<Text>().text = thisItem.type.ToString();
         }
     }
 
