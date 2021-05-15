@@ -8,6 +8,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] string SaveStagePath;
+    [Space]
+    [SerializeField] GameObject LoadErrorSplice;
+    [SerializeField] float LoadErrorSpliceTime;
 
    public void NewGame()
    {
@@ -29,7 +32,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            //KOMUNIKAT
+            StartCoroutine(ShowSplice(LoadErrorSplice, LoadErrorSpliceTime));
             Debug.Log(string.Concat(Application.persistentDataPath, SaveStagePath));
         }
     }
@@ -51,5 +54,12 @@ public class MainMenu : MonoBehaviour
         {
             _sceneID = sceneID;
         }
+    }
+
+    private IEnumerator ShowSplice(GameObject splice, float time)
+    {
+        splice.SetActive(true);
+        yield return new WaitForSeconds(time);
+        splice.SetActive(false);
     }
 }
