@@ -20,12 +20,18 @@ public class PlayerManager : AbstractCharacter, IGameManager
     public int exp;
     public int firstXPFactor;
     public int level;
+    public int maxLevel;
 
     private Animator _animator;
+    private RelativeMovement _movementScript;
+    private MakeDamage _damageScript;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _damageScript = GetComponent<MakeDamage>();
+        _movementScript = GetComponent<RelativeMovement>();
+
         if (_healthBar)
         {
             _healthBar.setUpBar(_maxHealth);
@@ -118,5 +124,35 @@ public class PlayerManager : AbstractCharacter, IGameManager
         throw new System.NotImplementedException();
     }
 
+    public void changeMoney(int amound)
+    {
+        money += amound;
+        moneyText.text = money.ToString();
+    }
 
+    public void changeExp(int amound)
+    {
+        exp += amound;
+        levelUp();
+    }
+
+    public void levelUp()
+    {
+        if(exp > firstXPFactor * level && level <= maxLevel)
+        {
+            exp -= firstXPFactor * level;
+            level++;
+            levelText.text = level.ToString();
+
+            _maxHealth += 15;
+            _healthBar.setUpBar(_maxHealth);
+            _healthBar.setBarValue(_health);
+
+            _movementScript.addRunStamina(1);
+
+            _damageScript.addAttackStrength(1);
+
+            levelUp();
+        }
+    }
 }

@@ -170,6 +170,11 @@ public class RelativeMovement : MonoBehaviour
         isJumping = true;
     }
 
+    public void addRunStamina(float stamina)
+    {
+        runStamina += stamina;
+    }
+
     public IEnumerator Explosion(float time, float waitTime, float power, float _min, float _max)
     {
         float elapsedTime = 0.0f;

@@ -29,6 +29,8 @@ public class Shrek : AbstractCharacter
     public override void die()
     {
         _animator.SetTrigger("isDead");
+        Managers.Player.changeMoney(givenMoney);
+        Managers.Player.changeExp(givenExp);
         StartCoroutine(dieAwait(dieAwaitTime));
     }
 

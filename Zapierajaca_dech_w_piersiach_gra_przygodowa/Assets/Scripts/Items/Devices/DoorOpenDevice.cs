@@ -42,11 +42,11 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
         {
             if (_open)
             {
-                transform.position = transform.position - dPos;
+                StartCoroutine(doorOpenClose(transform.position, dPos, true));
             }
             else
             {
-                transform.position = transform.position + dPos;
+                StartCoroutine(doorOpenClose(transform.position, dPos, false));
             }
             _open = !_open;
         }
@@ -58,20 +58,18 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
         yield return new WaitForSeconds(3);
         error.SetActive(false);
     }
+
+    private IEnumerator doorOpenClose(Vector3 startPos, Vector3 endPos, bool up)
+    {
+        float speed = 0.0001f;
+        while (startPos != startPos - endPos)
+        {
+            if (up)
+                transform.position += new Vector3(0, Time.deltaTime * speed, 0);
+            else
+                transform.position -= new Vector3(0, Time.deltaTime * speed, 0);
+
+            yield return new WaitForEndOfFrame();
+        }
+    }
 }
-
-//[CustomEditor(typeof(DoorOpenDevice))]
-//public class MyScriptEditor : Editor
-//{
-//    override public void OnInspectorGUI()
-//    {
-//        GameObject gameObject;
-//        var myScript = target as DoorOpenDevice;
-        
-//        myScript.requireKey = GUILayout.Toggle(myScript.requireKey, " Key required");
-
-//        if (myScript.requireKey)
-//            myScript.keyName = EditorGUILayout.TextField("Key name", myScript.keyName);
-
-//    }
-//}

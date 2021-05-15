@@ -38,6 +38,8 @@ public class ZombieGirl : AbstractCharacter
     {
         drop(transform.position);
         _animator.SetTrigger("isDead");
+        Managers.Player.changeMoney(givenMoney);
+        Managers.Player.changeExp(givenExp);
         StartCoroutine(dieAwait(dieAwaitTime));
     }
 

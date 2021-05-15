@@ -12,6 +12,7 @@ public class PlayerHeal : MonoBehaviour
     [SerializeField] GameObject healSpell;
     [SerializeField] UIBar potionIcon;
     [SerializeField] UIBar healthBar;
+    [SerializeField] GameObject NoPotionErrorPopup;
 
     private PlayerManager _playerManager;
     private bool _canHeal;
@@ -22,19 +23,35 @@ public class PlayerHeal : MonoBehaviour
         _canHeal = true;
 
         potionIcon.setUpBar((int)(healingTime * 100));
+        NoPotionErrorPopup.SetActive(false);
     }
 
     void Update()
     {
         if (_canHeal && Input.GetKeyDown(KeyCode.H))
         {
-            StartCoroutine(HealingProcess());
+            if (Managers.Inventory.equippedPotion == "Health Potion")
+            {
+                StartCoroutine(HealingProcess());
+                Managers.Inventory.InventoryView.transform.Find("Health PotionPOTION_slot").gameObject.GetComponent<EquipButtonClick>().Drop(false);
+            }
+            else
+            {
+                StartCoroutine(errorPopup());
+            }
         }
     }
 
     public bool isHealing()
     {
         return !_canHeal;
+    }
+
+    private IEnumerator errorPopup()
+    {
+        NoPotionErrorPopup.SetActive(true);
+        yield return new WaitForSeconds(2);
+        NoPotionErrorPopup.SetActive(false);
     }
 
     private IEnumerator HealingProcess()

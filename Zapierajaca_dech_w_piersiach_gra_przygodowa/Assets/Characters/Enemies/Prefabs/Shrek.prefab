@@ -133,6 +133,8 @@ MonoBehaviour:
   _accelerationChaseBonus: 1.5
   attackRadius: 1.5
   dropList: []
+  givenMoney: 10
+  givenExp: 10000
   hitCoolDownTime: 2
 --- !u!1 &5402770305066139289
 GameObject:

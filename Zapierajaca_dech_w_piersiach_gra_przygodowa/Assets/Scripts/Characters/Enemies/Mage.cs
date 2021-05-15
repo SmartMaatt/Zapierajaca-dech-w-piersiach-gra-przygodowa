@@ -27,8 +27,6 @@ public class Mage : AbstractCharacter
     public int FireballDamage;
     public float coolDownHand;
     public float timeOfHeal;
-    public float explosionRadius;
-    public float explosionPower;
     [Space]
     [Header("Fire attacks")]
     [SerializeField] GameObject fireballPrefab;
@@ -79,6 +77,8 @@ public class Mage : AbstractCharacter
     public override void die()
     {
         _animator.SetTrigger("isDead");
+        Managers.Player.changeMoney(givenMoney);
+        Managers.Player.changeExp(givenExp);
         StartCoroutine(dieAwait(dieAwaitTime));
     }
 

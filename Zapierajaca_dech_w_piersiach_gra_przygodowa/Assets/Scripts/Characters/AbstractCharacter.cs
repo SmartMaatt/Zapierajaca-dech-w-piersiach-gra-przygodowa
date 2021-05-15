@@ -23,6 +23,8 @@ public abstract class AbstractCharacter : MonoBehaviour
 
     [Header("Looting")]
     public List<DropInformation> dropList;
+    public int givenMoney;
+    public int givenExp;
 
     public void drop(Vector3 characterPosition)
     {
@@ -34,7 +36,7 @@ public abstract class AbstractCharacter : MonoBehaviour
                 if (Random.Range(0f, 100f) < information.dropRate)
                 {
                     dropPosition = new Vector3(Random.Range(-2, 2), 0.5f, Random.Range(-2, 2)) + characterPosition;
-                    information.item.Drop(dropPosition, false);
+                    information.item.Drop(dropPosition, false, true);
                 }
             }
         }

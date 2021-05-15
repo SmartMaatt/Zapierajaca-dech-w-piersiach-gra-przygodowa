@@ -950,6 +950,8 @@ MonoBehaviour:
   - item: {fileID: 7633897187570729913, guid: 14fad776694f0ef4e98ee408b222bb87, type: 3}
     dropRate: 50
     maxAmount: 2
+  givenMoney: 100
+  givenExp: 40
   hitCoolDownTime: 0
 --- !u!114 &3814401311204534633
 MonoBehaviour:

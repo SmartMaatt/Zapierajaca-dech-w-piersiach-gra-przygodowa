@@ -1172,6 +1172,8 @@ MonoBehaviour:
   _accelerationChaseBonus: 3
   attackRadius: 1.5
   dropList: []
+  givenMoney: 5000
+  givenExp: 5000
   magicPower: 0
   limitOfPowerToBoost: 200
   coolDownFireball: 3

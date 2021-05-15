@@ -63,7 +63,9 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return suma;
     }
 
-    public void PlayerDrop(int item)
+
+
+    public void DeleteItemFromInventory(int item)
     {
         ConsumeItem(item);
         ReloadCapacity();

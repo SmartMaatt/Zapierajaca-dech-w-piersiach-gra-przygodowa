@@ -2672,6 +2672,8 @@ MonoBehaviour:
   _accelerationChaseBonus: 3
   attackRadius: 1.5
   dropList: []
+  givenMoney: 50
+  givenExp: 60
   turboGirlSpeed: 3
 --- !u!114 &9170748782127513423
 MonoBehaviour:

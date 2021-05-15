@@ -18,6 +18,7 @@ public class MakeDamage : MonoBehaviour
     [SerializeField] UIBar swordUI;
     [SerializeField] UIBar shieldUI;
     [SerializeField] UIBar magicSwordUI;
+    [SerializeField] GameObject NoCristalError;
     [Header("Swords")]
     [SerializeField] GameObject normalSword;
     [SerializeField] GameObject magicSword;
@@ -58,6 +59,7 @@ public class MakeDamage : MonoBehaviour
         swordUI.setUpBar(100);
         shieldUI.setUpBar((int)shieldBlockMaxTime * 100);
         magicSwordUI.setUpBar((int)magicSpellTime * 100);
+        NoCristalError.SetActive(false);
     }
     void Update()
     {
@@ -176,14 +178,22 @@ public class MakeDamage : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G) && _canMagic && _isEquiped)
         {
-            _canMagic = false;
-            normalSword.SetActive(false);
-            magicSword.SetActive(true);
+            if (Managers.Inventory.equippedSpecial == "Power Crystal")
+            {
+                _canMagic = false;
+                normalSword.SetActive(false);
+                magicSword.SetActive(true);
 
-            _magicAttack = magicDamageBonus;
-            _magicRadius = magicRadiusBonus;
+                _magicAttack = magicDamageBonus;
+                _magicRadius = magicRadiusBonus;
 
-            StartCoroutine(MagicColDownCor());
+                StartCoroutine(MagicColDownCor());
+                Managers.Inventory.InventoryView.transform.Find("Power CrystalSPECIAL_slot").gameObject.GetComponent<EquipButtonClick>().Drop(false);
+            }
+            else
+            {
+                StartCoroutine(errorPopup());
+            }
         }
     }
 
@@ -200,6 +210,18 @@ public class MakeDamage : MonoBehaviour
     public bool isEquiped()
     {
         return _isEquiped;
+    }
+
+    public void addAttackStrength(float _attackStrength)
+    {
+        attackStrength += _attackStrength;
+    }
+
+    private IEnumerator errorPopup()
+    {
+        NoCristalError.SetActive(true);
+        yield return new WaitForSeconds(2);
+        NoCristalError.SetActive(false);
     }
 
     private IEnumerator attackCooldownCor()
