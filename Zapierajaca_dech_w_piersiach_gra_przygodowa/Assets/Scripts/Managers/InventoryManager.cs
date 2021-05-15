@@ -58,7 +58,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
         foreach (int item in _items.Keys)
         {
             if (item == searchedItem)
-                suma++;
+                suma = _items[item];
         }
         return suma;
     }
@@ -221,6 +221,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
         itemSlotCount = ItemSlot.transform.Find("ItemCount").gameObject;
         if (itemSlotCount != null)
         {
+            Debug.Log("itemCount: " + GetItemCount(item));
             itemSlotCount.GetComponentInChildren<Text>().text = (GetItemCount(item) + amount).ToString();
         }
     }
@@ -266,13 +267,11 @@ public class InventoryManager : MonoBehaviour, IGameManager
             if (_items.Count >= 7)
             {
                 InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y - 110);
-                Debug.Log("Ustawiam bottom na: " + InventoryView.GetComponent<RectTransform>().offsetMin.y);
             }
         }
         else
         {
             InventoryView.GetComponent<RectTransform>().offsetMin = new Vector2(InventoryView.GetComponent<RectTransform>().offsetMin.x, InventoryView.GetComponent<RectTransform>().offsetMin.y + 110);
-            Debug.Log("Ustawiam bottom na: " + InventoryView.GetComponent<RectTransform>().offsetMin.y);
         }
     }
 

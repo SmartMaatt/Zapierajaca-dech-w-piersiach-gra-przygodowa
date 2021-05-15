@@ -943,7 +943,13 @@ MonoBehaviour:
   _acceleration: 1.5
   _accelerationChaseBonus: 3
   attackRadius: 1.5
-  dropList: []
+  dropList:
+  - item: {fileID: 525863522477325734, guid: 15384e947e8ca7c4eb1ef15fbfd1bcb5, type: 3}
+    dropRate: 40
+    maxAmount: 1
+  - item: {fileID: 7633897187570729913, guid: 14fad776694f0ef4e98ee408b222bb87, type: 3}
+    dropRate: 50
+    maxAmount: 2
   hitCoolDownTime: 0
 --- !u!114 &3814401311204534633
 MonoBehaviour:

@@ -26,7 +26,7 @@ public class Items : MonoBehaviour, InteractOperator
     public void Drop(Vector3 dropPosition, bool playerDrop)
     {
         _item = Instantiate(itemPrefab) as GameObject;
-        Vector3 dropRange = new Vector3(Random.Range(-2f, 2f), 0.5f, Random.Range(-2f, 2f));
+        Vector3 dropRange = new Vector3(Random.Range(-2f, 2f), 0.0f, Random.Range(-2f, 2f));
         _item.transform.position = dropPosition + dropRange;
 
         _item.GetComponent<Items>().itemName = itemName;
