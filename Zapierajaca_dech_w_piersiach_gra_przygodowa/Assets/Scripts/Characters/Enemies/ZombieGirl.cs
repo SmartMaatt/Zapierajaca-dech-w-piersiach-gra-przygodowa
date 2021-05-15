@@ -47,6 +47,7 @@ public class ZombieGirl : AbstractCharacter
     {
         _enemyInteligence.enabled = false;
         yield return new WaitForSeconds(1f);
+        GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
 
         float elampsedTime = 0.0f;

@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 373603045}
   - component: {fileID: 373603047}
   - component: {fileID: 373603046}
+  - component: {fileID: 373603048}
   m_Layer: 5
   m_Name: LoadGameError
   m_TagString: Untagged
@@ -380,7 +381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -381, y: -446}
+  m_AnchoredPosition: {x: 640, y: 492}
   m_SizeDelta: {x: 640.3435, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &373603046
@@ -420,6 +421,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373603044}
   m_CullTransparentMesh: 0
+--- !u!114 &373603048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373603044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038714fdc6e11d74ead2809742f7292c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &563436563
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveStagePath: /playerStage.save
+  LoadErrorSplice: {fileID: 373603044}
+  LoadErrorSpliceTime: 1.5
 --- !u!1 &640043776
 GameObject:
   m_ObjectHideFlags: 0
@@ -31301,6 +31316,7 @@ MonoBehaviour:
   swordUI: {fileID: 0}
   shieldUI: {fileID: 0}
   magicSwordUI: {fileID: 0}
+  NoCristalError: {fileID: 0}
   normalSword: {fileID: 0}
   magicSword: {fileID: 0}
   magicSpellTime: 0
@@ -31347,14 +31363,18 @@ MonoBehaviour:
   _accelerationChaseBonus: 0
   attackRadius: 0
   dropList: []
+  givenMoney: 0
+  givenExp: 0
   cameraScript: {fileID: 0}
   _healthBar: {fileID: 0}
   moneyText: {fileID: 0}
   levelText: {fileID: 0}
+  LevelUpSprite: {fileID: 0}
   money: 0
   exp: 0
   firstXPFactor: 0
   level: 0
+  maxLevel: 0
 --- !u!1 &4766409064335293864
 GameObject:
   m_ObjectHideFlags: 0

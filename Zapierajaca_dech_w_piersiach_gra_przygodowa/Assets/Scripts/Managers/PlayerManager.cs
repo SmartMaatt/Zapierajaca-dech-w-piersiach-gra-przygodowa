@@ -15,6 +15,8 @@ public class PlayerManager : AbstractCharacter, IGameManager
     [SerializeField] UIBar _healthBar;
     [SerializeField] TMP_Text moneyText;
     [SerializeField] TMP_Text levelText;
+    [SerializeField] ElementFade LevelUpSprite;
+    [SerializeField] LayerMask PortalMask;
     [Space]
     public int money;
     public int exp;
@@ -138,8 +140,9 @@ public class PlayerManager : AbstractCharacter, IGameManager
 
     public void levelUp()
     {
-        if(exp > firstXPFactor * level && level <= maxLevel)
+        if((exp > (firstXPFactor * level)) && (level <= maxLevel))
         {
+            Debug.Log(exp + " " + firstXPFactor + " " + level);
             exp -= firstXPFactor * level;
             level++;
             levelText.text = level.ToString();
@@ -152,6 +155,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
 
             _damageScript.addAttackStrength(1);
 
+            LevelUpSprite.RunFace(3, 0.5f);
             levelUp();
         }
     }

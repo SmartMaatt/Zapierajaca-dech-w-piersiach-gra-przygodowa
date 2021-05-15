@@ -192,6 +192,7 @@ public class MakeDamage : MonoBehaviour
             }
             else
             {
+                Debug.Log("CHUJA");
                 StartCoroutine(errorPopup());
             }
         }

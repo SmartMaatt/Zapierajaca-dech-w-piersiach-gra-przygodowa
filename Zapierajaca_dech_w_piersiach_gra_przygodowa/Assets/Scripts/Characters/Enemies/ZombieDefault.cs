@@ -47,6 +47,7 @@ public class ZombieDefault : AbstractCharacter
     private IEnumerator dieAwait(float dieAwaitTime)
     {
         _enemyInteligence.enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
         yield return new WaitForSeconds(1f);
         GetComponent<NavMeshAgent>().enabled = false;
 

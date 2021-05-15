@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MatiScene.unity
     guid: 1ac0ee3d53e53ce429c4cfb083db616c
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: 81a9a18394954b14c9df7c0d85475aab
   m_configObjects: {}

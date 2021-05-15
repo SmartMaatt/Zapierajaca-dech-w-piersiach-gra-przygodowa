@@ -27,11 +27,11 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
             {
                 if (_open)
                 {
-                    transform.position = transform.position - dPos;
+                    StartCoroutine(doorOpenClose(transform.position, dPos, true));
                 }
                 else
                 {
-                    transform.position = transform.position + dPos;
+                    StartCoroutine(doorOpenClose(transform.position, dPos, false));
                 }
                 _open = !_open;
             }
@@ -61,7 +61,7 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
 
     private IEnumerator doorOpenClose(Vector3 startPos, Vector3 endPos, bool up)
     {
-        float speed = 0.0001f;
+        float speed = 1;
         while (startPos != startPos - endPos)
         {
             if (up)

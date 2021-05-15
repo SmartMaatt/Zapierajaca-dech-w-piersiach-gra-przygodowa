@@ -32,8 +32,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ShowSplice(LoadErrorSplice, LoadErrorSpliceTime));
-            Debug.Log(string.Concat(Application.persistentDataPath, SaveStagePath));
+            LoadErrorSplice.GetComponent<ElementFade>().RunFace(LoadErrorSpliceTime, LoadErrorSpliceTime * 0.2f);
         }
     }
 
@@ -54,12 +53,5 @@ public class MainMenu : MonoBehaviour
         {
             _sceneID = sceneID;
         }
-    }
-
-    private IEnumerator ShowSplice(GameObject splice, float time)
-    {
-        splice.SetActive(true);
-        yield return new WaitForSeconds(time);
-        splice.SetActive(false);
     }
 }

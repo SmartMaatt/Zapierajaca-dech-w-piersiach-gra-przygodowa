@@ -49,8 +49,6 @@ public class LookAroundRigging : MonoBehaviour
 
         while (elapsedTime < 4)
         {
-            Debug.Log(elapsedTime);
-            Debug.Log(ChestAim.GetComponent<MultiAimConstraint>().weight);
             elapsedTime += Time.deltaTime / (time / 4);
             changeCurrentTargetPos(startingPos + transform.right * Mathf.Lerp(x[index], y[index], elapsedTime % 1));
             index = (int)(elapsedTime);

@@ -25,6 +25,7 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask wallMask;
+    [SerializeField] private LayerMask PortalMask;
 
     [Space]
     [SerializeField] UIBar _staminaBar;
@@ -53,6 +54,7 @@ public class RelativeMovement : MonoBehaviour
     private void Update()
     {
         Move();
+        CheckForPortal();
     }
 
     private void Move()
@@ -173,6 +175,15 @@ public class RelativeMovement : MonoBehaviour
     public void addRunStamina(float stamina)
     {
         runStamina += stamina;
+    }
+
+    public void CheckForPortal()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.5f, PortalMask);
+        foreach (var hitCollider in hitColliders)
+        {
+            hitCollider.GetComponent<SceneChanger>().ChangeScene();
+        }
     }
 
     public IEnumerator Explosion(float time, float waitTime, float power, float _min, float _max)
