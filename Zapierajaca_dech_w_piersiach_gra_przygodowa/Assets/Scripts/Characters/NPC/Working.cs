@@ -14,9 +14,11 @@ public class Working : MonoBehaviour
     private NavMeshAgent _agent;
     private WorkTask currenTask;
     private bool working;
+    private bool talking;
     private int taskNumber = 0;
     private int activity = 0;
     private float timeCount = 0.0f;
+    private Transform playerTransform;
 
     void Start()
     {
@@ -44,6 +46,10 @@ public class Working : MonoBehaviour
                 StartWork();
                 break;
             }
+        }
+        else if(talking)
+        {
+            transform.LookAt(playerTransform);
         }
     }
 
@@ -125,10 +131,23 @@ public class Working : MonoBehaviour
         }
     }
 
-    public void StartTalking()
+    public void StartTalking(GameObject player)
     {
+        talking = true;
+        working = true;
         StopAllCoroutines();
         SetWorkType(false);
+        _animator.SetBool("Walking", false);
+        _agent.SetDestination(transform.position);
+        playerTransform = player.transform;
+        transform.LookAt(playerTransform);
+    }
+
+    public void StopTalking()
+    {
+        talking = false;
+        activity = 0;
+        working = false;
     }
 
     private void StartWork()

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69564fba872780d479305aee0a0969bb, type: 3}
-  m_Name: BojoweZadanie2
+  m_Name: Start
   m_EditorClassIdentifier: 
   active: 1
-  title: Twoja wolna sobota
-  description: Nie ma wolnej sboty
+  title: Gotowi do startu
+  description: This is where the fun begins
   questType: 2
-  goldReward: 303
-  experienceReward: 2137
-  itemsRewards: []
-  nextQuest: {fileID: 0}
-  questDialogue: {fileID: 11400000, guid: 617d4d8e78cb6c940a29dbf7eeea43ed, type: 2}
+  goldReward: 0
+  experienceReward: 0
+  itemsRewards: 
+  nextQuest: {fileID: 11400000, guid: a72a3918bfad03741a5914c96bf9fc83, type: 2}
+  questDialogue: {fileID: 11400000, guid: ec610fd0904bf954ebeec4f2d16c5718, type: 2}

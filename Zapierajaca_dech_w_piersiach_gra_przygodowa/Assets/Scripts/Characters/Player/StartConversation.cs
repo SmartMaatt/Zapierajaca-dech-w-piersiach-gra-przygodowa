@@ -18,9 +18,7 @@ public class StartConversation : MonoBehaviour
                     PeasantCharacter target = hitCollider.GetComponent<PeasantCharacter>();
                     if (target != null)
                     {
-                        Managers.Dialogue.StartDialogue(target.dialogue, target.peasantName);
-                        //Working targetWorking = target.GetComponent<Working>();
-                        //targetWorking.StartTalking();
+                        Managers.Dialogue.StartDialogue(target);
                     }
                 }
             }

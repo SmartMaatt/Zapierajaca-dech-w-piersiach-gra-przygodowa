@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public GameObject player = null;
     public GameObject cameraBase = null;
     public List<Dialogue> allTalkableOnceDialogues;
+    private PeasantCharacter peasantTalkingTo;
 
     public void Startup()
     {
@@ -37,7 +38,7 @@ public class DialogueManager : MonoBehaviour, IGameManager
         status = ManagerStatus.Started;
     }
 
-    public void StartDialogue(Dialogue firstDialogue, string peasantName)
+    public void StartDialogue(PeasantCharacter peasant)
     {
         if (!dialoguseCanvas.activeSelf)
         {
@@ -47,11 +48,17 @@ public class DialogueManager : MonoBehaviour, IGameManager
             dialoguseCanvas.SetActive(true);
             profilePart.SetActive(false);
             skillsPart.SetActive(false);
+            
+            peasantTalkingTo = peasant;
+            Working targetWorking = peasant.GetComponent<Working>();
+            targetWorking.StartTalking(player);
+            //targetWorking.enabled = false;
+
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-            characterNameText.text = peasantName;
-            ShowDialogue(firstDialogue);
+            characterNameText.text = peasant.peasantName;
+            ShowDialogue(peasant.dialogue);
         }
     }
 
@@ -108,6 +115,11 @@ public class DialogueManager : MonoBehaviour, IGameManager
         dialoguseCanvas.SetActive(false);
         profilePart.SetActive(true);
         skillsPart.SetActive(true);
+
+        Working targetWorking = peasantTalkingTo.GetComponent<Working>();
+        //targetWorking.enabled = true;
+        targetWorking.StopTalking();
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
