@@ -41,15 +41,13 @@ public class EnemySpawner : MonoBehaviour
             if (_enemyList.Count < maxActiveMods)
             {
                 Vector3 walkPoint = transform.position + new Vector3(Random.Range(-rangeX, rangeX), 0, Random.Range(-rangeZ, rangeZ));
-                Debug.Log(walkPoint);
 
                 RaycastHit hit;
                 var ray = new Ray(walkPoint, -transform.up);
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, SolidGround))
                 {
-                    Debug.Log("After raycast: " + hit.transform.position);
                     _enemyList.Add(Instantiate(enemyPrefab) as GameObject);
-                    _enemyList[_enemyList.Count - 1].transform.position = new Vector3(walkPoint.x, hit.transform.position.y+1, walkPoint.z);
+                    _enemyList[_enemyList.Count - 1].transform.position = walkPoint;
                     float angle = Random.Range(0, 360);
                     _enemyList[_enemyList.Count - 1].transform.Rotate(0, angle, 0);
 

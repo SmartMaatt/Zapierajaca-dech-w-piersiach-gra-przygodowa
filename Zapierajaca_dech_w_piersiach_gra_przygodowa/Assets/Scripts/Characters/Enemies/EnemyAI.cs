@@ -108,7 +108,6 @@ public class EnemyAI : MonoBehaviour {
         if (Physics.Raycast(_tmpWalkPoint, -transform.up, out hit, Mathf.Infinity, SolidGround) && Vector2.Angle(new Vector2(_tmpWalkPoint.x, _tmpWalkPoint.z), new Vector2(transform.position.x, transform.position.z)) < 120) {
 
             _walkPoint = hit.transform.position;
-            Debug.Log(_walkPoint);
             walkPointSet = true;
             rotateEnemyToPoint(_walkPoint);
 

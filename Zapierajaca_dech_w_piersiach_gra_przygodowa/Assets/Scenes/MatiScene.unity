@@ -300,6 +300,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 2717805411062112037, guid: a6528617bc4f92d428eb14fb50898829,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6528617bc4f92d428eb14fb50898829, type: 3}
 --- !u!1001 &405908808
@@ -317,12 +322,17 @@ PrefabInstance:
     - target: {fileID: 2362519512999249380, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2362519512999249382, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
       propertyPath: _health
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362519512999249382, guid: f335f11457359b346b74afdb4c8206b1,
+        type: 3}
+      propertyPath: magicPower
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2362519512999249382, guid: f335f11457359b346b74afdb4c8206b1,
         type: 3}
@@ -1007,7 +1017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1977106722
 MonoBehaviour:
   m_ObjectHideFlags: 0

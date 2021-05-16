@@ -12,6 +12,7 @@ public class Mage : AbstractCharacter
     Animator _animator;
     EnemyAI _enemyInteligence;
     TargetHeadAim _headTarget;
+    string _mobName = "Borys The Solaż";
 
     GameObject _player;
     bool _fireBallCasting;
@@ -90,6 +91,7 @@ public class Mage : AbstractCharacter
         _animator.SetTrigger("isDead");
         Managers.Player.changeMoney(givenMoney);
         Managers.Player.changeExp(givenExp);
+        Managers.Quest.CheckKillQuest(_mobName);
         StartCoroutine(dieAwait(dieAwaitTime));
     }
 
@@ -229,19 +231,22 @@ public class Mage : AbstractCharacter
 
         yield return new WaitForSeconds(1f);
 
-        float angle = 0.0f;
         GameObject fireball = null;
         Vector3 chestPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 7; i++)
         {
-            for (int j = 0; j < 8; j++)
-            {
-                fireball = Instantiate(fireballPrefab, chestPos, Quaternion.Euler(0, angle, 0));
-                fireball.GetComponent<EffectSettings>().MoveVector = chestPos + fireball.transform.forward * 50f;
-                angle += 45f;
-                yield return new WaitForSeconds(0.1f);
-            }
-            angle += 15f;
+            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(2,0,0), Quaternion.Euler(0, 0, 0));
+            fireball.GetComponent<EffectSettings>().UseMoveVector = false;
+            fireball.GetComponent<EffectSettings>().Target = _player;
+
+            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(-2, 0, 0), Quaternion.Euler(0, 0, 0));
+            fireball.GetComponent<EffectSettings>().UseMoveVector = false;
+            fireball.GetComponent<EffectSettings>().Target = _player;
+
+            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+            fireball.GetComponent<EffectSettings>().UseMoveVector = false;
+            fireball.GetComponent<EffectSettings>().Target = _player;
+            yield return new WaitForSeconds(0.5f);
         }
 
         yield return new WaitForSeconds(1f);
