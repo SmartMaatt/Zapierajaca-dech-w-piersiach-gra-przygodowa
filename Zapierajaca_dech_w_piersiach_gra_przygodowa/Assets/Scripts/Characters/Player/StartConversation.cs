@@ -19,6 +19,8 @@ public class StartConversation : MonoBehaviour
                     if (target != null)
                     {
                         Managers.Dialogue.StartDialogue(target.dialogue, target.peasantName);
+                        //Working targetWorking = target.GetComponent<Working>();
+                        //targetWorking.StartTalking();
                     }
                 }
             }

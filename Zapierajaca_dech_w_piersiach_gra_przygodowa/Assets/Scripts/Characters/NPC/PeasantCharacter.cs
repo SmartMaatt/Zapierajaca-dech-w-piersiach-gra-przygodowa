@@ -7,4 +7,9 @@ public class PeasantCharacter : MonoBehaviour
     public string peasantName;
 
     public Dialogue dialogue;
+
+    public void StopWorking()
+    {
+
+    }
 }

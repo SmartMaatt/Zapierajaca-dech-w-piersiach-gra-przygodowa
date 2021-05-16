@@ -125,6 +125,12 @@ public class Working : MonoBehaviour
         }
     }
 
+    public void StartTalking()
+    {
+        StopAllCoroutines();
+        SetWorkType(false);
+    }
+
     private void StartWork()
     {
         currenTask.workingTime = UnityEngine.Random.Range(currenTask.minWorkingTime, currenTask.maxWorkingTime);
