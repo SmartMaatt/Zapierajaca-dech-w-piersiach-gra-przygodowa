@@ -20,7 +20,7 @@ public class SceneChanger : MonoBehaviour
 
     private IEnumerator ChangeSceneCor()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Managers.Save.Save(teleportScene);
         SceneManager.LoadScene(teleportScene);
     }

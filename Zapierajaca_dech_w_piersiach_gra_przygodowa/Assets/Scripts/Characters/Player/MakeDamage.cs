@@ -119,10 +119,6 @@ public class MakeDamage : MonoBehaviour
                                 shield.ShieldCollisionEnter(collInfo);
                             }
                         }
-                        else
-                        {
-                            Debug.Log("Missed!");
-                        }
                     }
                 }
                 _animator.SetTrigger("Attacking");

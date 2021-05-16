@@ -299,46 +299,44 @@ namespace UnityEngine.AI
                 markups.Add(markup);
             }
 
-#if UNITY_EDITOR
-            if (!EditorApplication.isPlaying)
+            if (m_CollectObjects == CollectObjects.All)
             {
-                if (m_CollectObjects == CollectObjects.All)
-                {
-                    UnityEditor.AI.NavMeshBuilder.CollectSourcesInStage(
-                        null, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, gameObject.scene, sources);
-                }
-                else if (m_CollectObjects == CollectObjects.Children)
-                {
-                    UnityEditor.AI.NavMeshBuilder.CollectSourcesInStage(
-                        transform, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, gameObject.scene, sources);
-                }
-                else if (m_CollectObjects == CollectObjects.Volume)
-                {
-                    Matrix4x4 localToWorld = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-                    var worldBounds = GetWorldBounds(localToWorld, new Bounds(m_Center, m_Size));
+                NavMeshBuilder.CollectSources(null, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, sources);
+            }
+            else if (m_CollectObjects == CollectObjects.Children)
+            {
+                NavMeshBuilder.CollectSources(transform, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, sources);
+            }
+            else if (m_CollectObjects == CollectObjects.Volume)
+            {
+                Matrix4x4 localToWorld = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+                var worldBounds = GetWorldBounds(localToWorld, new Bounds(m_Center, m_Size));
+                NavMeshBuilder.CollectSources(worldBounds, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, sources);
+            }
 
-                    UnityEditor.AI.NavMeshBuilder.CollectSourcesInStage(
-                        worldBounds, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, gameObject.scene, sources);
-                }
-            }
-            else
-#endif
+            /***** Terrain trees *****/
+
+            var fakeGameObject = new GameObject();
+
+            var size = Terrain.activeTerrain.terrainData.size;
+            foreach (var tree in Terrain.activeTerrain.terrainData.treeInstances)
             {
-                if (m_CollectObjects == CollectObjects.All)
-                {
-                    NavMeshBuilder.CollectSources(null, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, sources);
-                }
-                else if (m_CollectObjects == CollectObjects.Children)
-                {
-                    NavMeshBuilder.CollectSources(transform, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, sources);
-                }
-                else if (m_CollectObjects == CollectObjects.Volume)
-                {
-                    Matrix4x4 localToWorld = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-                    var worldBounds = GetWorldBounds(localToWorld, new Bounds(m_Center, m_Size));
-                    NavMeshBuilder.CollectSources(worldBounds, m_LayerMask, m_UseGeometry, m_DefaultArea, markups, sources);
-                }
+                var prototype = Terrain.activeTerrain.terrainData.treePrototypes[tree.prototypeIndex];
+           
+                fakeGameObject.transform.position = new Vector3(tree.position.x * size.x, tree.position.y * size.y, tree.position.z * size.z);
+                fakeGameObject.transform.position += Terrain.activeTerrain.GetPosition();
+                fakeGameObject.transform.rotation = Quaternion.AngleAxis(tree.rotation, Vector3.up);
+                fakeGameObject.transform.localScale = new Vector3(0.3f, 10, 0.3f);
+
+                var src = new NavMeshBuildSource();
+                src.transform = fakeGameObject.transform.localToWorldMatrix;
+                src.shape = NavMeshBuildSourceShape.Box; 
+                src.size = new Vector3(1f, 1f, 1f); 
+                sources.Add(src);
             }
+            DestroyImmediate(fakeGameObject);
+
+            /***** End ofTerrain trees *****/
 
             if (m_IgnoreNavMeshAgent)
                 sources.RemoveAll((x) => (x.component != null && x.component.gameObject.GetComponent<NavMeshAgent>() != null));

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
             foreach (var enemy in tmp)
             {
                 _enemyList.Add(enemy.transform.gameObject);
+                Debug.Log(enemy.transform.gameObject);
             }
         }
         else
@@ -37,14 +39,21 @@ public class EnemySpawner : MonoBehaviour
         {
             if (_enemyList.Count < maxActiveMods)
             {
-                Vector3 walkPoint = new Vector3(Random.Range(-rangeX, rangeX), 1, Random.Range(-rangeZ, rangeZ));
+                Vector3 walkPoint = transform.position + new Vector3(Random.Range(-rangeX, rangeX), 0, Random.Range(-rangeZ, rangeZ));
+                Debug.Log(walkPoint);
 
-                if (Physics.Raycast(walkPoint, -transform.up, 2f, SolidGround))
+                RaycastHit hit;
+                var ray = new Ray(walkPoint, -transform.up);
+                if (Physics.Raycast(ray, out hit, 2f, SolidGround))
                 {
+                    Debug.Log("After raycast: " + hit.transform.position);
                     _enemyList.Add(Instantiate(enemyPrefab) as GameObject);
-                    _enemyList[_enemyList.Count - 1].transform.position = walkPoint;
+                    _enemyList[_enemyList.Count - 1].transform.position = new Vector3(walkPoint.x, hit.transform.position.y, walkPoint.z);
                     float angle = Random.Range(0, 360);
                     _enemyList[_enemyList.Count - 1].transform.Rotate(0, angle, 0);
+
+                    _enemyList[_enemyList.Count - 1].gameObject.GetComponent<NavMeshAgent>().enabled = false;
+                    _enemyList[_enemyList.Count - 1].gameObject.GetComponent<NavMeshAgent>().enabled = true;
                 }
             }
             _enemyList = _enemyList.Where(x => x != null).ToList();

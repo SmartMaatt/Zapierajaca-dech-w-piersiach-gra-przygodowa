@@ -75,7 +75,7 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
             yield return new WaitForEndOfFrame();
         }
 
-        portal.SetActive(true);
+        portal.SetActive(enablePortal);
     }
 
    

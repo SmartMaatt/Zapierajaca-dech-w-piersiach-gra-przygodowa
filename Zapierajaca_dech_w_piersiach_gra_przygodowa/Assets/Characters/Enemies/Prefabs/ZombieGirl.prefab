@@ -2637,9 +2637,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   obstacleRange: 0.5
-  walkPointRange: 30
-  hearRange: 10
-  sightRange: 15
+  walkPointRange: 10
+  hearRange: 15
+  sightRange: 20
   sightConeRange: 145
   maxRestTime: 10
   minRestTime: 4
@@ -2671,7 +2671,10 @@ MonoBehaviour:
   _acceleration: 1
   _accelerationChaseBonus: 3
   attackRadius: 1.5
-  dropList: []
+  dropList:
+  - item: {fileID: 525863522477325734, guid: 15384e947e8ca7c4eb1ef15fbfd1bcb5, type: 3}
+    dropRate: 90
+    maxAmount: 1
   givenMoney: 50
   givenExp: 60
   turboGirlSpeed: 3

@@ -30754,7 +30754,7 @@ MonoBehaviour:
   LevelUpSprite: {fileID: 3245395352055670950}
   PortalMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   money: 0
   exp: 0
   firstXPFactor: 100

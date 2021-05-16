@@ -102,9 +102,13 @@ public class EnemyAI : MonoBehaviour {
         float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
         float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
 
-        _walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        RaycastHit hit;
+        Vector3 _tmpWalkPoint = new Vector3(transform.position.x + randomX, transform.position.y + 500f, transform.position.z + randomZ);
 
-        if (Physics.Raycast(_walkPoint, -transform.up, 2f, SolidGround) && Vector2.Angle(new Vector2(_walkPoint.x, _walkPoint.z), new Vector2(transform.position.x, transform.position.z)) < 120) {
+        if (Physics.Raycast(_tmpWalkPoint, -transform.up, out hit, Mathf.Infinity, SolidGround) && Vector2.Angle(new Vector2(_tmpWalkPoint.x, _tmpWalkPoint.z), new Vector2(transform.position.x, transform.position.z)) < 120) {
+
+            _walkPoint = hit.transform.position;
+            Debug.Log(_walkPoint);
             walkPointSet = true;
             rotateEnemyToPoint(_walkPoint);
 
@@ -118,12 +122,11 @@ public class EnemyAI : MonoBehaviour {
     private void goToPoint()
     {
         agent.SetDestination(_walkPoint);
+        Debug.Log(_walkPoint);
         _currentMaxSpeed = _characterController.getWalkSpeed();
     }
 
-
     /*************************************************/
-
 
     private void ChasePlayer()
     {

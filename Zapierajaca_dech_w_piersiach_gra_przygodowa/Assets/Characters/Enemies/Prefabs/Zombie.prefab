@@ -909,9 +909,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   obstacleRange: 0.5
-  walkPointRange: 20
-  hearRange: 8
-  sightRange: 12
+  walkPointRange: 10
+  hearRange: 14
+  sightRange: 20
   sightConeRange: 130
   maxRestTime: 7
   minRestTime: 2

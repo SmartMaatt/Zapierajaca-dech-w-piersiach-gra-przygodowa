@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5039909482428639273}
   - component: {fileID: 5039909482432063503}
   - component: {fileID: 5039909482431064783}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: beech_forest_stones_01_4_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5039909482428639275}
   - component: {fileID: 5039909482432063497}
   - component: {fileID: 5039909482431064777}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: beech_forest_stones_01_4_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5039909482428639277}
   - component: {fileID: 5039909482448485517}
   - component: {fileID: 4866237077764971456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: beech_forest_stones_01_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 5039909482428639279}
   - component: {fileID: 5039909482432063501}
   - component: {fileID: 5039909482431064781}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: beech_forest_stones_01_4_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
