@@ -8,6 +8,9 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject LeftPart;
     [SerializeField] GameObject RightPart;
     [SerializeField] GameObject DiedSprite;
+    [SerializeField] GameObject Inventory;
+    [SerializeField] GameObject Quests;
+
     [SerializeField] GameObject escapeMenu;
 
     private void Update()
@@ -45,6 +48,8 @@ public class UIController : MonoBehaviour
     {
         LeftPart.SetActive(false);
         RightPart.SetActive(false);
+        Inventory.SetActive(false);
+        Quests.SetActive(false);
         DiedSprite.SetActive(true);
     }
 }
