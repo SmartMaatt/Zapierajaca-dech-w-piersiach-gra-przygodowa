@@ -9,9 +9,13 @@ public class BassfightBar : MonoBehaviour
 
     void Start()
     {
-        _bossObj = FindObjectsOfType<Mage>()[0].transform.GetComponent<Mage>();
-
-        if (_bossObj == null)
+        if (FindObjectsOfType<Mage>().Length > 0)
+        {
+            _bossObj = FindObjectsOfType<Mage>()[0].transform.GetComponent<Mage>();
+        }
+        else
+        {
             gameObject.SetActive(false);
+        }
     }
 }
