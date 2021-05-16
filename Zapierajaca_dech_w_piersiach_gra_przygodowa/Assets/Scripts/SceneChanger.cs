@@ -15,7 +15,12 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene()
     {
-        Debug.Log("CHUJ");
+        StartCoroutine(ChangeSceneCor());
+    }
+
+    private IEnumerator ChangeSceneCor()
+    {
+        yield return new WaitForSeconds(1f);
         Managers.Save.Save(teleportScene);
         SceneManager.LoadScene(teleportScene);
     }

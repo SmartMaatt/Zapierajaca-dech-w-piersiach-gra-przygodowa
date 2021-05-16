@@ -86,8 +86,6 @@ public class EnemyAI : MonoBehaviour {
 
         Vector3 distanceToWalkPoint = transform.position - _walkPoint;
 
-        Debug.Log(GetComponent<NavMeshAgent>().pathStatus);
-
         if (distanceToWalkPoint.magnitude < 1f || isChasing) {
             walkPointSet = false; enemyReadyToPatrol = false;
         }

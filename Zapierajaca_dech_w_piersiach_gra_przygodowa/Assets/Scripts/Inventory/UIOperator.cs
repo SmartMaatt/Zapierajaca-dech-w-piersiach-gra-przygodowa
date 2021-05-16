@@ -15,7 +15,7 @@ public class UIOperator : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !Managers.Player.isDead)
         {
             _activInvetory = !_activInvetory;
             if (!_activInvetory)

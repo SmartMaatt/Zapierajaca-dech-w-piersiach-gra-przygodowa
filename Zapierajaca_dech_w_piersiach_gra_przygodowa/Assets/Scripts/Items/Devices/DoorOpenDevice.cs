@@ -10,15 +10,15 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
     public GameObject error;
     public bool requireKey;
     public string keyName;
+    public bool enablePortal;
+    [SerializeField] GameObject portal;
 
     private bool _open = false;
-    
     void Start()
     {
-        dPos = new Vector3(0, 0.1f -transform.lossyScale.y, 0);
+        dPos = new Vector3(0, transform.position.y - transform.localScale.y - 0.5f, 0);
         error.SetActive(false);
     }
-
     public void Operate()
     {
         if (requireKey)
@@ -52,6 +52,8 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
         }
     }
 
+
+
     private IEnumerator errorPopup()
     {
         error.SetActive(true);
@@ -62,7 +64,8 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
     private IEnumerator doorOpenClose(Vector3 startPos, Vector3 endPos, bool up)
     {
         float speed = 1;
-        while (startPos != startPos - endPos)
+        Debug.Log(transform.position.y + " " + endPos.y);
+        while (transform.position.y > endPos.y)
         {
             if (up)
                 transform.position += new Vector3(0, Time.deltaTime * speed, 0);
@@ -71,5 +74,9 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
 
             yield return new WaitForEndOfFrame();
         }
+
+        portal.SetActive(true);
     }
+
+   
 }

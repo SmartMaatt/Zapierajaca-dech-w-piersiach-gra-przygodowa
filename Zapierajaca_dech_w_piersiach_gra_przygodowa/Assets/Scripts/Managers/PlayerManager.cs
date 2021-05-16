@@ -23,6 +23,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
     public int firstXPFactor;
     public int level;
     public int maxLevel;
+    public bool isDead = false;
 
     private Animator _animator;
     private RelativeMovement _movementScript;
@@ -63,6 +64,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
         GetComponent<RelativeMovement>().enabled = false;
         GetComponent<PlayerManager>().enabled = false;
         cameraScript.isDead = true;
+        isDead = true;
 
         UIController UI = FindObjectsOfType<UIController>()[0];
         if (UI) { UI.playerDiedScene(); }

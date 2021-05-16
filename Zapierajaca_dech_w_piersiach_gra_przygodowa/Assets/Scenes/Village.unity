@@ -4712,7 +4712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75638e01bcc1d4d4ea25c0b407d528fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportScene: 1
+  teleportScene: 2
 --- !u!1 &875201490 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9d357f2a965a4854c89e2c635a95d349,
@@ -13021,8 +13021,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684959540}
-  m_LocalRotation: {x: -0.044510335, y: 0.9476775, z: 0.1522643, w: 0.27702305}
-  m_LocalPosition: {x: 464.60538, y: 61.008255, z: 696.5232}
+  m_LocalRotation: {x: 0.14779586, y: 0.7082114, z: 0.15563121, w: -0.672586}
+  m_LocalPosition: {x: 1743.0719, y: -1106.0947, z: -267.4927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
