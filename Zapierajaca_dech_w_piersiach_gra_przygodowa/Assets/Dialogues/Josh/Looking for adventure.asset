@@ -20,4 +20,7 @@ MonoBehaviour:
   - sentence: "A czy Ty szukasz k\u0142opot\xF3w?"
     talkable: 0
     nextDialogue: {fileID: 11400000, guid: 610f8b6a641143e47b5080a4d03c2932, type: 2}
+  - sentence: "W\u0142a\u015Bnie tak\u0105 sko\u0144czy\u0142em"
+    talkable: 2
+    nextDialogue: {fileID: 11400000, guid: fd0c0cad8f66ee4429d67e3c6d8b9b08, type: 2}
   canExit: 0

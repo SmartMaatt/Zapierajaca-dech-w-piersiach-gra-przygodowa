@@ -15,9 +15,12 @@ MonoBehaviour:
   sentence: "Witaj Poszukiwaczu Przyg\xF3d"
   responses:
   - sentence: "Wygl\u0105dasz jakby\u015B czego\u015B szuka\u0142 "
-    talkable: 3
+    talkable: 1
     nextDialogue: {fileID: 11400000, guid: c7eb9e1859556f24083fa5c9c5a400dd, type: 2}
   - sentence: "Co mo\u017Cesz powiedzie\u0107 o pogodzie?"
     talkable: 0
     nextDialogue: {fileID: 11400000, guid: 788efe05b92d19e458b64472ff2d0eb4, type: 2}
+  - sentence: "Znalaz\u0142em Twoje dynie"
+    talkable: 2
+    nextDialogue: {fileID: 11400000, guid: 6b554d9eb76ff17419e4b6f3dc0bec9c, type: 2}
   canExit: 0

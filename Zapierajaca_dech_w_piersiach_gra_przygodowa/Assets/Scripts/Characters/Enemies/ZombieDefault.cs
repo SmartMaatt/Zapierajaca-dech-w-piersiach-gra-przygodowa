@@ -13,6 +13,7 @@ public class ZombieDefault : AbstractCharacter
     EnemyAI _enemyInteligence;
     LookAroundRigging _restAnimation;
     TargetHeadAim _headTarget;
+    string _mobName = "Zombie";
 
     [Header("Special - Zombie")]
     public float hitCoolDownTime;
@@ -41,6 +42,7 @@ public class ZombieDefault : AbstractCharacter
         _animator.SetTrigger("isDead");
         Managers.Player.changeMoney(givenMoney);
         Managers.Player.changeExp(givenExp);
+        Managers.Quest.CheckKillQuest(_mobName);
         StartCoroutine(dieAwait(dieAwaitTime));
     }
 

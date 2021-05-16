@@ -85,9 +85,10 @@ public class InventoryManager : MonoBehaviour, IGameManager
         Debug.Log("Add item: " + item);
         if (_items.Count < inventorySize)
         {
+            Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
             if (GetItemCount(item) >= 1)
             {
-                Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
+                //Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
                 string name = thisItem.itemName + thisItem.type + "_slot";
                 GameObject ItemSlot = InventoryView.transform.Find(name).gameObject;
 
@@ -110,6 +111,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
             else
                 _items[item] = 1;
 
+            Managers.Quest.CheckGetItemQuest(thisItem.itemName);
             ReloadCapacity();
             return true;
         }

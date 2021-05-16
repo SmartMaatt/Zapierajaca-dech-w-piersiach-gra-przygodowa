@@ -10,10 +10,12 @@ public class QuestManager : MonoBehaviour, IGameManager
     public List<KillQuest> killQuests;
     public List<TalkToQuest> talkToQuests;
     public List<VisitQuest> visitQuests;
+    public List<Quest> allQuests;
 
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera questów...");
+        ResetAllQuests();
         status = ManagerStatus.Started;
     }
 
@@ -38,5 +40,49 @@ public class QuestManager : MonoBehaviour, IGameManager
             }
         }
         return false;
+    }
+
+    public void CheckKillQuest(string enemyName)
+    {
+        foreach (KillQuest quest in killQuests)
+        {
+            if (quest.CheckQuest(enemyName))
+            {
+                break;
+            }
+        }
+    }
+
+    public void CheckGetItemQuest(string itemName)
+    {
+        foreach (GetItemQuest quest in getItemQuests)
+        {
+            if (quest.CheckQuest(itemName))
+            {
+                break;
+            }
+        }
+    }
+
+    public void ResetAllQuests()
+    {
+        foreach (Quest quest in allQuests)
+        {
+            switch (quest.questType)
+            {
+                case Quest.QuestType.GETITEM:
+                    GetItemQuest tmpGetItemQuest = (GetItemQuest)quest;
+                    tmpGetItemQuest.questItemsCounter = 0;
+                    break;
+                case Quest.QuestType.KILL:
+                    KillQuest tmpKillQuest = (KillQuest)quest;
+                    tmpKillQuest.questKillsCounter = 0;
+                    break;
+                case Quest.QuestType.TALKTO:
+                    break;
+                case Quest.QuestType.VISIT:
+                    break;
+            }
+        }
     }
 }

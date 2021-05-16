@@ -10,7 +10,7 @@ public abstract class Quest : ScriptableObject
     public QuestType questType;
     public int goldReward;
     public int experienceReward;
-    public List<GameObject> itemsRewards;
+    public List<int> itemsRewards;
     public Quest nextQuest;
 
     public void FinishQuest()
@@ -26,7 +26,6 @@ public abstract class Quest : ScriptableObject
                     Managers.Quest.killQuests.Add((KillQuest)nextQuest);
                     break;
                 case QuestType.TALKTO:
-                    Debug.Log("DUPAAAAAAAAAAAAAAA");
                     Managers.Quest.talkToQuests.Add((TalkToQuest)nextQuest);
                     break;
                 case QuestType.VISIT: 
@@ -34,14 +33,13 @@ public abstract class Quest : ScriptableObject
                     break;
             }
         }
-        Debug.Log(title);
-        Debug.Log(description);
-        Debug.Log(questType);
-        Debug.Log(goldReward);
-        Debug.Log(experienceReward);
-        foreach (GameObject item in itemsRewards)
+
+        Managers.Player.changeMoney(goldReward);
+        Managers.Player.changeExp(experienceReward);
+
+        foreach (int itemID in itemsRewards)
         {
-            Debug.Log("item");
+            Managers.Inventory.AddItem(itemID);
         }
         switch (questType)
         {
