@@ -8,6 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(TargetHeadAim))]
 public class Mage : AbstractCharacter
 {
+    UIBar _bossFightHealthBar;
     Animator _animator;
     EnemyAI _enemyInteligence;
     TargetHeadAim _headTarget;
@@ -53,6 +54,11 @@ public class Mage : AbstractCharacter
         _enemyInteligence = GetComponent<EnemyAI>();
         _headTarget = GetComponent<TargetHeadAim>();
         _player = FindObjectsOfType<RelativeMovement>()[0].transform.gameObject;
+
+        _bossFightHealthBar = FindObjectsOfType<BassfightBar>()[0].gameObject.GetComponent<BassfightBar>().healthBar;
+        if (_bossFightHealthBar)
+            _bossFightHealthBar.setUpBar(_maxHealth);
+
         _fireBallCasting = false;
         _handAttackCasting = false;
         _areaAttackCasting = false;
@@ -67,6 +73,7 @@ public class Mage : AbstractCharacter
         {
             StartCoroutine(isHit());
             changeHealth(-damage);
+            _bossFightHealthBar.setBarValue(_health);
 
             //cancelFireball();
             //cancelBurstOnArmor();
@@ -105,8 +112,8 @@ public class Mage : AbstractCharacter
             yield return new WaitForEndOfFrame();
         }
 
+        FindObjectsOfType<BassfightBar>()[0].gameObject.SetActive(false);
         StartCoroutine(Managers.Cutscene.playCutscene(Scene, Cutscene));
-
         yield return new WaitForSeconds(17f);
         Destroy(this.gameObject);
     }
@@ -184,7 +191,7 @@ public class Mage : AbstractCharacter
             else
             {
                 float combatRand = Random.Range(0, 5);
-                if (combatRand > 1)
+                if (combatRand > 2)
                 {
                     StartCoroutine(burstOnArmor());
                 }
@@ -351,6 +358,7 @@ public class Mage : AbstractCharacter
         _animator.ResetTrigger("isHit");
         healSpell.GetComponent<EffectSettings>().IsVisible = true;
         _health += (int)Random.Range(maxHealth * 0.3f, maxHealth * 0.7f);
+        _bossFightHealthBar.setBarValue(_health);
 
         yield return new WaitForSeconds(timeOfHeal - 2f);
 
