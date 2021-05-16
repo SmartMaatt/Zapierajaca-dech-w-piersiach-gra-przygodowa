@@ -43,6 +43,10 @@ public class Mage : AbstractCharacter
     [SerializeField] GameObject soulPrefab;
     [SerializeField] GameObject leftHand;
     [SerializeField] GameObject rightHand;
+    [Header("Cutscene")]
+    [SerializeField] GameObject Scene;
+    [SerializeField] GameObject Cutscene;
+
 
     void Awake()
     {
@@ -109,6 +113,8 @@ public class Mage : AbstractCharacter
         }
 
         FindObjectsOfType<BassfightBar>()[0].gameObject.SetActive(false);
+        StartCoroutine(Managers.Cutscene.playCutscene(Scene, Cutscene));
+        yield return new WaitForSeconds(17f);
         Destroy(this.gameObject);
     }
 

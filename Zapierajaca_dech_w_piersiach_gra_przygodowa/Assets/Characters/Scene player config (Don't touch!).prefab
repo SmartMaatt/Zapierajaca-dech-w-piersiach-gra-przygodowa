@@ -30718,7 +30718,11 @@ MonoBehaviour:
     m_Bits: 2048
   PortalMask:
     serializedVersion: 2
+<<<<<<< Updated upstream
     m_Bits: 8192
+=======
+    m_Bits: 0
+>>>>>>> Stashed changes
   _staminaBar: {fileID: 7751971084216640897}
 --- !u!114 &7751971084844698378
 MonoBehaviour:
@@ -48713,6 +48717,7 @@ GameObject:
   - component: {fileID: 7751971085683900663}
   - component: {fileID: 7751971085683900660}
   - component: {fileID: 7751971085683900661}
+  - component: {fileID: 6458293722572190878}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -48826,6 +48831,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SavePath: /player.save
   SaveScenePath: /playerStage.save
+--- !u!114 &6458293722572190878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751971085683900651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c74605c3a1043745a304a028daeca7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7751971085720951831
 GameObject:
   m_ObjectHideFlags: 0
