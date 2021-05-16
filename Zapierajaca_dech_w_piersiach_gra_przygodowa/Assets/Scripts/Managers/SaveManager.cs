@@ -52,7 +52,7 @@ public class SaveManager : MonoBehaviour, IGameManager
 
     public void Load()
     {
-        if(File.Exists(string.Concat(Application.persistentDataPath, SavePath)) && SceneManager.GetActiveScene().buildIndex != 0)
+        if(File.Exists(string.Concat(Application.persistentDataPath, SavePath)) && SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().buildIndex != 4)
         {
             Debug.Log("Load");
             SaveFileTemplate currentLoad = new SaveFileTemplate();
