@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: SmallTalk
+  m_Name: Slucham
   m_EditorClassIdentifier: 
-  sentence: "\u0141adna Dzisiaj Pogoda"
-  responses: []
-  canExit: 1
+  sentence: "Nie m\xF3w s\u0142ucham bo Ci\u0119 wyru*ham"
+  responses:
+  - sentence: Cholipka...
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: 1e51acb2cce09b043a85d553fb9dd8f6, type: 2}
+  canExit: 0

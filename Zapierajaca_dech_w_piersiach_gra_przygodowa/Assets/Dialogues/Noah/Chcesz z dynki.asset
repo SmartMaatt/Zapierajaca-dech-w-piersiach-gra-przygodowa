@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: SmallTalk
+  m_Name: Chcesz z dynki
   m_EditorClassIdentifier: 
-  sentence: "\u0141adna Dzisiaj Pogoda"
-  responses: []
-  canExit: 1
+  sentence: "Nie. Ja tylko chcia\u0142em.."
+  responses:
+  - sentence: No to nie zawracaj mi gitary
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: d49c095faf8068a4388706b7389dd999, type: 2}
+  canExit: 0

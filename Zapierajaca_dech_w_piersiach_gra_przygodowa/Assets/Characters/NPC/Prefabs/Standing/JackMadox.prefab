@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3874306427280549248}
   - component: {fileID: 3184614628191356478}
   m_Layer: 0
-  m_Name: Jack 1
+  m_Name: JackMadox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192ed8e9874c38a409cac9d9ec2daa5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasantName: Jack
+  peasantName: Jack Madox
   dialogue: {fileID: 11400000, guid: 788efe05b92d19e458b64472ff2d0eb4, type: 2}
 --- !u!136 &3184614628191356478
 CapsuleCollider:

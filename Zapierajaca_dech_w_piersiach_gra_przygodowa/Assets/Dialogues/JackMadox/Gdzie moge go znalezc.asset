@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
+  m_Name: Gdzie moge go znalezc
+  m_EditorClassIdentifier: 
+  sentence: "Z\u0142y Czarnoksi\u0119\u017Cnik Borsy The Sola\u017C zbiera si\u0142y
+    aby najecha\u0107 nasz\u0105 wiosk\u0119 w Krypcie Nieumar\u0142ych Peasent\xF3w.
+    Na ko\u0144cu krypty znajduj\u0105 si\u0119 ci\u0119\u017Ckie kamienne drzwi,
+    do kt\xF3rych klucze maj\u0105 s\u0142ugusy Borysa The Sola\u017Ca. Nad\u0105\u017Casz?"
+  responses:
+  - sentence: "Jasne ju\u017C przeczyta\u0142em."
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: b896b71d9cce13e439c22797f3e7156e, type: 2}
+  canExit: 0

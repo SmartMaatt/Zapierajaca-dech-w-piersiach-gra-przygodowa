@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: Quest2
+  m_Name: Kogo zabic
   m_EditorClassIdentifier: 
-  sentence: Quest2
-  responses: []
-  canExit: 1
+  sentence: "Widz\u0119 \u017Ce mam doczynienia z Cz\u0142owiekiem Kultury. Ale przejd\u017Amy
+    do meritum."
+  responses:
+  - sentence: "Gdzie mog\u0119 go znale\u017A\u0107?"
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: cc4dd8a8d33a55d4ca7ba9bb2d9b737d, type: 2}
+  canExit: 0

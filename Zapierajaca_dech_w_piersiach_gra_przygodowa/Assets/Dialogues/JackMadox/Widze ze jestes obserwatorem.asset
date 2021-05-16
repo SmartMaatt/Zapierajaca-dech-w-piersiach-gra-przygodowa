@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
+  m_Name: Widze ze jestes obserwatorem
+  m_EditorClassIdentifier: 
+  sentence: "Widz\u0119 \u017Ce jeste\u015B jednym z przedstawicieli wymieraj\u0105cego
+    gatunku obserwator\xF3w. To nie mo\u017Ce by\u0107 przypadek, \u017Ce zjawi\u0142e\u015B
+    si\u0119 tutaj akurat dzisiaj. Mamy do Ciebie ogromn\u0105 pro\u015Bb\u0119."
+  responses:
+  - sentence: "Zamieniam si\u0119 w s\u0142uch"
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: 1e51acb2cce09b043a85d553fb9dd8f6, type: 2}
+  - sentence: "S\u0142ucham"
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: 567cb6bd098e4e0439ccb12c2647e8c9, type: 2}
+  canExit: 0

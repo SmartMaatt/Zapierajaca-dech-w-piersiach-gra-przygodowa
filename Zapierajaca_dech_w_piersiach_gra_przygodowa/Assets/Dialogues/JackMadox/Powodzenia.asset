@@ -10,13 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: Dupa z dupa
+  m_Name: Powodzenia
   m_EditorClassIdentifier: 
-  sentence: "Sz\u0142a dupa z dup\u0105"
-  responses:
-  - sentence: Beka dawaj jeszce raz
-    talkable: 0
-    nextDialogue: {fileID: 11400000, guid: 76a3ca707ce2ea7419bbd13b4236f9aa, type: 2}
-  - sentence: "S\u0142abe"
-    talkable: 0
-    nextDialogue: {fileID: 11400000, guid: bdd20c66467384b4a811c29e476ae01b, type: 2}
+  sentence: "Powodzenia. Niech moc b\u0119dzie z Wami!"
+  responses: []
+  canExit: 1

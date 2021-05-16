@@ -30058,11 +30058,7 @@ MonoBehaviour:
     m_Bits: 2048
   PortalMask:
     serializedVersion: 2
-<<<<<<< Updated upstream
     m_Bits: 8192
-=======
-    m_Bits: 0
->>>>>>> Stashed changes
   _staminaBar: {fileID: 7751971084216640897}
 --- !u!114 &7751971084844698378
 MonoBehaviour:

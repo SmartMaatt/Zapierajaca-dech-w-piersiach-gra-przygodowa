@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: SmallTalk
+  m_Name: Na co mi krysztaly
   m_EditorClassIdentifier: 
-  sentence: "\u0141adna Dzisiaj Pogoda"
+  sentence: "Dzi\u0119ki nim mo\u017Cesz zakln\u0105\u0107 sw\xF3j miecz przez co
+    twoje ataki b\u0119d\u0105 du\u017Co silniejsze."
   responses: []
   canExit: 1

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: Quest
+  m_Name: Dziekuje
   m_EditorClassIdentifier: 
-  sentence: Quest?
+  sentence: "Dzi\u0119kuj\u0119. Gdy zostan\u0119 so\u0142tysem na pewno Ci si\u0119
+    odwdzi\u0119cz\u0119."
   responses: []
   canExit: 1

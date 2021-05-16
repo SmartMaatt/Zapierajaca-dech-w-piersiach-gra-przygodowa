@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: Siema ENIU
+  m_Name: Dawaj co masz
   m_EditorClassIdentifier: 
-  sentence: Siema ENIU!!!
+  sentence: "Razem z pozosta\u0142ymi kopaczami chcemy wydoby\u0107 troch\u0119 tych
+    pot\u0119\u017Cnych kryszta\u0142\xF3w mocy. Niestety te zombie spod krypty nie
+    daj\u0105 nam spokoju."
   responses:
-  - sentence: E-E-E-Eluwina
+  - sentence: "Co moge zrobi\u0107, \u017Ceby wam pom\xF3c?"
     talkable: 0
-    nextDialogue: {fileID: 11400000, guid: 73c5675f6b1ec8240b4639d1086d2e87, type: 2}
-  - sentence: Pal wroty Stary
-    talkable: 0
-    nextDialogue: {fileID: 11400000, guid: 73c5675f6b1ec8240b4639d1086d2e87, type: 2}
-  canExit: 1
+    nextDialogue: {fileID: 11400000, guid: 1cb155eab8e2ee3429e6708f35b6f7ba, type: 2}
+  canExit: 0

@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: SmallTalk
+  m_Script: {fileID: 11500000, guid: ca8a03e9d2b1aa44a96cd3bb4970f851, type: 3}
+  m_Name: GetPumpkin
   m_EditorClassIdentifier: 
-  sentence: "\u0141adna Dzisiaj Pogoda"
-  responses: []
-  canExit: 1
+  active: 1
+  title: "J\xF3zef Pa(m)pkin"
+  description: Dynie jak donice
+  questType: 0
+  goldReward: 0
+  experienceReward: 0
+  itemsRewards: []
+  nextQuest: {fileID: 0}

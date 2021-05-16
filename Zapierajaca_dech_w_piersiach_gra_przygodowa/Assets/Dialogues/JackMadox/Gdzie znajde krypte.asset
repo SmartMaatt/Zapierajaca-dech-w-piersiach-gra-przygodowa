@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
+  m_Name: Gdzie znajde krypte
+  m_EditorClassIdentifier: 
+  sentence: "Wej\u015Bcie do krypty jest wykute w skale w g\xF3rach na p\xF3\u0142nocny-zach\xF3d
+    od wioski. Nieopodal wioski znajduje si\u0119 wzg\xF3rze, z kt\xF3rego z \u0142atwo\u015Bci\u0105
+    zobaczysz wej\u015Bcie do krypty."
+  responses:
+  - sentence: "W takim razie nie tra\u0107my czasu. Ja i m\xF3j obserwowany obiekt
+      zmierzamy z odsiecz\u0105."
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: ec610fd0904bf954ebeec4f2d16c5718, type: 2}
+  canExit: 0

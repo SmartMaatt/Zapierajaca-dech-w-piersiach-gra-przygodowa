@@ -22,14 +22,18 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public GameObject profilePart = null;
     public GameObject skillsPart = null;
     public GameObject player = null;
-    public new GameObject cameraBase = null;
+    public GameObject cameraBase = null;
+    public List<Dialogue> allTalkableOnceDialogues;
 
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera dialogów...");
         // ODKOMENTOWAĆ TO
-        if(dialoguseCanvas)
+        if (dialoguseCanvas)
+        {
             dialoguseCanvas.SetActive(false);
+        }
+        ResetAllDialogues();
         status = ManagerStatus.Started;
     }
 
@@ -117,5 +121,19 @@ public class DialogueManager : MonoBehaviour, IGameManager
     {
         Managers.Quest.CheckTalkToQuest(response.nextDialogue);
         ShowDialogue(response.nextDialogue);
+    }
+
+    public void ResetAllDialogues()
+    {
+        foreach (Dialogue dialogue in allTalkableOnceDialogues)
+        {
+            foreach (Dialogue.Response response in dialogue.responses)
+            {
+                if (response.talkable == Dialogue.Talkable.DONE)
+                {
+                    response.talkable = Dialogue.Talkable.ONCE;
+                }
+            }
+        }
     }
 }

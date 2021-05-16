@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
+  m_Name: Juz przeczytalem
+  m_EditorClassIdentifier: 
+  sentence: "A no tak. Zapomnia\u0142em, \u017Ce wy obserwatorzy jeste\u015Bcie g\u0142usi
+    i czytacie z ruchu warg. Wracaj\u0105c do tematu. Za drzwiami znajduje si\u0119
+    portal do wymiaru, w kt\xF3rym przebywa Z\u0142y Czarnoksi\u0119\u017Cnik."
+  responses:
+  - sentence: "Gdzie znajd\u0119 t\u0119 krypt\u0119 Pradawnych Peasent\xF3w?"
+    talkable: 0
+    nextDialogue: {fileID: 11400000, guid: db436ef2313d963498190d4f0e24a449, type: 2}
+  canExit: 0
