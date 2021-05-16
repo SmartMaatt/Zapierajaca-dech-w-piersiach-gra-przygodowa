@@ -29881,6 +29881,7 @@ GameObject:
   - component: {fileID: 7751971084844698379}
   - component: {fileID: 7751971084844698376}
   - component: {fileID: 7751971084844698377}
+  - component: {fileID: 2282961302470996472}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -30145,6 +30146,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e584dd16953348b4f9f028f24c7fdccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1.5
+--- !u!114 &2282961302470996472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751971084844698382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2497b1dd6f34d134ba5b778b43a0cbc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1.5
@@ -48105,15 +48119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d70478d0a618e4fb7178c2c008c51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguseCanvas: {fileID: 0}
-  dialogueArea: {fileID: 0}
-  responseButtonPrefab: {fileID: 0}
-  exitButtonPrefab: {fileID: 0}
+  dialoguseCanvas: {fileID: 7751971084973270398}
+  dialogueArea: {fileID: 7751971085316617499}
+  responseButtonPrefab: {fileID: 324708844578818758, guid: a0cccbfbe79c322489c33e52f2dcab8c,
+    type: 3}
+  exitButtonPrefab: {fileID: 4599001606915500484, guid: 8053847e2f109654d9c366b7cd6676ea,
+    type: 3}
   responseButtons: []
-  characterNameText: {fileID: 0}
-  characterSentenceText: {fileID: 0}
-  player: {fileID: 0}
-  camera: {fileID: 0}
+  characterNameText: {fileID: 7751971085350690739}
+  characterSentenceText: {fileID: 7751971085673689866}
+  profilePart: {fileID: 7751971084075376809}
+  skillsPart: {fileID: 7751971084163103547}
+  player: {fileID: 7751971084844698382}
+  cameraBase: {fileID: 7751971085584383676}
 --- !u!114 &7751971085683900660
 MonoBehaviour:
   m_ObjectHideFlags: 0

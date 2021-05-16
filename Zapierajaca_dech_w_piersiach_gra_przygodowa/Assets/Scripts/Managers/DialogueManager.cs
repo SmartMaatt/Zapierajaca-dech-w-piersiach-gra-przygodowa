@@ -12,32 +12,36 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public ManagerStatus status { get; private set; }
 
     // ZABRAĆ STĄD NULL
-    public Canvas dialoguseCanvas = null;
-    public Image dialogueArea = null;
+    public GameObject dialoguseCanvas = null;
+    public GameObject dialogueArea = null;
     public GameObject responseButtonPrefab = null;
     public GameObject exitButtonPrefab = null;
     public List<GameObject> responseButtons = null;
     public TextMeshProUGUI characterNameText = null;
     public TextMeshProUGUI characterSentenceText = null;
+    public GameObject profilePart = null;
+    public GameObject skillsPart = null;
     public GameObject player = null;
-    public new GameObject camera = null;
+    public new GameObject cameraBase = null;
 
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera dialogów...");
         // ODKOMENTOWAĆ TO
-        //dialoguseCanvas.enabled = false;
+        dialoguseCanvas.SetActive(false);
         status = ManagerStatus.Started;
     }
 
     public void StartDialogue(Dialogue firstDialogue, string peasantName)
     {
-        if (!dialoguseCanvas.enabled)
+        if (!dialoguseCanvas.activeSelf)
         {
             player.GetComponent<RelativeMovement>().enabled = false;
             player.GetComponent<Animator>().SetFloat("Speed", 0f);
-            camera.GetComponent<CameraFollow>().enabled = false;
-            dialoguseCanvas.enabled = true;
+            cameraBase.GetComponent<CameraFollow>().enabled = false;
+            dialoguseCanvas.SetActive(true);
+            profilePart.SetActive(false);
+            skillsPart.SetActive(false);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
@@ -50,7 +54,6 @@ public class DialogueManager : MonoBehaviour, IGameManager
     {
         foreach(GameObject button in responseButtons)
         {
-            //responseButtons.Remove(button);
             Destroy(button);
         }
 
@@ -96,8 +99,10 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public void EndDialogue()
     {
         player.GetComponent<RelativeMovement>().enabled = true;
-        camera.GetComponent<CameraFollow>().enabled = true;
-        dialoguseCanvas.enabled = false;
+        cameraBase.GetComponent<CameraFollow>().enabled = true;
+        dialoguseCanvas.SetActive(false);
+        profilePart.SetActive(true);
+        skillsPart.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
