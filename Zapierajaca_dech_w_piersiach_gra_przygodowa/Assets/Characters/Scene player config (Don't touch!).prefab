@@ -30058,7 +30058,7 @@ MonoBehaviour:
     m_Bits: 2048
   PortalMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   _staminaBar: {fileID: 7751971084216640897}
 --- !u!114 &7751971084844698378
 MonoBehaviour:
@@ -30100,6 +30100,7 @@ MonoBehaviour:
   firstXPFactor: 100
   level: 1
   maxLevel: 100
+  isDead: 0
 --- !u!114 &7751971084844698379
 MonoBehaviour:
   m_ObjectHideFlags: 0

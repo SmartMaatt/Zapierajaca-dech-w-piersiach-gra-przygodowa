@@ -28,7 +28,8 @@ public class DialogueManager : MonoBehaviour, IGameManager
     {
         Debug.Log("Uruchomienie menadżera dialogów...");
         // ODKOMENTOWAĆ TO
-        dialoguseCanvas.SetActive(false);
+        if(dialoguseCanvas)
+            dialoguseCanvas.SetActive(false);
         status = ManagerStatus.Started;
     }
 
