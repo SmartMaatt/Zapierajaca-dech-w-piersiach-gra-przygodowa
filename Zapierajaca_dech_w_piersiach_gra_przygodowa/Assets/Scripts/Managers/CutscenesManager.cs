@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutscenesManager : MonoBehaviour, IGameManager
 {
@@ -13,11 +14,14 @@ public class CutscenesManager : MonoBehaviour, IGameManager
 
     public IEnumerator playCutscene(GameObject Scene, GameObject Cutscene)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1f);
         Cutscene.SetActive(true);
         Scene.SetActive(false);
         yield return new WaitForSeconds(13f);
         Scene.SetActive(true);
         Cutscene.SetActive(false);
+        SceneManager.LoadScene(4);
+        Cursor.visible = true;
+        Cursor.lockState = Cursor.lockState = CursorLockMode.None;
     }
 }
