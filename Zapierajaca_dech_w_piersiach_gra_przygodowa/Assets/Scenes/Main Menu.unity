@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 88c25438fa1dbce4685d43dc5431df89,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -53586,6 +53587,7 @@ MonoBehaviour:
   killQuests: []
   talkToQuests: []
   visitQuests: []
+  allQuests: []
 --- !u!114 &664323740023617389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53637,6 +53639,7 @@ MonoBehaviour:
   skillsPart: {fileID: 664323738213977251}
   player: {fileID: 664323739184938134}
   cameraBase: {fileID: 664323740055996708}
+  allTalkableOnceDialogues: []
 --- !u!4 &664323740023617394
 Transform:
   m_ObjectHideFlags: 0
