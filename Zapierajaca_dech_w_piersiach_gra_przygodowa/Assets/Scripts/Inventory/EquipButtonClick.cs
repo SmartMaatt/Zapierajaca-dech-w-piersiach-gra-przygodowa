@@ -21,7 +21,6 @@ public class EquipButtonClick : MonoBehaviour
     {
         Managers.Inventory.ItemsPrefabs[itemIndex].GetComponent<Items>().Drop(player.transform.position + new Vector3(0, 0.5f, 0), true, setOnMap);
 
-        Debug.Log(Managers.Inventory.GetItemCount(itemIndex));
         if (Managers.Inventory.GetItemCount(itemIndex) < 1)
         {
             if (iconActiv)

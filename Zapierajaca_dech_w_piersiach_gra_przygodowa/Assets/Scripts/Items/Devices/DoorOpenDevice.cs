@@ -64,7 +64,6 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
     private IEnumerator doorOpenClose(Vector3 startPos, Vector3 endPos, bool up)
     {
         float speed = 1;
-        Debug.Log(transform.position.y + " " + endPos.y);
         while (transform.position.y > endPos.y)
         {
             if (up)

@@ -52,8 +52,6 @@ public abstract class AbstractCharacter : MonoBehaviour
             _health = 0;
             die();
         }
-
-        Debug.Log("Current health: " + _health);
     }
 
     public bool isDead()

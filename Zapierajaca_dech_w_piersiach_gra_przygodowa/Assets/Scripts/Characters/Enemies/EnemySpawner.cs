@@ -23,7 +23,6 @@ public class EnemySpawner : MonoBehaviour
             foreach (var enemy in tmp)
             {
                 _enemyList.Add(enemy.transform.gameObject);
-                Debug.Log(enemy.transform.gameObject);
             }
         }
         else
@@ -37,7 +36,6 @@ public class EnemySpawner : MonoBehaviour
     {
         if (!_incorrectType)
         {
-            Debug.Log(_enemyList.Count);
             if (_enemyList.Count < maxActiveMods)
             {
                 Vector3 walkPoint = transform.position + new Vector3(Random.Range(-rangeX, rangeX), 0, Random.Range(-rangeZ, rangeZ));

@@ -82,7 +82,6 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     public bool AddItem(int item)
     {
-        Debug.Log("Add item: " + item);
         if (_items.Count < inventorySize)
         {
             Items thisItem = ItemsPrefabs[item].GetComponent<Items>();
@@ -225,7 +224,6 @@ public class InventoryManager : MonoBehaviour, IGameManager
         itemSlotCount = ItemSlot.transform.Find("ItemCount").gameObject;
         if (itemSlotCount != null)
         {
-            Debug.Log("itemCount: " + GetItemCount(item));
             itemSlotCount.GetComponentInChildren<Text>().text = (GetItemCount(item) + amount).ToString();
         }
     }

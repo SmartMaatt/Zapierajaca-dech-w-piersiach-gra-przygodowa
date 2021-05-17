@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIOperator : MonoBehaviour
 {
     public GameObject InventoryPanel;
+    public GameObject EscapePanel;
 
     bool _activInvetory = false;
 
@@ -15,7 +16,7 @@ public class UIOperator : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && !Managers.Player.isDead)
+        if (Input.GetKeyDown(KeyCode.I) && !Managers.Player.isDead && !EscapePanel.active)
         {
             _activInvetory = !_activInvetory;
             if (!_activInvetory)
@@ -24,7 +25,7 @@ public class UIOperator : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
             }
-            else
+            else if(_activInvetory && !Cursor.visible)
             {
                 Time.timeScale = 0.0f;
                 Cursor.visible = true;

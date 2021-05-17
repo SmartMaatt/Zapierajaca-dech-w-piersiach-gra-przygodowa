@@ -121,7 +121,6 @@ public class EnemyAI : MonoBehaviour {
     private void goToPoint()
     {
         agent.SetDestination(_walkPoint);
-        Debug.Log(_walkPoint);
         _currentMaxSpeed = _characterController.getWalkSpeed();
     }
 
@@ -202,8 +201,6 @@ public class EnemyAI : MonoBehaviour {
                 _currentMoveSpeed -= Time.deltaTime * _characterController.getAcceleration(isChasing);
             }
         }
-
-        //Debug.Log("Speed: " + _currentMoveSpeed);
         _animator.SetFloat("Speed", _currentMoveSpeed);
         agent.speed = _currentMoveSpeed;
     }

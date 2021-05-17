@@ -2289,7 +2289,7 @@ GameObject:
   - component: {fileID: 1222144202611441520}
   - component: {fileID: 6546510729000094526}
   m_Layer: 9
-  m_Name: Zombie 1
+  m_Name: Fire Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2494,9 +2494,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   obstacleRange: 0.5
-  walkPointRange: 10
-  hearRange: 14
-  sightRange: 20
+  walkPointRange: 20
+  hearRange: 20
+  sightRange: 32
   sightConeRange: 130
   maxRestTime: 7
   minRestTime: 2

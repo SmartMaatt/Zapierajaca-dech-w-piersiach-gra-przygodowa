@@ -75,7 +75,6 @@ public class PlayerManager : AbstractCharacter, IGameManager
             EnemyAI enemy = hit.GetComponent<EnemyAI>();
             if (enemy)
             {
-                Debug.Log(enemy);
                 enemy.attackRange = 0;
                 enemy.hearRange = 0;
                 enemy.sightRange = 0;
@@ -144,7 +143,6 @@ public class PlayerManager : AbstractCharacter, IGameManager
     {
         if((exp > (firstXPFactor * level)) && (level <= maxLevel))
         {
-            Debug.Log(exp + " " + firstXPFactor + " " + level);
             exp -= firstXPFactor * level;
             level++;
             levelText.text = level.ToString();

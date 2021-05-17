@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 1621774684}
   - component: {fileID: 1621774683}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: CanvasLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36178,7 +36178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664323739319755387}
   m_Layer: 0
-  m_Name: Scene player config (Don't touch!)
+  m_Name: Settings (Don't touch!)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

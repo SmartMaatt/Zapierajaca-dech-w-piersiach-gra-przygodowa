@@ -55,8 +55,6 @@ public class ShieldCollisionBehaviour : MonoBehaviour
         }
       }
     }
-
-    //Debug.Log(e.Hit.textureCoord);
   }
 
   // Update is called once per frame

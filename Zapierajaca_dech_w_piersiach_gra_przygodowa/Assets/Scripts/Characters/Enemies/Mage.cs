@@ -273,8 +273,6 @@ public class Mage : AbstractCharacter
         int leftBall = leftHand.transform.childCount;
         int rightBall = rightHand.transform.childCount;
 
-        Debug.Log(leftBall + " " + rightBall);
-
         if (leftBall > 6)
             Destroy(leftHand.transform.GetChild(6).transform.gameObject);
 

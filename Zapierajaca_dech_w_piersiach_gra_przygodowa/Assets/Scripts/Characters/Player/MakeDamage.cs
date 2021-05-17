@@ -69,7 +69,6 @@ public class MakeDamage : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Weapon equiped!");
             EquipeWeapon weapon = GetComponent<EquipeWeapon>();
             if (weapon != null)
             {
@@ -188,7 +187,6 @@ public class MakeDamage : MonoBehaviour
             }
             else
             {
-                Debug.Log("CHUJA");
                 StartCoroutine(errorPopup());
             }
         }

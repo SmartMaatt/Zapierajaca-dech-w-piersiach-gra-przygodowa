@@ -71,7 +71,6 @@ public class SaveManager : MonoBehaviour, IGameManager
                 for(int j = 0; j < currentLoad._valuesInventory[i]; j++)
                 {
                     Managers.Inventory.AddItem(currentLoad._keysInventory[i]);
-                    Debug.Log(currentLoad._keysInventory[i]);
                 }
             }
         }
