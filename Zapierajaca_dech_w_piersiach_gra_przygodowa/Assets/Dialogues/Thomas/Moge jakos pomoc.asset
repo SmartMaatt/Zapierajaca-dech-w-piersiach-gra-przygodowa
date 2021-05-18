@@ -15,6 +15,6 @@ MonoBehaviour:
   sentence: "M\xF3g\u0142by\u015B za\u0142atwi\u0107 tego stwora dla mnie?"
   responses:
   - sentence: "Nie ma problemu. Zajm\u0119 si\u0119 tym."
-    talkable: 0
+    talkable: 4
     nextDialogue: {fileID: 11400000, guid: dee1faa7e3cedb84898dd0731d97682a, type: 2}
   canExit: 0

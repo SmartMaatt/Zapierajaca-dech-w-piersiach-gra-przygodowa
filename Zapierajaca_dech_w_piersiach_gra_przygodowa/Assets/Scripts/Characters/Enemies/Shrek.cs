@@ -10,6 +10,8 @@ public class Shrek : AbstractCharacter
     Animator _animator;
     EnemyAI _enemyInteligence;
     [SerializeField] float hitCoolDownTime;
+    string _mobName = "Shrek";
+
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -31,6 +33,7 @@ public class Shrek : AbstractCharacter
         _animator.SetTrigger("isDead");
         Managers.Player.changeMoney(givenMoney);
         Managers.Player.changeExp(givenExp);
+        Managers.Quest.CheckKillQuest(_mobName);
         StartCoroutine(dieAwait(dieAwaitTime));
     }
 

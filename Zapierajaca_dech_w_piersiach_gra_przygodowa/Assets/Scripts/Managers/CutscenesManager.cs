@@ -18,8 +18,6 @@ public class CutscenesManager : MonoBehaviour, IGameManager
         Cutscene.SetActive(true);
         Scene.SetActive(false);
         yield return new WaitForSeconds(13f);
-        Scene.SetActive(true);
-        Cutscene.SetActive(false);
         SceneManager.LoadScene(4);
         Cursor.visible = true;
         Cursor.lockState = Cursor.lockState = CursorLockMode.None;

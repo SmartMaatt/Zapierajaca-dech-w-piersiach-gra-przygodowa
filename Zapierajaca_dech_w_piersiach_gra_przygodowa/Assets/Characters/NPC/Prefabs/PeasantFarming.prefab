@@ -2368,16 +2368,22 @@ MonoBehaviour:
     workingPlace: {x: 4, y: 0, z: 12}
     workingRotation: {x: 0, y: 90, z: 0}
     workType: 2
+    minWorkingTime: 0
+    maxWorkingTime: 0
     workingTime: 0
   - workingTool: {fileID: 6578081714505545366}
     workingPlace: {x: 1, y: 0, z: 6}
     workingRotation: {x: 0, y: 0, z: 0}
     workType: 2
+    minWorkingTime: 0
+    maxWorkingTime: 0
     workingTime: 0
   - workingTool: {fileID: 6578081714505545366}
     workingPlace: {x: -3, y: 0, z: 12}
     workingRotation: {x: 0, y: 0, z: 0}
     workType: 1
+    minWorkingTime: 0
+    maxWorkingTime: 0
     workingTime: 0
 --- !u!1 &6307553132938910711
 GameObject:

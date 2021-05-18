@@ -27,6 +27,7 @@ public class MakeDamage : MonoBehaviour
     [SerializeField] private float magicRadiusBonus;
 
     private Animator _animator;
+    private AudioManager _audioManager;
     private PlayerManager _playerManager;
     private bool _canAttack;
     private bool _canBlock;
@@ -43,6 +44,7 @@ public class MakeDamage : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _audioManager = GetComponent<AudioManager>();
         _playerManager = GetComponent<PlayerManager>();
 
         _canAttack = true;
@@ -94,6 +96,8 @@ public class MakeDamage : MonoBehaviour
             if (_animator.GetBool("WeaponEquipped"))
             {
                 _isAttacting = true;
+                _audioManager.Play("SwordWhip" + Random.Range((int)1, (int)4).ToString());
+
                 Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius + _magicRadius);
                 foreach (Collider hitCollider in hitColliders)
                 {
@@ -102,6 +106,7 @@ public class MakeDamage : MonoBehaviour
                     {
                         AbstractCharacter enemy = hitCollider.GetComponent<AbstractCharacter>();
                         ShieldCollisionBehaviour shield = hitCollider.GetComponent<ShieldCollisionBehaviour>();
+                        PeasantCharacter peasant = hitCollider.GetComponent<PeasantCharacter>();
 
                         if (enemy)
                         {
@@ -117,6 +122,10 @@ public class MakeDamage : MonoBehaviour
                                 var collInfo = new CollisionInfo { Hit = hit };
                                 shield.ShieldCollisionEnter(collInfo);
                             }
+                        }
+                        else if (peasant)
+                        {
+                            _audioManager.Play("StopIt" + Random.Range((int)1, (int)3));
                         }
                     }
                 }
@@ -178,6 +187,7 @@ public class MakeDamage : MonoBehaviour
                 _canMagic = false;
                 normalSword.SetActive(false);
                 magicSword.SetActive(true);
+                _audioManager.Play("PowerSword");
 
                 _magicAttack = magicDamageBonus;
                 _magicRadius = magicRadiusBonus;

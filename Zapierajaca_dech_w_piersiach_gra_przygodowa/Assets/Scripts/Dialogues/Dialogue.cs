@@ -25,7 +25,8 @@ public class Dialogue : ScriptableObject
         INFINITE = 0,
         ONCE = 1,
         QUEST = 2,
-        DONE = 3
+        DONE = 3,
+        SETQUEST = 4
     }
 }
 

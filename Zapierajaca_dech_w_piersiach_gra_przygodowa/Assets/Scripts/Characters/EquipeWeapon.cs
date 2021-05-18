@@ -8,10 +8,12 @@ public class EquipeWeapon : MonoBehaviour
 
     private bool isEquiped;
     private Animator _animator;
+    private AudioManager _audioManager;
 
     public void Start()
     {
         _animator = GetComponent<Animator>();
+        _audioManager = GetComponent<AudioManager>();
     }
 
     public bool Operate()
@@ -28,6 +30,7 @@ public class EquipeWeapon : MonoBehaviour
             }
 
             _animator.SetBool("WeaponEquipped", true);
+            _audioManager.Play("SwordEquip");
         }
         else
         {
@@ -38,6 +41,8 @@ public class EquipeWeapon : MonoBehaviour
                 equippedItem.Item.transform.localPosition = equippedItem.putAwayPosition;
                 equippedItem.Item.transform.localEulerAngles = equippedItem.putAwayRotation;
             }
+
+            _audioManager.Play("SwordUnequip");
             _animator.SetBool("WeaponEquipped", false);
         }
 

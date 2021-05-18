@@ -28,12 +28,15 @@ public class PlayerManager : AbstractCharacter, IGameManager
     private Animator _animator;
     private RelativeMovement _movementScript;
     private MakeDamage _damageScript;
+    private AudioManager _audioManager;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _damageScript = GetComponent<MakeDamage>();
         _movementScript = GetComponent<RelativeMovement>();
+        _audioManager = GetComponent<AudioManager>();
+        _audioManager.Play("Heal");
 
         if (_healthBar)
         {
@@ -65,6 +68,8 @@ public class PlayerManager : AbstractCharacter, IGameManager
         GetComponent<PlayerManager>().enabled = false;
         cameraScript.isDead = true;
         isDead = true;
+        _audioManager.Play("Die");
+        _audioManager.Play("DeathMusic");
 
         UIController UI = FindObjectsOfType<UIController>()[0];
         if (UI) { UI.playerDiedScene(); }
@@ -88,9 +93,15 @@ public class PlayerManager : AbstractCharacter, IGameManager
         {
             float armorBonus;
             if (_armour > 0)
+            {
                 armorBonus = (float)_armour / 100 * (float)damage;
+                _audioManager.Play("ShieldBlock");
+            }
             else
+            {
                 armorBonus = 0;
+                _audioManager.Play("PlayerHit" + Random.Range((int)1, (int)3));
+            }
 
             changeHealth(-damage + (int)armorBonus);
             _healthBar.setBarValue(_health);
@@ -131,6 +142,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
     {
         money += amound;
         moneyText.text = money.ToString();
+        _audioManager.Play("Coin");
     }
 
     public void changeExp(int amound)
@@ -156,6 +168,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
             _damageScript.addAttackStrength(1);
 
             LevelUpSprite.RunFace(3, 0.5f);
+            _audioManager.Play("LevelUp");
             levelUp();
         }
     }

@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System;
 
 public class UIController : MonoBehaviour
 {
+
     [SerializeField] GameObject LeftPart;
     [SerializeField] GameObject RightPart;
     [SerializeField] GameObject DiedSprite;
@@ -12,10 +13,12 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject Quests;
 
     [SerializeField] GameObject escapeMenu;
+    [SerializeField] AudioSource mainSoundBackground;
+    private float _mainSoundBGVolume = 0.05f;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !Inventory.active)
+        if (Input.GetKeyDown(KeyCode.Escape) && !Inventory.active && !Quests.active)
         {
             escapeMenuToggle();
         }
@@ -52,4 +55,24 @@ public class UIController : MonoBehaviour
         Quests.SetActive(false);
         DiedSprite.SetActive(true);
     }
+
+    public void changeVolume(TMP_Text buttonText)
+    {
+        if (_mainSoundBGVolume <= 0)
+        {
+            _mainSoundBGVolume = 0.5f;
+        }
+        else
+        {
+            _mainSoundBGVolume -= 0.05f;
+        }
+
+        mainSoundBackground.volume = _mainSoundBGVolume;
+
+        if (_mainSoundBGVolume <= 0)
+            buttonText.text = "Muzyka Brak";
+        else
+            buttonText.text = "Muzyka " + Math.Round(_mainSoundBGVolume,2).ToString(); 
+    }
+
 }

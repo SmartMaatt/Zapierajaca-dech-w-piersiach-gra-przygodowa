@@ -4700,7 +4700,7 @@ MonoBehaviour:
   UseMoveVector: 1
   Target: {fileID: 0}
   MoveVector: {x: 0, y: 0, z: 1}
-  MoveSpeed: 3
+  MoveSpeed: 1
   IsHomingMove: 0
   MoveDistance: 20
   IsVisible: 1

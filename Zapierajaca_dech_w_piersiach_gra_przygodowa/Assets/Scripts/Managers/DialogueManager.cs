@@ -9,7 +9,6 @@ public class DialogueManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
-    // ZABRAĆ STĄD NULL
     public GameObject dialoguseCanvas = null;
     public GameObject dialogueArea = null;
     public GameObject responseButtonPrefab = null;
@@ -27,7 +26,6 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public void Startup()
     {
         Debug.Log("Uruchomienie menadżera dialogów...");
-        // ODKOMENTOWAĆ TO
         if (dialoguseCanvas)
         {
             dialoguseCanvas.SetActive(false);
@@ -50,7 +48,6 @@ public class DialogueManager : MonoBehaviour, IGameManager
             peasantTalkingTo = peasant;
             Working targetWorking = peasant.GetComponent<Working>();
             targetWorking.StartTalking(player);
-            //targetWorking.enabled = false;
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -66,33 +63,33 @@ public class DialogueManager : MonoBehaviour, IGameManager
         {
             Destroy(button);
         }
+        responseButtons.Clear();
 
         characterSentenceText.text = newDialogue.sentence;
         foreach (Dialogue.Response response in newDialogue.responses)
         {
             if(response.talkable != Dialogue.Talkable.DONE)
             {
-                if (response.talkable == Dialogue.Talkable.QUEST && !Managers.Quest.DoesThisDialoguInQuestExist(response.nextDialogue))
-                { }
-                else
+                switch (response.talkable)
                 {
-                    GameObject button = Instantiate(responseButtonPrefab);
-                    GameObject buttonText = button.transform.GetChild(0).gameObject;
-                    buttonText.GetComponent<TextMeshProUGUI>().text = response.sentence;
-                    switch (response.talkable)
-                    {
-                        case Dialogue.Talkable.INFINITE:
-                            button.GetComponent<Button>().onClick.AddListener(delegate { ShowDialogue(response.nextDialogue); });
-                            break;
-                        case Dialogue.Talkable.ONCE:
-                            button.GetComponent<Button>().onClick.AddListener(delegate { ResponseOnce(response); });
-                            break;
-                        case Dialogue.Talkable.QUEST:
-                            button.GetComponent<Button>().onClick.AddListener(delegate { ResponseQuest(response); });
-                            break;
-                    }
-                    button.transform.SetParent(dialogueArea.transform);
-                    responseButtons.Add(button);
+                    case Dialogue.Talkable.INFINITE:
+                        AddButtonDialogue(delegate { ShowDialogue(response.nextDialogue); }, response);
+                        break;
+                    case Dialogue.Talkable.ONCE:
+                        AddButtonDialogue(delegate { ResponseOnce(response); }, response);
+                        break;
+                    case Dialogue.Talkable.QUEST:
+                        if (Managers.Quest.DoesThisDialogueInQuestExist(response.nextDialogue))
+                        {
+                            AddButtonDialogue(delegate { ResponseQuest(response); }, response);
+                        }
+                        break;
+                    case Dialogue.Talkable.SETQUEST:
+                        if (Managers.Quest.CanISetThisQuest(response.nextDialogue))
+                        {
+                            AddButtonDialogue(delegate { ResponseSetQuest(response); }, response);
+                        }
+                        break;
                 }
             }
         }
@@ -106,6 +103,16 @@ public class DialogueManager : MonoBehaviour, IGameManager
         }
     }
 
+    public void AddButtonDialogue(UnityEngine.Events.UnityAction call, Dialogue.Response response)
+    {
+        GameObject button = Instantiate(responseButtonPrefab);
+        GameObject buttonText = button.transform.GetChild(0).gameObject;
+        buttonText.GetComponent<TextMeshProUGUI>().text = response.sentence;
+        button.GetComponent<Button>().onClick.AddListener(call);
+        button.transform.SetParent(dialogueArea.transform);
+        responseButtons.Add(button);
+    }
+
     public void EndDialogue()
     {
         player.GetComponent<RelativeMovement>().enabled = true;
@@ -115,7 +122,6 @@ public class DialogueManager : MonoBehaviour, IGameManager
         skillsPart.SetActive(true);
 
         Working targetWorking = peasantTalkingTo.GetComponent<Working>();
-        //targetWorking.enabled = true;
         targetWorking.StopTalking();
 
         Cursor.visible = false;
@@ -130,6 +136,12 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public void ResponseQuest(Dialogue.Response response)
     {
         Managers.Quest.CheckTalkToQuest(response.nextDialogue);
+        ShowDialogue(response.nextDialogue);
+    }
+
+    public void ResponseSetQuest(Dialogue.Response response)
+    {
+        Managers.Quest.SetQuest(response.nextDialogue);
         ShowDialogue(response.nextDialogue);
     }
 

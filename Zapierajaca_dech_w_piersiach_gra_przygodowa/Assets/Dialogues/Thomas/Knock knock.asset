@@ -20,4 +20,7 @@ MonoBehaviour:
   - sentence: Co myslisz o dzisiejszej pogodzie?
     talkable: 0
     nextDialogue: {fileID: 11400000, guid: 788efe05b92d19e458b64472ff2d0eb4, type: 2}
+  - sentence: "Ten stw\xF3r... to Shrek"
+    talkable: 2
+    nextDialogue: {fileID: 11400000, guid: 6efc118c47153934a92f11a4d6b694db, type: 2}
   canExit: 0

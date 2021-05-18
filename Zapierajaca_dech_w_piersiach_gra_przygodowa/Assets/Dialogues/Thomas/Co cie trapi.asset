@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Co cie trapi
   m_EditorClassIdentifier: 
   sentence: "Ostatnio jak wraca\u0142em z Bagna napad\u0142 na mnie jaki\u015B stw\xF3r.
-    Zabra\u0142 moje zasoby i uszkodzil m\xF3j w\xF3z. Nawet je\u015Bli naprawi\u0119
-    w\xF3z to nic mi to nie da je\u017Celi ten stw\xF3r dalej b\u0119dzie bezkarnie
-    grasowa\u0142 na bagnach."
+    Zabra\u0142 moje zasoby i uszkodzil m\xF3j w\xF3z. Nawet je\u015Bli go naprawi\u0119
+    to nic mi to nie da je\u017Celi ten stw\xF3r dalej b\u0119dzie bezkarnie grasowa\u0142
+    na bagnach."
   responses:
   - sentence: "Przykra sprawa. Mog\u0119 Ci jako\u015B pom\xF3c?"
     talkable: 0

@@ -15,11 +15,13 @@ public class PlayerHeal : MonoBehaviour
     [SerializeField] GameObject NoPotionErrorPopup;
 
     private PlayerManager _playerManager;
+    private AudioManager _audioManager;
     private bool _canHeal;
     
     void Start()
     {
         _playerManager = GetComponent<PlayerManager>();
+        _audioManager = GetComponent<AudioManager>();
         _canHeal = true;
 
         potionIcon.setUpBar((int)(healingTime * 100));
@@ -34,6 +36,7 @@ public class PlayerHeal : MonoBehaviour
             {
                 StartCoroutine(HealingProcess());
                 Managers.Inventory.InventoryView.transform.Find("Health PotionPOTION_slot").gameObject.GetComponent<EquipButtonClick>().Drop(false);
+                _audioManager.Play("Heal");
             }
             else
             {

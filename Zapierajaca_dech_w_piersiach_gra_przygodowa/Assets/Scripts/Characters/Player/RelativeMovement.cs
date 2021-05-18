@@ -37,12 +37,14 @@ public class RelativeMovement : MonoBehaviour
 
     //References
     private CharacterController _controller;
+    private AudioManager _audioManager;
     private MakeDamage _damageScript;
     private Animator _animator;
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _audioManager = GetComponent<AudioManager>();
         _damageScript = GetComponent<MakeDamage>();
         _animator = GetComponent<Animator>();
 
@@ -126,6 +128,8 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = walkSpeed;
         _animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
 
+        _audioManager.Play("GrassSteps", UnityEngine.Random.Range(0.2f, 0.4f), 1f, false);
+
         if (_runStaminaCounter < runStamina && _canSprint)
         {
             if (_damageScript.isEquiped())
@@ -140,7 +144,9 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = runSpeed;
         _animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
 
-        if(_damageScript.isEquiped())
+        _audioManager.Play("GrassSteps", UnityEngine.Random.Range(0.2f, 0.4f), 1.3f, false);
+
+        if (_damageScript.isEquiped())
             _runStaminaCounter -= Time.deltaTime * 2;
         else
             _runStaminaCounter -= Time.deltaTime;
@@ -170,6 +176,9 @@ public class RelativeMovement : MonoBehaviour
     {
         _velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         isJumping = true;
+
+        if (!_audioManager.isPlaying("Jump"))
+            _audioManager.Play("Jump");
     }
 
     public void addRunStamina(float stamina)
