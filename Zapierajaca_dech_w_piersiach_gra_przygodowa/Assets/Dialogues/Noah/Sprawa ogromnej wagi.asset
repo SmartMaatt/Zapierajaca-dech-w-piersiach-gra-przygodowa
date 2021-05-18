@@ -16,6 +16,6 @@ MonoBehaviour:
     na najwi\u0119ksze dynie w wiosce i zostan\u0119 so\u0142tysem."
   responses:
   - sentence: "Rozumiem. Zabieram si\u0119 do poszukiwa\u0144."
-    talkable: 2
+    talkable: 4
     nextDialogue: {fileID: 11400000, guid: dda0f837bd2092d4d8737388c5348d03, type: 2}
   canExit: 0

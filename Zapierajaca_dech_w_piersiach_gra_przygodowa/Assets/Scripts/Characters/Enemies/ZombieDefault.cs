@@ -13,6 +13,7 @@ public class ZombieDefault : AbstractCharacter
     EnemyAI _enemyInteligence;
     LookAroundRigging _restAnimation;
     TargetHeadAim _headTarget;
+    AudioManager _audioManager;
     string _mobName = "Zombie";
 
     [Header("Special - Zombie")]
@@ -24,12 +25,14 @@ public class ZombieDefault : AbstractCharacter
         _enemyInteligence = GetComponent<EnemyAI>();
         _restAnimation = GetComponent<LookAroundRigging>();
         _headTarget = GetComponent<TargetHeadAim>();
+        _audioManager = GetComponent<AudioManager>();
     }
 
     public override void getHit(int damage)
     {
         if (!_immortal)
         {
+            _audioManager.Play("Damage" + Random.Range((int)1, (int)3));
             StartCoroutine(hitCoolDown(hitCoolDownTime));
             _animator.SetTrigger("isHit");
             changeHealth(-damage);
@@ -106,6 +109,7 @@ public class ZombieDefault : AbstractCharacter
                 AbstractCharacter target = hitCollider.GetComponent<PlayerManager>();
                 if (target != null)
                 {
+                    _audioManager.Play("Attack" + Random.Range((int)1, (int)4));
                     target.getHit(_damage);
 
                 }

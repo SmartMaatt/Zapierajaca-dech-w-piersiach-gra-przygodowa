@@ -33,6 +33,10 @@ public abstract class Quest : ScriptableObject
                     break;
             }
         }
+        else
+        {
+            Managers.Quest.QuestEnd(goldReward, experienceReward);
+        }
 
         Managers.Player.changeMoney(goldReward);
         Managers.Player.changeExp(experienceReward);

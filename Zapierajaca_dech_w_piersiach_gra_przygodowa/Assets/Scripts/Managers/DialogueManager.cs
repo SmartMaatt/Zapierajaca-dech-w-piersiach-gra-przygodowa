@@ -142,6 +142,7 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public void ResponseSetQuest(Dialogue.Response response)
     {
         Managers.Quest.SetQuest(response.nextDialogue);
+        peasantTalkingTo.GetComponent<PeasantCharacter>().HideExclamationMark();
         ShowDialogue(response.nextDialogue);
     }
 

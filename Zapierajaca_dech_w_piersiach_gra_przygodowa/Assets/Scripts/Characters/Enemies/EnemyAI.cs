@@ -10,6 +10,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour {
 
     private Animator _animator;
+    private AudioManager _audioManager;
     private AbstractCharacter _characterController;
 
     private float _currentMaxSpeed;
@@ -31,8 +32,9 @@ public class EnemyAI : MonoBehaviour {
         public float sightConeRange;
         public float maxRestTime;
         public float minRestTime;
+        public int idleSoundCount;
         Vector3 _walkPoint;
-        bool walkPointSet, enemyReadyToPatrol, playerInHearRange, playerInSightRange;
+        bool walkPointSet, enemyReadyToPatrol, playerInHearRange, playerInSightRange, _idleSound;
 
     [Header("Attacking")]
         public float timeBetweenAttacks;
@@ -47,6 +49,7 @@ public class EnemyAI : MonoBehaviour {
         player = FindObjectsOfType<RelativeMovement>()[0].transform;
         agent = GetComponent<NavMeshAgent>();
         _characterController = GetComponent<AbstractCharacter>();
+        _audioManager = GetComponent<AudioManager>();
 
         _currentMoveSpeed = _standStill;
         _currentMaxSpeed = _standStill;
@@ -56,10 +59,16 @@ public class EnemyAI : MonoBehaviour {
         enemyReadyToPatrol = false;
         playerInHearRange = false;
         playerInSightRange = false;
+        _idleSound = false;
 
         alreadyAttacked = false;
         playerInAttackRange = false;
         isChasing = false;
+    }
+
+    private void Start()
+    {
+        _audioManager.Play("Spawn");
     }
 
 
@@ -82,7 +91,13 @@ public class EnemyAI : MonoBehaviour {
     {
         if (!walkPointSet && !enemyReadyToPatrol) { SearchWalkPoint(); }
         else if(walkPointSet && !enemyReadyToPatrol) { _currentMaxSpeed = _standStill; }
-        else if(walkPointSet && enemyReadyToPatrol) { goToPoint(); }
+        else if(walkPointSet && enemyReadyToPatrol) {
+            goToPoint();
+            _audioManager.Play("Step", UnityEngine.Random.Range(0.4f, 0.5f), 0.5f, false, false);
+        }
+
+        if(!_idleSound)
+            StartCoroutine(IdleSound());
 
         Vector3 distanceToWalkPoint = transform.position - _walkPoint;
 
@@ -133,6 +148,7 @@ public class EnemyAI : MonoBehaviour {
 
         isChasing = true;
 
+        _audioManager.Play("Step", UnityEngine.Random.Range(0.5f, 0.6f), 1f, false, false);
         _characterController.setStateMachine(1, 0, 0);
         _currentMaxSpeed = _characterController.getRunSpeed();
         _animator.SetBool("Attack", false);
@@ -152,6 +168,7 @@ public class EnemyAI : MonoBehaviour {
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
         _currentMaxSpeed = _standStill;
+        _audioManager.Stop("Step");
         _animator.SetBool("Attack", false);
         _characterController.setStateMachine(2, 0, 0);
 
@@ -308,5 +325,16 @@ public class EnemyAI : MonoBehaviour {
     {
         yield return new WaitForSeconds(timeOfRest);
         enemyReadyToPatrol = true;
+    }
+
+    private IEnumerator IdleSound()
+    {
+        _idleSound = true;
+        float time = UnityEngine.Random.Range(10, 15);
+        yield return new WaitForSeconds(time);
+
+        _audioManager.Play("Idle" + UnityEngine.Random.Range((int)1, (int)idleSoundCount + 1).ToString());
+        Debug.Log("Idle" + UnityEngine.Random.Range((int)1, (int)idleSoundCount + 1).ToString());
+        _idleSound = false;
     }
 }

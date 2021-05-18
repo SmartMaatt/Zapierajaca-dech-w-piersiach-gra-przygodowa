@@ -140,9 +140,12 @@ public class PlayerManager : AbstractCharacter, IGameManager
 
     public void changeMoney(int amound)
     {
-        money += amound;
-        moneyText.text = money.ToString();
-        _audioManager.Play("Coin");
+        if (amound != 0)
+        {
+            money += amound;
+            moneyText.text = money.ToString();
+            _audioManager.Play("Coin");
+        }
     }
 
     public void changeExp(int amound)
@@ -171,5 +174,10 @@ public class PlayerManager : AbstractCharacter, IGameManager
             _audioManager.Play("LevelUp");
             levelUp();
         }
+    }
+
+    public AudioManager getAudioManager()
+    {
+        return _audioManager;
     }
 }

@@ -10,6 +10,7 @@ public class SaveManager : MonoBehaviour, IGameManager
     public ManagerStatus status { get; private set; }
     public string SavePath;
     public string SaveScenePath;
+    [SerializeField] UIController musicVolume;
     
     public void Startup()
     {
@@ -30,10 +31,11 @@ public class SaveManager : MonoBehaviour, IGameManager
         int _exp = Managers.Player.exp;
         int _money = Managers.Player.money;
         int _level = Managers.Player.level;
+        float _music = musicVolume.getCurrentVolume();
         int[] _keysInventory = (new List<int>(Managers.Inventory._items.Keys)).ToArray();
         int[] _valuesInventory = (new List<int>(Managers.Inventory._items.Values)).ToArray();
 
-        SaveFileTemplate currentSave = new SaveFileTemplate(_exp, _money, _level, _keysInventory, _valuesInventory);
+        SaveFileTemplate currentSave = new SaveFileTemplate(_exp, _money, _level, _music, _keysInventory, _valuesInventory);
         SaveStageState currentStageSave = new SaveStageState(_sceneToSave);
 
         string saveData = JsonUtility.ToJson(currentSave, true);
@@ -65,6 +67,7 @@ public class SaveManager : MonoBehaviour, IGameManager
             Managers.Player.exp = currentLoad._exp;
             Managers.Player.level = currentLoad._level;
             Managers.Player.money = currentLoad._money;
+            musicVolume.startMusicVolume = currentLoad._music;
             
             for (int i = 0; i < currentLoad._keysInventory.Length; i++)
             {
@@ -85,6 +88,7 @@ public class SaveManager : MonoBehaviour, IGameManager
         public int _exp;
         public int _money;
         public int _level;
+        public float _music;
         public int[] _keysInventory;
         public int[] _valuesInventory;
 
@@ -93,15 +97,17 @@ public class SaveManager : MonoBehaviour, IGameManager
             _exp = 0;
             _money = 0;
             _level = 0;
+            _music = 0;
             _keysInventory = null;
             _valuesInventory = null;
         }
 
-        public SaveFileTemplate(int exp, int money, int level, int[] keysInventory, int[] valuesInventory)
+        public SaveFileTemplate(int exp, int money, int level, float music, int[] keysInventory, int[] valuesInventory)
         {
             _exp = exp;
             _money = money;
             _level = level;
+            _music = music;
             _keysInventory = keysInventory;
             _valuesInventory = valuesInventory;
         }

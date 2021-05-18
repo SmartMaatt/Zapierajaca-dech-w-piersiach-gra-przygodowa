@@ -128,7 +128,7 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = walkSpeed;
         _animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
 
-        _audioManager.Play("GrassSteps", UnityEngine.Random.Range(0.2f, 0.4f), 1f, false);
+        _audioManager.Play("Step", UnityEngine.Random.Range(0.3f, 0.5f), 1f, false, false);
 
         if (_runStaminaCounter < runStamina && _canSprint)
         {
@@ -144,7 +144,7 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = runSpeed;
         _animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
 
-        _audioManager.Play("GrassSteps", UnityEngine.Random.Range(0.2f, 0.4f), 1.3f, false);
+        _audioManager.Play("Step", UnityEngine.Random.Range(0.4f, 0.6f), 1.3f, false, false);
 
         if (_damageScript.isEquiped())
             _runStaminaCounter -= Time.deltaTime * 2;

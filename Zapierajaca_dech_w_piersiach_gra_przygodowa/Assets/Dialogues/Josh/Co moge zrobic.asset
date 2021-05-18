@@ -17,6 +17,6 @@ MonoBehaviour:
     sie paroma kryszta\u0142ami."
   responses:
   - sentence: "Na co mi te kryszta\u0142y?"
-    talkable: 2
+    talkable: 4
     nextDialogue: {fileID: 11400000, guid: 005180748adb7aa439baac96a5aa0de9, type: 2}
   canExit: 0

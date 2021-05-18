@@ -23,6 +23,9 @@ public class InventoryManager : MonoBehaviour, IGameManager
     GameObject itemSlotIcon;
     GameObject itemSlotType;
 
+    AudioManager _audioManager;
+    AudioSource _audioBG;
+
     [SerializeField] private Text error;
     [SerializeField] private int inventorySize = 60;
     public GameObject[] ItemsPrefabs = new GameObject[2];
@@ -33,6 +36,9 @@ public class InventoryManager : MonoBehaviour, IGameManager
         Debug.Log("Uruchomienie menadżera magazynu...");
         _items = new Dictionary<int, int>();
         status = ManagerStatus.Started;
+        _audioManager = GetComponent<AudioManager>();
+        _audioBG = GetComponent<AudioSource>();
+
         if (error)
             error.enabled = false;
     }
@@ -293,5 +299,15 @@ public class InventoryManager : MonoBehaviour, IGameManager
         }
 
         _items.Clear();
+    }
+
+    public AudioManager GetAudioManager()
+    {
+        return _audioManager;
+    }
+
+    public AudioSource GetAudioBackground()
+    {
+        return _audioBG;
     }
 }

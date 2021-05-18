@@ -13,8 +13,15 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject Quests;
 
     [SerializeField] GameObject escapeMenu;
-    [SerializeField] AudioSource mainSoundBackground;
-    private float _mainSoundBGVolume = 0.05f;
+
+    public float startMusicVolume;
+    private float _mainSoundBGVolume;
+
+    private void Start()
+    {
+        _mainSoundBGVolume = startMusicVolume;
+        changeVolume(null);
+    }
 
     private void Update()
     {
@@ -33,6 +40,7 @@ public class UIController : MonoBehaviour
     {
         if (escapeMenu.active)
         {
+            Managers.Inventory.GetAudioManager().UnmuteAllManagers();
             Time.timeScale = 1.0f;
             escapeMenu.SetActive(false);
             Cursor.visible = false;
@@ -41,6 +49,7 @@ public class UIController : MonoBehaviour
         else
         {
             Time.timeScale = 0.0f;
+            Managers.Inventory.GetAudioManager().MuteSoundsWithoutThis();
             escapeMenu.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = Cursor.lockState = CursorLockMode.None;
@@ -58,21 +67,31 @@ public class UIController : MonoBehaviour
 
     public void changeVolume(TMP_Text buttonText)
     {
-        if (_mainSoundBGVolume <= 0)
+        if (buttonText != null)
         {
-            _mainSoundBGVolume = 0.5f;
-        }
-        else
-        {
-            _mainSoundBGVolume -= 0.05f;
+            if (_mainSoundBGVolume <= 0)
+            {
+                _mainSoundBGVolume = 0.2f;
+            }
+            else
+            {
+                _mainSoundBGVolume -= 0.01f;
+            }
         }
 
-        mainSoundBackground.volume = _mainSoundBGVolume;
+        Managers.Inventory.GetAudioBackground().volume = _mainSoundBGVolume;
 
-        if (_mainSoundBGVolume <= 0)
-            buttonText.text = "Muzyka Brak";
-        else
-            buttonText.text = "Muzyka " + Math.Round(_mainSoundBGVolume,2).ToString(); 
+        if (buttonText != null)
+        {
+            if (_mainSoundBGVolume <= 0)
+                buttonText.text = "Muzyka Brak";
+            else
+                buttonText.text = "Muzyka " + Math.Round((100 * Math.Round(_mainSoundBGVolume, 3) / 0.2f), 0).ToString() + "%";
+        }
     }
 
+    public float getCurrentVolume()
+    {
+        return _mainSoundBGVolume;
+    }
 }

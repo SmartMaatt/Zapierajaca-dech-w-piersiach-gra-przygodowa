@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9a347732d6dad44bd483eaf6d7e5d8, type: 3}
-  m_Name: Nie zawracaj gitary
+  m_Script: {fileID: 11500000, guid: 82802a2816845ff43adea24c4a56479b, type: 3}
+  m_Name: SetShrek
   m_EditorClassIdentifier: 
-  sentence: Sory
-  responses: []
-  canExit: 1
+  dialogue: {fileID: 11400000, guid: dee1faa7e3cedb84898dd0731d97682a, type: 2}
+  quest: {fileID: 11400000, guid: 7c550a94caa134548b9710424019fb0b, type: 2}

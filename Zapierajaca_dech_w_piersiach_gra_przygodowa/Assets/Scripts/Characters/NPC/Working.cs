@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(AudioManager))]
 public class Working : MonoBehaviour
 {
     public List<WorkTask> workTasks;
@@ -19,11 +20,13 @@ public class Working : MonoBehaviour
     private int activity = 0;
     private float timeCount = 0.0f;
     private Transform playerTransform;
+    private AudioManager _audioManager = null;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
+        _audioManager = GetComponent<AudioManager>();
         currenTask = workTasks[0];
     }
 
@@ -62,6 +65,7 @@ public class Working : MonoBehaviour
                 break;
             case WorkType.FARMING:
                 _animator.SetBool("Farming", set);
+                _audioManager.Play("Farming");
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WORKING);
                 break;
             case WorkType.FISHING:
@@ -171,6 +175,7 @@ public class Working : MonoBehaviour
         currenTask = workTasks[taskNumber];
 
         working = false;
+        _audioManager.Stop("Farming");
         yield return null;
     }
 

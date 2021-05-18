@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: e955e2b6dc13314449e3c3253178505d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: e955e2b6dc13314449e3c3253178505d, type: 3}
       propertyPath: m_RootOrder
@@ -38785,7 +38785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &935564299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38896,7 +38896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &941057032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46171,6 +46171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportScene: 3
+  killBorysQuest: {fileID: 11400000, guid: a72a3918bfad03741a5914c96bf9fc83, type: 2}
 --- !u!65 &1887679654
 BoxCollider:
   m_ObjectHideFlags: 0

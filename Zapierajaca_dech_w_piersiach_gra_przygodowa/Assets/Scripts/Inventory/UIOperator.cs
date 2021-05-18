@@ -9,9 +9,6 @@ public class UIOperator : MonoBehaviour
     public GameObject EscapePanel;
     public GameObject QuestPanel;
 
-    public AudioSource open;
-    public AudioSource close;
-
     bool _activInvetory = false;
     bool _activQuests = false;
 
@@ -22,14 +19,16 @@ public class UIOperator : MonoBehaviour
             _activInvetory = !_activInvetory;
             if (!_activInvetory)
             {
-                open.Play();
+                Managers.Inventory.GetAudioManager().UnmuteAllManagers();
+                Managers.Inventory.GetAudioManager().Play("Close");
                 Time.timeScale = 1.0f;
                 Cursor.visible = false;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
             }
             else if(_activInvetory && !Cursor.visible)
             {
-                close.Play();
+                Managers.Inventory.GetAudioManager().MuteSoundsWithoutThis();
+                Managers.Inventory.GetAudioManager().Play("Open");
                 Time.timeScale = 0.0f;
                 Cursor.visible = true;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.None;
@@ -44,14 +43,16 @@ public class UIOperator : MonoBehaviour
             _activQuests = !_activQuests;
             if (!_activQuests)
             {
-                open.Play();
+                Managers.Inventory.GetAudioManager().UnmuteAllManagers();
+                Managers.Inventory.GetAudioManager().Play("Close");
                 Time.timeScale = 1.0f;
                 Cursor.visible = false;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
             }
             else if (_activQuests && !Cursor.visible)
             {
-                close.Play();
+                Managers.Inventory.GetAudioManager().MuteSoundsWithoutThis();
+                Managers.Inventory.GetAudioManager().Play("Open");
                 Time.timeScale = 0.0f;
                 Cursor.visible = true;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.None;

@@ -8,8 +8,13 @@ public class PeasantCharacter : MonoBehaviour
 
     public Dialogue dialogue;
 
-    public void StopWorking()
-    {
+    public GameObject exclamationMark = null;
 
+    public void HideExclamationMark()
+    {
+        if (exclamationMark)
+        {
+            exclamationMark.SetActive(false);
+        }
     }
 }

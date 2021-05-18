@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public int teleportScene;
+    public Quest killBorysQuest;
     CapsuleCollider _collider;
 
     private void Start()
@@ -15,7 +16,14 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene()
     {
-        StartCoroutine(ChangeSceneCor());
+        foreach(KillQuest quest in Managers.Quest.killQuests)
+        {
+            if(quest == killBorysQuest)
+            {
+                StartCoroutine(ChangeSceneCor());
+                break;
+            }
+        }
     }
 
     private IEnumerator ChangeSceneCor()
