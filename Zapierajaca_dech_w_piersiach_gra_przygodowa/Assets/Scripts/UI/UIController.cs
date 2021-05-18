@@ -5,7 +5,6 @@ using System;
 
 public class UIController : MonoBehaviour
 {
-
     [SerializeField] GameObject LeftPart;
     [SerializeField] GameObject RightPart;
     [SerializeField] GameObject DiedSprite;
@@ -25,7 +24,7 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !Inventory.active && !Quests.active)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             escapeMenuToggle();
         }
@@ -40,11 +39,15 @@ public class UIController : MonoBehaviour
     {
         if (escapeMenu.active)
         {
-            Managers.Inventory.GetAudioManager().UnmuteAllManagers();
-            Time.timeScale = 1.0f;
             escapeMenu.SetActive(false);
-            Cursor.visible = false;
-            Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
+
+            if (!Managers.Dialogue.isTalking && !Inventory.active && !Quests.active)
+            {
+                Managers.Inventory.GetAudioManager().UnmuteAllManagers();
+                Time.timeScale = 1.0f;
+                Cursor.visible = false;
+                Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
+            }
         }
         else
         {

@@ -14,7 +14,7 @@ public class UIOperator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && !Managers.Player.isDead && !EscapePanel.active && !QuestPanel.active)
+        if (Input.GetKeyDown(KeyCode.I) && !Managers.Player.isDead && !EscapePanel.active && !QuestPanel.active && !Managers.Dialogue.isTalking)
         {
             _activInvetory = !_activInvetory;
             if (!_activInvetory)
@@ -38,7 +38,7 @@ public class UIOperator : MonoBehaviour
             ReloadInventoryCapacity();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && !Managers.Player.isDead && !EscapePanel.active && !InventoryPanel.active)
+        if (Input.GetKeyDown(KeyCode.Q) && !Managers.Player.isDead && !EscapePanel.active && !InventoryPanel.active && !Managers.Dialogue.isTalking)
         {
             _activQuests = !_activQuests;
             if (!_activQuests)

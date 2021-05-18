@@ -213,15 +213,15 @@ public class QuestManager : MonoBehaviour, IGameManager
 
     public void QuestStart()
     {
-        questStarted.RunFace(3f, 1f);
+        questStarted.RunFace(2f, 0.5f);
         Managers.Player.getAudioManager().Play("Heal");
     }
 
     public void QuestEnd(int gold, int exp)
     {
-        questEnd.RunFace(3f, 1f);
+        questEnd.RunFace(2f, 0.5f);
         popUp.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Złoto: " + gold + "\nExp: " + exp;
-        popUp.RunFace(3f, 1f);
+        popUp.RunFace(2f, 0.5f);
         Managers.Player.getAudioManager().Play("Heal");
     }
 }

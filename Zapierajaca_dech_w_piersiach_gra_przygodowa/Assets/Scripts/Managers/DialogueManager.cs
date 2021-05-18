@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
+    public bool isTalking;
+
     public GameObject dialoguseCanvas = null;
     public GameObject dialogueArea = null;
     public GameObject responseButtonPrefab = null;
@@ -31,6 +33,7 @@ public class DialogueManager : MonoBehaviour, IGameManager
             dialoguseCanvas.SetActive(false);
         }
         ResetAllDialogues();
+        isTalking = false;
         status = ManagerStatus.Started;
     }
 
@@ -39,11 +42,13 @@ public class DialogueManager : MonoBehaviour, IGameManager
         if (!dialoguseCanvas.activeSelf)
         {
             player.GetComponent<RelativeMovement>().enabled = false;
+            player.GetComponent<MakeDamage>().enabled = false;
             player.GetComponent<Animator>().SetFloat("Speed", 0f);
             cameraBase.GetComponent<CameraFollow>().enabled = false;
             dialoguseCanvas.SetActive(true);
             profilePart.SetActive(false);
             skillsPart.SetActive(false);
+            isTalking = true;
             
             peasantTalkingTo = peasant;
             Working targetWorking = peasant.GetComponent<Working>();
@@ -116,10 +121,12 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public void EndDialogue()
     {
         player.GetComponent<RelativeMovement>().enabled = true;
+        player.GetComponent<MakeDamage>().enabled = false;
         cameraBase.GetComponent<CameraFollow>().enabled = true;
         dialoguseCanvas.SetActive(false);
         profilePart.SetActive(true);
         skillsPart.SetActive(true);
+        isTalking = false;
 
         Working targetWorking = peasantTalkingTo.GetComponent<Working>();
         targetWorking.StopTalking();
