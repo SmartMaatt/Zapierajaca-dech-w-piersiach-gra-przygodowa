@@ -2253,6 +2253,7 @@ GameObject:
   - component: {fileID: 2535602450905966196}
   - component: {fileID: 2535602450905966197}
   - component: {fileID: 2535602450905966198}
+  - component: {fileID: 5816567148536869112}
   m_Layer: 0
   m_Name: Josh
   m_TagString: Untagged
@@ -2347,6 +2348,8 @@ MonoBehaviour:
     minWorkingTime: 0
     maxWorkingTime: 0
     workingTime: 0
+  startWorkTime: 0
+  repeatWorkTime: 0
 --- !u!114 &2535602450905966198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,6 +2365,55 @@ MonoBehaviour:
   peasantName: Josh
   dialogue: {fileID: 11400000, guid: 788efe05b92d19e458b64472ff2d0eb4, type: 2}
   exclamationMark: {fileID: 2993285794301922828}
+--- !u!114 &5816567148536869112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535602450905966199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 0}
+    name: 
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e7245178fcb3d3848b5e0ed55f2c1e20, type: 3}
+    name: Farming
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6b605da2206511f4d929da45b91a2a74, type: 3}
+    name: HammerWorking
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 41787bbd937756d4f9baf5af2ad62a21, type: 3}
+    name: Mining
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep:
+  - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
 --- !u!1 &2535602451165401077
 GameObject:
   m_ObjectHideFlags: 0

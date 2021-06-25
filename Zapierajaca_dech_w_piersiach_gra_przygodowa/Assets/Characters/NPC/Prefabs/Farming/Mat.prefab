@@ -593,6 +593,8 @@ MonoBehaviour:
     minWorkingTime: 15
     maxWorkingTime: 30
     workingTime: 0
+  startWorkTime: 0.66
+  repeatWorkTime: 1.63
 --- !u!195 &7129390283227724371
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -666,10 +668,24 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e7245178fcb3d3848b5e0ed55f2c1e20, type: 3}
     name: Farming
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
-    scapeSound: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6b605da2206511f4d929da45b91a2a74, type: 3}
+    name: HammerWorking
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 41787bbd937756d4f9baf5af2ad62a21, type: 3}
+    name: Mining
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
     source: {fileID: 0}
   footStep:
   - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}

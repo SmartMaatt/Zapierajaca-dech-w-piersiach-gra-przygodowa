@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIOperator : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class UIOperator : MonoBehaviour
                 Time.timeScale = 1.0f;
                 Cursor.visible = false;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
+                Managers.Player.gameObject.GetComponent<MakeDamage>().enabled = true;
             }
             else if(_activInvetory && !Cursor.visible)
             {
@@ -32,6 +34,7 @@ public class UIOperator : MonoBehaviour
                 Time.timeScale = 0.0f;
                 Cursor.visible = true;
                 Cursor.lockState = Cursor.lockState = CursorLockMode.None;
+                Managers.Player.gameObject.GetComponent<MakeDamage>().enabled = false;
             }
 
             InventoryPanel.SetActive(_activInvetory);
@@ -40,26 +43,36 @@ public class UIOperator : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && !Managers.Player.isDead && !EscapePanel.active && !InventoryPanel.active && !Managers.Dialogue.isTalking)
         {
-            _activQuests = !_activQuests;
-            if (!_activQuests)
+            if (SceneManager.GetActiveScene().buildIndex == 1)
             {
-                Managers.Inventory.GetAudioManager().UnmuteAllManagers();
-                Managers.Inventory.GetAudioManager().Play("Close");
-                Time.timeScale = 1.0f;
-                Cursor.visible = false;
-                Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
-            }
-            else if (_activQuests && !Cursor.visible)
-            {
-                Managers.Inventory.GetAudioManager().MuteSoundsWithoutThis();
-                Managers.Inventory.GetAudioManager().Play("Open");
-                Time.timeScale = 0.0f;
-                Cursor.visible = true;
-                Cursor.lockState = Cursor.lockState = CursorLockMode.None;
-                Managers.Quest.ShowQuests();
-            }
+                _activQuests = !_activQuests;
+                if (!_activQuests)
+                {
+                    Managers.Inventory.GetAudioManager().UnmuteAllManagers();
+                    Managers.Inventory.GetAudioManager().Play("Close");
+                    Time.timeScale = 1.0f;
+                    Cursor.visible = false;
+                    Cursor.lockState = Cursor.lockState = CursorLockMode.Locked;
+                    Managers.Player.gameObject.GetComponent<MakeDamage>().enabled = true;
+                }
+                else if (_activQuests && !Cursor.visible)
+                {
+                    Managers.Inventory.GetAudioManager().MuteSoundsWithoutThis();
+                    Managers.Inventory.GetAudioManager().Play("Open");
+                    Time.timeScale = 0.0f;
+                    Cursor.visible = true;
+                    Cursor.lockState = Cursor.lockState = CursorLockMode.None;
+                    Managers.Quest.ShowQuests();
+                    Managers.Player.gameObject.GetComponent<MakeDamage>().enabled = false;
+                }
 
-            QuestPanel.SetActive(_activQuests);
+                QuestPanel.SetActive(_activQuests);
+            }
+            else
+            {
+                Managers.Quest.popUp.RunFace(3f, 0f);
+                Managers.Quest.popUp.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Nie ma czasu na questy!\nTrzeba walczyć!";
+            }
         }
     }
 

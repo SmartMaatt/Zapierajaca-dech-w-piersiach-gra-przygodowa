@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 2362519512999249377}
   - component: {fileID: 2362519512999249382}
   - component: {fileID: 8424017274875986538}
+  - component: {fileID: 1538672148643370073}
   m_Layer: 9
   m_Name: Mage
   m_TagString: Untagged
@@ -1122,13 +1123,14 @@ MonoBehaviour:
     m_Bits: 256
   obstacleRange: 0.5
   walkPointRange: 20
-  hearRange: 12
-  sightRange: 15
+  hearRange: 20
+  sightRange: 32
   sightConeRange: 130
   maxRestTime: 10
   minRestTime: 5
-  timeBetweenAttacks: 3
-  attackRange: 8
+  idleSoundCount: 2
+  timeBetweenAttacks: 1.5
+  attackRange: 12
   minTimeAttackStartDelay: 0
   maxTimeAttackStartDelay: 1
 --- !u!114 &2362519512999249377
@@ -1159,11 +1161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ae5a65fba8dc1479ca9a2c45e320b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 120
-  _health: 120
+  _maxHealth: 250
+  _health: 250
   dieAwaitTime: 7
   _armour: 0
-  _damage: 5
+  _damage: 15
   _blocking: 0
   _immortal: 0
   _walkSpeed: 0.5
@@ -1174,14 +1176,12 @@ MonoBehaviour:
   dropList: []
   givenMoney: 5000
   givenExp: 5000
-  magicPower: 0
+  magicPower: 201
   limitOfPowerToBoost: 200
   coolDownFireball: 3
-  FireballDamage: 15
-  coolDownHand: 1.5
+  FireballDamage: 20
+  coolDownHand: 1
   timeOfHeal: 7
-  explosionRadius: 0
-  explosionPower: 0
   fireballPrefab: {fileID: 100006, guid: 19d7f76af0512e14c91c7a2486e3724f, type: 3}
   fireballPrefabNonAttack: {fileID: 100006, guid: c2bc1fb968666244aa8a8de22256b2a0,
     type: 3}
@@ -1197,6 +1197,8 @@ MonoBehaviour:
     type: 3}
   leftHand: {fileID: 1326717042258637177}
   rightHand: {fileID: 695685655497594292}
+  Scene: {fileID: 0}
+  Cutscene: {fileID: 0}
 --- !u!114 &8424017274875986538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1214,6 +1216,146 @@ MonoBehaviour:
     m_Bits: 16
   radius: 1
   waterDamage: 30
+--- !u!114 &1538672148643370073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362519512999249380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 0}
+    name: 0
+    volume: 1
+    pitch: 0.8
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 42b9d78d603435244a9ae2707aa65eec, type: 3}
+    name: Drawning
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7fa759d7b94f24740a311ba9343c7d30, type: 3}
+    name: Aura1
+    volume: 0.5
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 69b67357e78530e469016eab33a7e94a, type: 3}
+    name: Aura2
+    volume: 0.5
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 2907d448e2415de44a33f89c303a4d03, type: 3}
+    name: Explosion
+    volume: 0.5
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 93339ca80930ba54890f61bcf1d41e0b, type: 3}
+    name: Fire
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0d3ceb47f607e6d40b93f54fcf093764, type: 3}
+    name: Idle1
+    volume: 0.4
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a273efcf28b7b7743a945278ed4c2052, type: 3}
+    name: Fireball
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: ec1a14b722eb61d4ea74750488ca98c9, type: 3}
+    name: Idle2
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8d4bbd68ddfb9ad4b9532ac2e4bc5984, type: 3}
+    name: FireHit
+    volume: 0.4
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 631229694e3bd354696551fb98ebc794, type: 3}
+    name: Spawn
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fb990b13ea9b611449359b5e1be0006b, type: 3}
+    name: Death
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0d3ceb47f607e6d40b93f54fcf093764, type: 3}
+    name: Spotted
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0bbc6bfdff8960a45aa56aca85041ef1, type: 3}
+    name: Hit1
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b2f3077e133bc40419f3fae6b181c0c9, type: 3}
+    name: Hit2
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep:
+  - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
 --- !u!1 &2478771803943260608
 GameObject:
   m_ObjectHideFlags: 0

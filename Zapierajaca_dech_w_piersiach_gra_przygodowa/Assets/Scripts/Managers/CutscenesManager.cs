@@ -14,6 +14,9 @@ public class CutscenesManager : MonoBehaviour, IGameManager
 
     public IEnumerator playCutscene(GameObject Scene, GameObject Cutscene)
     {
+        Managers.Inventory.GetAudioBackground().Stop();
+        Managers.Inventory.GetAudioManager().Play("EpicSaxGuy");
+        Managers.Player.transform.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         Cutscene.SetActive(true);
         Scene.SetActive(false);

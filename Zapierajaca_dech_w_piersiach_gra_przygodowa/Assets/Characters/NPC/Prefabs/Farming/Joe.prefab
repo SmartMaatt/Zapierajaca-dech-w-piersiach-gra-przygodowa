@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4240264068686506760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898173778797567017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d2181b7143674e8e005ca4e73b240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handingPlaces:
+  - handingParent: {fileID: 4241260780041104784}
+    handingPosition: {x: -0.416, y: 0.147, z: 0.683}
+    handingRotation: {x: 342.259, y: 58.958, z: -268.767}
+    workType: 0
+  - handingParent: {fileID: 4241260780041104784}
+    handingPosition: {x: -0.227, y: 0.158, z: 0.262}
+    handingRotation: {x: 365.421, y: 43.559, z: -265.315}
+    workType: 1
+  - handingParent: {fileID: 4241260780041104784}
+    handingPosition: {x: -0.227, y: 0.158, z: 0.262}
+    handingRotation: {x: 365.421, y: 43.559, z: -265.315}
+    workType: 2
 --- !u!1 &4241260777140878854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,8 +2143,9 @@ GameObject:
   - component: {fileID: 4240264068386068129}
   - component: {fileID: 4240264068386068135}
   - component: {fileID: 7877660043546602825}
+  - component: {fileID: 1817768905159398911}
   m_Layer: 0
-  m_Name: Joe 1
+  m_Name: Joe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2225,6 +2251,8 @@ MonoBehaviour:
     minWorkingTime: 10
     maxWorkingTime: 20
     workingTime: 0
+  startWorkTime: 0.66
+  repeatWorkTime: 1.63
 --- !u!114 &7877660043546602825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,6 +2267,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peasantName: Joe
   dialogue: {fileID: 11400000, guid: 788efe05b92d19e458b64472ff2d0eb4, type: 2}
+  exclamationMark: {fileID: 0}
+--- !u!114 &1817768905159398911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241260781565137096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 0}
+    name: 
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e7245178fcb3d3848b5e0ed55f2c1e20, type: 3}
+    name: Farming
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6b605da2206511f4d929da45b91a2a74, type: 3}
+    name: HammerWorking
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 41787bbd937756d4f9baf5af2ad62a21, type: 3}
+    name: Mining
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep:
+  - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
 --- !u!1 &4241260781747384648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,31 +2793,6 @@ Transform:
   m_Father: {fileID: 4239651179713747330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4240264068686506760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898173778797567017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 892d2181b7143674e8e005ca4e73b240, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handingPlaces:
-  - handingParent: {fileID: 4241260780041104784}
-    handingPosition: {x: -0.416, y: 0.147, z: 0.683}
-    handingRotation: {x: 342.259, y: 58.958, z: -268.767}
-    workType: 0
-  - handingParent: {fileID: 4241260780041104784}
-    handingPosition: {x: -0.227, y: 0.158, z: 0.262}
-    handingRotation: {x: 365.421, y: 43.559, z: -265.315}
-    workType: 1
-  - handingParent: {fileID: 4241260780041104784}
-    handingPosition: {x: -0.227, y: 0.158, z: 0.262}
-    handingRotation: {x: 365.421, y: 43.559, z: -265.315}
-    workType: 2
 --- !u!1001 &4240264067512902008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2829,15 +2882,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5873df9947c56a479270bf6acb1b895, type: 3}
---- !u!1 &3898173778797567017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5873df9947c56a479270bf6acb1b895,
-    type: 3}
-  m_PrefabInstance: {fileID: 4240264067512902008}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4418814951750682259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5873df9947c56a479270bf6acb1b895,
+    type: 3}
+  m_PrefabInstance: {fileID: 4240264067512902008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3898173778797567017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5873df9947c56a479270bf6acb1b895,
     type: 3}
   m_PrefabInstance: {fileID: 4240264067512902008}
   m_PrefabAsset: {fileID: 0}

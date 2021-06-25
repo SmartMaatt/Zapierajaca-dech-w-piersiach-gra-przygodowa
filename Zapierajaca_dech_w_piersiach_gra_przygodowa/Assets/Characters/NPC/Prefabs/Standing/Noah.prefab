@@ -2321,6 +2321,7 @@ GameObject:
   - component: {fileID: 4618768992105208026}
   - component: {fileID: 4618768992105207973}
   - component: {fileID: 6597485664558946783}
+  - component: {fileID: 668590569165405143}
   m_Layer: 0
   m_Name: Noah
   m_TagString: Untagged
@@ -2407,6 +2408,8 @@ MonoBehaviour:
     minWorkingTime: 1
     maxWorkingTime: 2
     workingTime: 0
+  startWorkTime: 0
+  repeatWorkTime: 0
 --- !u!195 &4618768992105208026
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2458,6 +2461,55 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &668590569165405143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619185154831125006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 0}
+    name: 
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e7245178fcb3d3848b5e0ed55f2c1e20, type: 3}
+    name: Farming
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6b605da2206511f4d929da45b91a2a74, type: 3}
+    name: HammerWorking
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 41787bbd937756d4f9baf5af2ad62a21, type: 3}
+    name: Mining
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep:
+  - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
 --- !u!1 &4619185155139097616
 GameObject:
   m_ObjectHideFlags: 0

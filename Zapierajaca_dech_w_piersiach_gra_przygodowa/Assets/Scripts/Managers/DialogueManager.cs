@@ -64,7 +64,8 @@ public class DialogueManager : MonoBehaviour, IGameManager
 
     public void ShowDialogue(Dialogue newDialogue)
     {
-        foreach(GameObject button in responseButtons)
+        Managers.Inventory.GetAudioManager().Play("Talk" + UnityEngine.Random.Range((int)1, (int)8));
+        foreach (GameObject button in responseButtons)
         {
             Destroy(button);
         }
@@ -121,7 +122,7 @@ public class DialogueManager : MonoBehaviour, IGameManager
     public void EndDialogue()
     {
         player.GetComponent<RelativeMovement>().enabled = true;
-        player.GetComponent<MakeDamage>().enabled = false;
+        player.GetComponent<MakeDamage>().enabled = true;
         cameraBase.GetComponent<CameraFollow>().enabled = true;
         dialoguseCanvas.SetActive(false);
         profilePart.SetActive(true);

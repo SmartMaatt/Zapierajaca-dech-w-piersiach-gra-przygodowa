@@ -317,7 +317,7 @@ RectTransform:
   m_Children:
   - {fileID: 7751971085047532259}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -392,7 +392,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 1237764575455305711}
   - component: {fileID: 7892677619507907913}
   - component: {fileID: 3982439127637899881}
+  - component: {fileID: 1498040593736881341}
   m_Layer: 5
   m_Name: QuestPopUp
   m_TagString: Untagged
@@ -608,7 +609,7 @@ RectTransform:
   m_Children:
   - {fileID: 2273797335614745931}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -652,6 +653,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1498040593736881341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586981691027017207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038714fdc6e11d74ead2809742f7292c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2348127238071146451
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +696,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -770,7 +783,7 @@ RectTransform:
   m_Children:
   - {fileID: 7751971083990109750}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1712,7 +1725,7 @@ RectTransform:
   m_Children:
   - {fileID: 4955511511749227026}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2238,7 +2251,7 @@ RectTransform:
   - {fileID: 3331306954812403906}
   - {fileID: 8717941561504850721}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2276,7 +2289,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7958,12 +7971,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 2
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 12}
-  m_SizeDelta: {x: 0, y: 98.888885}
+  m_SizeDelta: {x: 0, y: 192}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7751971083929649268
 CanvasRenderer:
@@ -8398,7 +8411,7 @@ RectTransform:
   - {fileID: 7751971084108295266}
   - {fileID: 7751971083849333061}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25158,7 +25171,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -31586,6 +31599,8 @@ MonoBehaviour:
   level: 1
   maxLevel: 100
   isDead: 0
+  _movementScript: {fileID: 7751971084844698389}
+  _damageScript: {fileID: 7751971084844698388}
 --- !u!114 &7751971084844698379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31740,7 +31755,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 9c45cc7da50e8a64085f705c061eb4d4, type: 3}
     name: LevelUp
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     loop: 0
     scapeSound: 0
@@ -31809,6 +31824,20 @@ MonoBehaviour:
     loop: 0
     scapeSound: 0
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0.5
+    pitch: 0.5
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0.5
+    pitch: 0.5
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
 --- !u!1 &7751971084925625318
 GameObject:
   m_ObjectHideFlags: 0
@@ -31868,7 +31897,7 @@ RectTransform:
   m_Children:
   - {fileID: 7751971085316617498}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -38309,7 +38338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7751971085351039368
 MonoBehaviour:
@@ -43764,7 +43793,6 @@ RectTransform:
   m_Children:
   - {fileID: 7751971084075376808}
   - {fileID: 7751971084163103546}
-  - {fileID: 7751971083929649259}
   - {fileID: 7751971084458663899}
   - {fileID: 7355866612552034456}
   - {fileID: 6859943877176569024}
@@ -43778,6 +43806,7 @@ RectTransform:
   - {fileID: 7751971084973270393}
   - {fileID: 7751971085351039374}
   - {fileID: 747699019192021403}
+  - {fileID: 7751971083929649259}
   - {fileID: 2851564658182645593}
   - {fileID: 7751971084998361213}
   m_Father: {fileID: 7751971085272077795}
@@ -48813,7 +48842,7 @@ RectTransform:
   - {fileID: 7751971084306709847}
   - {fileID: 7751971083943956917}
   m_Father: {fileID: 7751971085511287589}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -49901,6 +49930,7 @@ GameObject:
   - component: {fileID: 7751971085683900661}
   - component: {fileID: 6458293722572190878}
   - component: {fileID: 4036331918105471790}
+  - component: {fileID: 1457332953800646858}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -50005,8 +50035,8 @@ MonoBehaviour:
   descriptionText: {fileID: 7751971085635022140}
   questSlots: []
   questStarted: {fileID: 6549612114085042828}
-  questEnd: {fileID: 0}
-  popUp: {fileID: 0}
+  questEnd: {fileID: 2323386595460374622}
+  popUp: {fileID: 1498040593736881341}
   getItemQuests: []
   killQuests: []
   talkToQuests: []
@@ -50050,7 +50080,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e8e285fba5c11dd40b23f3076e923d56, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -50136,6 +50166,111 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1457332953800646858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751971085683900651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: a78432737891a484d8355f54d54d7409, type: 3}
+    name: Open
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 49a1872d14c88c546b88b00a249843fb, type: 3}
+    name: Close
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 20795f72172d33343826aa2b6600278b, type: 3}
+    name: Click
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 956f749253836804ca99b66129b195db, type: 3}
+    name: Talk1
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 11c3ca00559bc23468d1c924316ec8c9, type: 3}
+    name: Talk2
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 284f60b064a9d3141918f027f545d133, type: 3}
+    name: Talk3
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c7c51db2a9fd7364e900b390d12d7a41, type: 3}
+    name: Talk4
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 420d7d41bd29e354fb64054f075d3cc3, type: 3}
+    name: Talk5
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d0098ab13faf5d14a80e010f1559dd04, type: 3}
+    name: Talk6
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c120efabf4f76d041bca5da1546f5d41, type: 3}
+    name: Talk7
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 2907d448e2415de44a33f89c303a4d03, type: 3}
+    name: Explosion
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 69b67357e78530e469016eab33a7e94a, type: 3}
+    name: FireShield
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8a7e4dffd9fc51240a1e4173cbbf313e, type: 3}
+    name: EpicSaxGuy
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep: []
 --- !u!1 &7751971085720951831
 GameObject:
   m_ObjectHideFlags: 0

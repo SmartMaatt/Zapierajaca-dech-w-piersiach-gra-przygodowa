@@ -67,6 +67,7 @@ public class SaveManager : MonoBehaviour, IGameManager
             Managers.Player.exp = currentLoad._exp;
             Managers.Player.level = currentLoad._level;
             Managers.Player.money = currentLoad._money;
+            Managers.Player.setUpLevel(currentLoad._level);
             musicVolume.startMusicVolume = currentLoad._music;
             
             for (int i = 0; i < currentLoad._keysInventory.Length; i++)

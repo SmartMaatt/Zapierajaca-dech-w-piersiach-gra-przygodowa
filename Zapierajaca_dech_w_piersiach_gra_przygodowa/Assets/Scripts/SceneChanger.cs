@@ -16,13 +16,20 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene()
     {
-        foreach(KillQuest quest in Managers.Quest.killQuests)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            if(quest == killBorysQuest)
+            foreach (KillQuest quest in Managers.Quest.killQuests)
             {
-                StartCoroutine(ChangeSceneCor());
-                break;
+                if (quest == killBorysQuest)
+                {
+                    StartCoroutine(ChangeSceneCor());
+                    break;
+                }
             }
+        }
+        else
+        {
+            StartCoroutine(ChangeSceneCor());
         }
     }
 

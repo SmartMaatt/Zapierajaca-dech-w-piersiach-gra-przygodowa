@@ -9,11 +9,13 @@ public class CreditsMenu : MonoBehaviour
 {
     public void GoToMain()
     {
+        Managers.Inventory.GetAudioManager().Play("Click");
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
+        Managers.Inventory.GetAudioManager().Play("Click");
         Application.Quit();
     }
 }

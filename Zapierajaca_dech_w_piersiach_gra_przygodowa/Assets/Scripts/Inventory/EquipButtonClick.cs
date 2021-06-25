@@ -12,6 +12,7 @@ public class EquipButtonClick : MonoBehaviour
 
     public void OnClick()
     {
+        Managers.Inventory.GetAudioManager().Play("Click");
         Managers.Inventory.ItemsPrefabs[itemIndex].GetComponent<Items>().equip();
         iconActiv = !iconActiv;
         icon.SetActive(iconActiv);
@@ -20,6 +21,9 @@ public class EquipButtonClick : MonoBehaviour
     public void Drop(bool setOnMap)
     {
         Managers.Inventory.ItemsPrefabs[itemIndex].GetComponent<Items>().Drop(player.transform.position + new Vector3(0, 0.5f, 0), true, setOnMap);
+
+        if (setOnMap)
+            Managers.Inventory.GetAudioManager().Play("Click");
 
         if (Managers.Inventory.GetItemCount(itemIndex) < 1)
         {

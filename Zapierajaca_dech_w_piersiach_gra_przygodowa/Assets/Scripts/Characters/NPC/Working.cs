@@ -20,7 +20,14 @@ public class Working : MonoBehaviour
     private int activity = 0;
     private float timeCount = 0.0f;
     private Transform playerTransform;
+
     private AudioManager _audioManager = null;
+    private bool canPlayWorkSound = true;
+    private string _workName = null;
+
+    [Header("Audio times")]
+    public float startWorkTime;
+    public float repeatWorkTime;
 
     void Start()
     {
@@ -54,6 +61,13 @@ public class Working : MonoBehaviour
         {
             transform.LookAt(playerTransform);
         }
+        else if(working && !talking)
+        {
+           if(canPlayWorkSound)
+            {
+                StartCoroutine(PlayWorkSound(_workName, repeatWorkTime));
+            }
+        }
     }
 
     public void SetWorkType(bool set)
@@ -62,10 +76,11 @@ public class Working : MonoBehaviour
         {
             case WorkType.STANDING:
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.STANDING);
+                _workName = "Standing";
                 break;
             case WorkType.FARMING:
                 _animator.SetBool("Farming", set);
-                _audioManager.Play("Farming");
+                _workName = "Farming";
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WORKING);
                 break;
             case WorkType.FISHING:
@@ -78,15 +93,18 @@ public class Working : MonoBehaviour
                 break;
             case WorkType.HAMMERWORKING:
                 _animator.SetBool("HammerWorking", set);
+                _workName = "HammerWorking";
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WORKING);
                 break;
             case WorkType.MINING:
                 _animator.SetBool("Mining", set);
+                _workName = "Mining";
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WORKING);
                 break;
             case WorkType.SITTING:
                 _animator.SetBool("Sitting", set);
                 currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.SITTING);
+                _workName = "sitting";
                 break;
             default:
                 break;
@@ -95,6 +113,7 @@ public class Working : MonoBehaviour
 
     private void FindWorkingPlace()
     {
+        _audioManager.Stop(_workName);
         _agent.SetDestination(currenTask.workingPlace);
         _animator.SetBool("Walking", true);
         currenTask.workingTool.GetComponent<ToolManager>().ChangeHandingPlace(ToolManager.ActivityType.WALKING);
@@ -104,6 +123,8 @@ public class Working : MonoBehaviour
     private void GoToWorkingPlace()
     {
         Vector3 distanceToWorkingPlace = transform.position - currenTask.workingPlace;
+        _audioManager.Play("Step", UnityEngine.Random.Range(0.2f, 0.4f), 1f, false, true);
+
         if (distanceToWorkingPlace.magnitude < 0.5f)
         {
             _agent.SetDestination(transform.position);
@@ -159,7 +180,9 @@ public class Working : MonoBehaviour
         currenTask.workingTime = UnityEngine.Random.Range(currenTask.minWorkingTime, currenTask.maxWorkingTime);
         SetWorkType(true);
         working = true;
+
         StartCoroutine(JustWork(currenTask.workingTime));
+        StartCoroutine(PlayWorkSound(_workName, startWorkTime));
     }
 
     private IEnumerator JustWork(float workingTime)
@@ -175,8 +198,20 @@ public class Working : MonoBehaviour
         currenTask = workTasks[taskNumber];
 
         working = false;
-        _audioManager.Stop("Farming");
         yield return null;
+    }
+
+    private IEnumerator PlayWorkSound(string workName, float time)
+    {
+        if (workName == "HammerWorking" || workName == "Mining" || workName == "Farming")
+        {
+            canPlayWorkSound = false;
+
+            yield return new WaitForSeconds(time);
+            _audioManager.Play(workName);
+
+            canPlayWorkSound = true;
+        }
     }
 
     [System.Serializable]

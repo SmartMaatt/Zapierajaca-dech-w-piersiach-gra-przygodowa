@@ -12,14 +12,16 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject LoadErrorSplice;
     [SerializeField] float LoadErrorSpliceTime;
 
-   public void NewGame()
-   {
+    public void NewGame()
+    {
+        Managers.Inventory.GetAudioManager().Play("Click");
         Managers.Save.Save(1);
         SceneManager.LoadScene(1);
-   }
+    }
 
     public void LoadGame()
     {
+        Managers.Inventory.GetAudioManager().Play("Click");
         if (File.Exists(string.Concat(Application.persistentDataPath, SaveStagePath)))
         {
             SaveStageState currentStageSave = new SaveStageState();
@@ -38,6 +40,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        Managers.Inventory.GetAudioManager().Play("Click");
         Application.Quit();
     }
 

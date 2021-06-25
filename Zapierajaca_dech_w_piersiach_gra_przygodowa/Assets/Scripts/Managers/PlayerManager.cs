@@ -26,16 +26,16 @@ public class PlayerManager : AbstractCharacter, IGameManager
     public bool isDead = false;
 
     private Animator _animator;
-    private RelativeMovement _movementScript;
-    private MakeDamage _damageScript;
+    [SerializeField] RelativeMovement _movementScript;
+    [SerializeField] MakeDamage _damageScript;
     private AudioManager _audioManager;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _audioManager = GetComponent<AudioManager>();
         _damageScript = GetComponent<MakeDamage>();
         _movementScript = GetComponent<RelativeMovement>();
-        _audioManager = GetComponent<AudioManager>();
         _audioManager.Play("Heal");
 
         if (_healthBar)
@@ -43,10 +43,10 @@ public class PlayerManager : AbstractCharacter, IGameManager
             _healthBar.setUpBar(_maxHealth);
             _healthBar.setBarValue(_health);
         }
-        if(moneyText)
+        if (moneyText)
             moneyText.text = money.ToString();
 
-        if(levelText)
+        if (levelText)
             levelText.text = level.ToString();
     }
 
@@ -63,8 +63,6 @@ public class PlayerManager : AbstractCharacter, IGameManager
     public override void die()
     {
         _animator.SetTrigger("isDead");
-        GetComponent<MakeDamage>().enabled = false;
-        GetComponent<RelativeMovement>().enabled = false;
         GetComponent<PlayerManager>().enabled = false;
         cameraScript.isDead = true;
         isDead = true;
@@ -106,7 +104,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
             changeHealth(-damage + (int)armorBonus);
             _healthBar.setBarValue(_health);
 
-            if(_health > 0)
+            if (_health > 0)
             {
                 _animator.SetTrigger("isHit");
             }
@@ -156,7 +154,7 @@ public class PlayerManager : AbstractCharacter, IGameManager
 
     public void levelUp()
     {
-        if((exp > (firstXPFactor * level)) && (level <= maxLevel))
+        if ((exp > (firstXPFactor * level)) && (level <= maxLevel))
         {
             exp -= firstXPFactor * level;
             level++;
@@ -174,6 +172,17 @@ public class PlayerManager : AbstractCharacter, IGameManager
             _audioManager.Play("LevelUp");
             levelUp();
         }
+    }
+
+    public void setUpLevel(int level)
+    {
+        _maxHealth += 15 * (level - 1);
+        _healthBar.setUpBar(_maxHealth);
+        _healthBar.setBarValue(_health);
+
+        _movementScript.addRunStamina(1 * (level - 1));
+
+        _damageScript.addAttackStrength(1 * (level - 1));
     }
 
     public AudioManager getAudioManager()

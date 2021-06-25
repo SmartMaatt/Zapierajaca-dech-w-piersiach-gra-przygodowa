@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2524690180971469064}
   - component: {fileID: 2524690180971469065}
   - component: {fileID: 2946136271458503166}
+  - component: {fileID: 3054332865756035156}
   m_Layer: 0
   m_Name: Thomas
   m_TagString: Untagged
@@ -86,6 +87,8 @@ MonoBehaviour:
     minWorkingTime: 10
     maxWorkingTime: 20
     workingTime: 0
+  startWorkTime: 0.15
+  repeatWorkTime: 0.76
 --- !u!195 &2524690180971469064
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -137,6 +140,55 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &3054332865756035156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524845753905498496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 0}
+    name: 
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e7245178fcb3d3848b5e0ed55f2c1e20, type: 3}
+    name: Farming
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 6b605da2206511f4d929da45b91a2a74, type: 3}
+    name: HammerWorking
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 41787bbd937756d4f9baf5af2ad62a21, type: 3}
+    name: Mining
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep:
+  - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
 --- !u!1 &2524845754146985886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,15 +2934,15 @@ PrefabInstance:
       objectReference: {fileID: 2524845758111937752}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1118d10265190b49814f8d658574b98, type: 3}
---- !u!4 &2524690180070010632 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 746453754249520566, guid: c1118d10265190b49814f8d658574b98,
-    type: 3}
-  m_PrefabInstance: {fileID: 2977565361600318142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2524690180069847848 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 746453754249427350, guid: c1118d10265190b49814f8d658574b98,
+    type: 3}
+  m_PrefabInstance: {fileID: 2977565361600318142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2524690180070010632 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 746453754249520566, guid: c1118d10265190b49814f8d658574b98,
     type: 3}
   m_PrefabInstance: {fileID: 2977565361600318142}
   m_PrefabAsset: {fileID: 0}

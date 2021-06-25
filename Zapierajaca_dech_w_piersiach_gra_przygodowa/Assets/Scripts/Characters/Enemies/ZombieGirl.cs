@@ -13,6 +13,7 @@ public class ZombieGirl : AbstractCharacter
     EnemyAI _enemyInteligence;
     TargetHeadAim _headTarget;
     Renderer _rendererComponent;
+    AudioManager _audioManager;
 
     [Header("Special - Zombie")]
     public float turboGirlSpeed;
@@ -23,12 +24,14 @@ public class ZombieGirl : AbstractCharacter
         _enemyInteligence = GetComponent<EnemyAI>();
         _headTarget = GetComponent<TargetHeadAim>();
         _rendererComponent = GetComponent<Renderer>();
+        _audioManager = GetComponent<AudioManager>();
     }
 
     public override void getHit(int damage)
     {
         if (!_immortal)
         {
+            _audioManager.Play("Damage" + Random.Range((int)1, (int)4));
             _animator.SetTrigger("isHit");
             changeHealth(-damage);
         }
@@ -38,6 +41,7 @@ public class ZombieGirl : AbstractCharacter
     {
         drop(transform.position);
         _animator.SetTrigger("isDead");
+        _audioManager.Play("Death" + UnityEngine.Random.Range((int)1, (int)3));
         Managers.Player.changeMoney(givenMoney);
         Managers.Player.changeExp(givenExp);
         StartCoroutine(dieAwait(dieAwaitTime));
@@ -118,7 +122,7 @@ public class ZombieGirl : AbstractCharacter
                 if (target != null)
                 {
                     target.getHit(_damage);
-
+                    _audioManager.Play("Attack" + Random.Range((int)1, (int)3).ToString());
                 }
             }
         }

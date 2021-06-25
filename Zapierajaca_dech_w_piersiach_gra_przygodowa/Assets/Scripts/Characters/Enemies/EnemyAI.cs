@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour {
         public float minRestTime;
         public int idleSoundCount;
         Vector3 _walkPoint;
-        bool walkPointSet, enemyReadyToPatrol, playerInHearRange, playerInSightRange, _idleSound;
+        bool walkPointSet, enemyReadyToPatrol, playerInHearRange, playerInSightRange, _idleSound, _spotted;
 
     [Header("Attacking")]
         public float timeBetweenAttacks;
@@ -60,6 +60,7 @@ public class EnemyAI : MonoBehaviour {
         playerInHearRange = false;
         playerInSightRange = false;
         _idleSound = false;
+        _spotted = true;
 
         alreadyAttacked = false;
         playerInAttackRange = false;
@@ -108,6 +109,7 @@ public class EnemyAI : MonoBehaviour {
         _animator.SetBool("Attack", false);
         _characterController.setStateMachine(0,0,0.0f);
         isChasing = false;
+        _spotted = true;
     }
 
 
@@ -148,6 +150,12 @@ public class EnemyAI : MonoBehaviour {
 
         isChasing = true;
 
+        if(_spotted)
+        {
+            _audioManager.Play("Spotted");
+            _spotted = false;
+        }
+
         _audioManager.Play("Step", UnityEngine.Random.Range(0.5f, 0.6f), 1f, false, false);
         _characterController.setStateMachine(1, 0, 0);
         _currentMaxSpeed = _characterController.getRunSpeed();
@@ -171,6 +179,12 @@ public class EnemyAI : MonoBehaviour {
         _audioManager.Stop("Step");
         _animator.SetBool("Attack", false);
         _characterController.setStateMachine(2, 0, 0);
+
+        if (_spotted)
+        {
+            _audioManager.Play("Spotted");
+            _spotted = false;
+        }
 
         if (!alreadyAttacked)
         {
@@ -333,8 +347,9 @@ public class EnemyAI : MonoBehaviour {
         float time = UnityEngine.Random.Range(10, 15);
         yield return new WaitForSeconds(time);
 
-        _audioManager.Play("Idle" + UnityEngine.Random.Range((int)1, (int)idleSoundCount + 1).ToString());
-        Debug.Log("Idle" + UnityEngine.Random.Range((int)1, (int)idleSoundCount + 1).ToString());
+        if(idleSoundCount > 0)
+            _audioManager.Play("Idle" + UnityEngine.Random.Range((int)1, (int)idleSoundCount + 1).ToString());
+
         _idleSound = false;
     }
 }

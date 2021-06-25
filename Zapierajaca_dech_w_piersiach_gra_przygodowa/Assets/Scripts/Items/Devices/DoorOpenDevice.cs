@@ -14,11 +14,15 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
     [SerializeField] GameObject portal;
 
     private bool _open = false;
+    private AudioManager _audioManager;
+
     void Start()
     {
         dPos = new Vector3(0, transform.position.y - transform.localScale.y - 0.5f, 0);
         error.SetActive(false);
+        _audioManager = GetComponent<AudioManager>();
     }
+
     public void Operate()
     {
         if (requireKey)
@@ -27,10 +31,12 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
             {
                 if (_open)
                 {
+                    _audioManager.Play("Start");
                     StartCoroutine(doorOpenClose(transform.position, dPos, true));
                 }
                 else
                 {
+                    _audioManager.Play("Start");
                     StartCoroutine(doorOpenClose(transform.position, dPos, false));
                 }
                 _open = !_open;
@@ -42,10 +48,12 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
         {
             if (_open)
             {
+                _audioManager.Play("Start");
                 StartCoroutine(doorOpenClose(transform.position, dPos, true));
             }
             else
             {
+                _audioManager.Play("Start");
                 StartCoroutine(doorOpenClose(transform.position, dPos, false));
             }
             _open = !_open;
@@ -66,6 +74,8 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
         float speed = 1;
         while (transform.position.y > endPos.y)
         {
+            _audioManager.Play("Slide", 0.5f, 1f, false, true);
+
             if (up)
                 transform.position += new Vector3(0, Time.deltaTime * speed, 0);
             else
@@ -74,6 +84,8 @@ public class DoorOpenDevice : MonoBehaviour, InteractOperator
             yield return new WaitForEndOfFrame();
         }
 
+        _audioManager.Stop("Slide");
+        _audioManager.Play("End");
         portal.SetActive(enablePortal);
     }
 

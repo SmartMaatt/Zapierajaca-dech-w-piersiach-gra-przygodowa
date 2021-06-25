@@ -32,7 +32,7 @@ public class ZombieDefault : AbstractCharacter
     {
         if (!_immortal)
         {
-            _audioManager.Play("Damage" + Random.Range((int)1, (int)3));
+            _audioManager.Play("Damage" + Random.Range((int)1, (int)4));
             StartCoroutine(hitCoolDown(hitCoolDownTime));
             _animator.SetTrigger("isHit");
             changeHealth(-damage);
@@ -43,6 +43,8 @@ public class ZombieDefault : AbstractCharacter
     {
         drop(transform.position);
         _animator.SetTrigger("isDead");
+        _audioManager.Play("Death");
+
         Managers.Player.changeMoney(givenMoney);
         Managers.Player.changeExp(givenExp);
         Managers.Quest.CheckKillQuest(_mobName);
@@ -109,9 +111,8 @@ public class ZombieDefault : AbstractCharacter
                 AbstractCharacter target = hitCollider.GetComponent<PlayerManager>();
                 if (target != null)
                 {
-                    _audioManager.Play("Attack" + Random.Range((int)1, (int)4));
+                    _audioManager.Play("Attack" + Random.Range((int)1, (int)4).ToString());
                     target.getHit(_damage);
-
                 }
             }
         }

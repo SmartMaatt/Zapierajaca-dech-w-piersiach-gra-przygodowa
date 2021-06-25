@@ -206,6 +206,7 @@ public class ProjectileCollisionBehaviour : MonoBehaviour
         if (player)
         {
             player.getHit(damage);
+            Managers.Inventory.GetAudioManager().Play("Explosion");
 
             RelativeMovement moveScript = player.GetComponent<RelativeMovement>();
             if (moveScript)        

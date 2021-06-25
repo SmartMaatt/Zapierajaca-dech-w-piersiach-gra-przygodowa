@@ -8,10 +8,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(TargetHeadAim))]
 public class Mage : AbstractCharacter
 {
-    UIBar _bossFightHealthBar;
+    UIBar _bossFightHealthBar = null;
     Animator _animator;
     EnemyAI _enemyInteligence;
     TargetHeadAim _headTarget;
+    AudioManager _audioManager;
     string _mobName = "Borys The Solaż";
 
     GameObject _player;
@@ -45,8 +46,8 @@ public class Mage : AbstractCharacter
     [SerializeField] GameObject leftHand;
     [SerializeField] GameObject rightHand;
     [Header("Cutscene")]
-    [SerializeField] GameObject Scene;
-    [SerializeField] GameObject Cutscene;
+    public GameObject Scene;
+    public GameObject Cutscene;
 
 
     void Awake()
@@ -54,11 +55,8 @@ public class Mage : AbstractCharacter
         _animator = GetComponent<Animator>();
         _enemyInteligence = GetComponent<EnemyAI>();
         _headTarget = GetComponent<TargetHeadAim>();
+        _audioManager = GetComponent<AudioManager>();
         _player = FindObjectsOfType<RelativeMovement>()[0].transform.gameObject;
-
-        _bossFightHealthBar = FindObjectsOfType<BassfightBar>()[0].gameObject.GetComponent<BassfightBar>().healthBar;
-        if (_bossFightHealthBar)
-            _bossFightHealthBar.setUpBar(_maxHealth);
 
         _fireBallCasting = false;
         _handAttackCasting = false;
@@ -76,7 +74,9 @@ public class Mage : AbstractCharacter
             changeHealth(-damage);
             _bossFightHealthBar.setBarValue(_health);
 
-            //cancelFireball();
+            string test = "Hit" + UnityEngine.Random.Range((int)1, (int)3).ToString();
+            _audioManager.Play(test);
+            cancelFireball();
             //cancelBurstOnArmor();
         }
 
@@ -89,6 +89,7 @@ public class Mage : AbstractCharacter
     public override void die()
     {
         _animator.SetTrigger("isDead");
+        _audioManager.Play("Death");
         Managers.Player.changeMoney(givenMoney);
         Managers.Player.changeExp(givenExp);
         Managers.Quest.CheckKillQuest(_mobName);
@@ -106,6 +107,7 @@ public class Mage : AbstractCharacter
         float min = transform.position.y;
         float max = min - 1f;
 
+        StartCoroutine(Managers.Cutscene.playCutscene(Scene, Cutscene));
         Instantiate(soulPrefab, transform.position + new Vector3(0,0.5f,0), Quaternion.identity).GetComponent<EffectSettings>().MoveVector = new Vector3(transform.position.x, transform.position.y + 100f, transform.position.z);
         while(elampsedTime < 1)
         {
@@ -222,12 +224,18 @@ public class Mage : AbstractCharacter
         _enemyInteligence.attackRange = 0.0f;
 
         _animator.SetInteger("AttackType", 2);
+        playFire();
+
         yield return new WaitForSeconds(1f);
+        _audioManager.Play("Aura1");
+        _audioManager.Play("Aura2");
+        _audioManager.Play("Explosion");
+
         Instantiate(fireGlyph, transform.position, Quaternion.identity);
         GameObject fireArea = Instantiate(areaSpellPrefab, transform.position, Quaternion.Euler(-90, 0, 0));
 
-        if(Vector2.Distance(convertToFlat(transform.position), convertToFlat(_player.transform.position)) < 1.5f)
-            StartCoroutine(_player.GetComponent<RelativeMovement>().Explosion(1f, 0.1f, 0.1f, -0.1f, 0.15f));
+        if(Vector2.Distance(convertToFlat(transform.position), convertToFlat(_player.transform.position)) < 5f)
+            StartCoroutine(_player.GetComponent<RelativeMovement>().Explosion(1f, 0.1f, 0.2f, -0.1f, 0.2f));
 
         yield return new WaitForSeconds(1f);
 
@@ -235,17 +243,23 @@ public class Mage : AbstractCharacter
         Vector3 chestPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
         for (int i = 0; i < 7; i++)
         {
-            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(2,0,0), Quaternion.Euler(0, 0, 0));
-            fireball.GetComponent<EffectSettings>().UseMoveVector = false;
-            fireball.GetComponent<EffectSettings>().Target = _player;
+            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(2,0,0), Quaternion.identity);
+            fireball.GetComponent<EffectSettings>().UseMoveVector = true;
+            fireball.GetComponent<EffectSettings>().MoveVector = _player.transform.GetChild(1).position - transform.position;
+            fireball.transform.GetChild(0).transform.gameObject.GetComponent<ProjectileCollisionBehaviour>().damage = FireballDamage;
+            _audioManager.Play("Fireball");
 
-            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(-2, 0, 0), Quaternion.Euler(0, 0, 0));
-            fireball.GetComponent<EffectSettings>().UseMoveVector = false;
-            fireball.GetComponent<EffectSettings>().Target = _player;
+            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(-2, 0, 0), Quaternion.identity);
+            fireball.GetComponent<EffectSettings>().UseMoveVector = true;
+            fireball.GetComponent<EffectSettings>().MoveVector = _player.transform.GetChild(1).position - transform.position;
+            fireball.transform.GetChild(0).transform.gameObject.GetComponent<ProjectileCollisionBehaviour>().damage = FireballDamage;
+            _audioManager.Play("Fireball");
 
-            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-            fireball.GetComponent<EffectSettings>().UseMoveVector = false;
-            fireball.GetComponent<EffectSettings>().Target = _player;
+            fireball = Instantiate(fireballPrefab, chestPos + new Vector3(0, 0, 0), Quaternion.identity);
+            fireball.GetComponent<EffectSettings>().UseMoveVector = true;
+            fireball.GetComponent<EffectSettings>().MoveVector = _player.transform.GetChild(1).position - transform.position;
+            fireball.transform.GetChild(0).transform.gameObject.GetComponent<ProjectileCollisionBehaviour>().damage = FireballDamage;
+            _audioManager.Play("Fireball");
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -254,10 +268,10 @@ public class Mage : AbstractCharacter
         fireArea.GetComponent<ParticleSystem>().Stop();
         fireArea.transform.GetChild(1).transform.gameObject.GetComponent<fireAreaLightShother>().startReducing = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Destroy(fireArea);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         _immortal = false;
         _areaAttackCasting = false;
         fireShield.SetActive(false);
@@ -282,6 +296,7 @@ public class Mage : AbstractCharacter
 
     IEnumerator fireballShoot(float time)
     {
+        playFire();
         _fireBallCasting = true;
         if (!_areaAttackCasting)
         {
@@ -299,6 +314,7 @@ public class Mage : AbstractCharacter
         _fireBallRight.transform.SetParent(rightHand.transform);
 
         yield return new WaitForSeconds(time);
+        _audioManager.Play("Fireball");
 
         if (_fireBallCasting)
         {
@@ -320,6 +336,7 @@ public class Mage : AbstractCharacter
 
     IEnumerator burstOnArmor()
     {
+        playFire();
         _handAttackCasting = true;
         _animator.SetInteger("AttackType", 0);
         _enemyInteligence.timeBetweenAttacks = coolDownHand;
@@ -337,9 +354,9 @@ public class Mage : AbstractCharacter
                     magicPower += Random.Range(5f, 10f);
 
                     Instantiate(fireburstPrefab, sightPosition(target.transform.position) + target.transform.forward * 0.2f, Quaternion.identity);
+                    _audioManager.Play("FireHit");
                     yield return new WaitForSeconds(0.3f);
                     Instantiate(fireburstPrefab, sightPosition(target.transform.position) + target.transform.forward * 0.2f, Quaternion.identity);
-
                 }
             }
         }
@@ -351,6 +368,7 @@ public class Mage : AbstractCharacter
         _immortal = true;
         float maxHealth = (float)_maxHealth;
         float attackRange = _enemyInteligence.attackRange;
+        playFire();
 
         _walkSpeed = 0.0f;
         _runSpeed = 0.0f;
@@ -359,8 +377,10 @@ public class Mage : AbstractCharacter
         healSpell.SetActive(true);
         _animator.SetBool("isHealing", true);
         _animator.ResetTrigger("isHit");
+        _audioManager.Play("Spawn");
+
         healSpell.GetComponent<EffectSettings>().IsVisible = true;
-        _health += (int)Random.Range(maxHealth * 0.3f, maxHealth * 0.7f);
+        _health += (int)Random.Range(maxHealth * 0.2f, maxHealth * 0.4f);
         _bossFightHealthBar.setBarValue(_health);
 
         yield return new WaitForSeconds(timeOfHeal - 2f);
@@ -401,9 +421,28 @@ public class Mage : AbstractCharacter
         return new Vector2(currentVec.x, currentVec.z);
     }
 
+    public void SetUpHealthBar(UIBar healthBar)
+    {
+        _bossFightHealthBar = healthBar;
+
+        if (_bossFightHealthBar)
+            _bossFightHealthBar.setUpBar(_health);
+    }
+
+    private void playFire()
+    {
+        if (!_audioManager.isPlaying("Fire"))
+        {
+            _audioManager.Play("Fire");
+        }
+    }
+
     private IEnumerator Explosion()
     {
         _animator.SetInteger("AttackType", 3);
+        _audioManager.Play("Aura1");
+        _audioManager.Play("Explosion");
+
         magicPower += Random.Range(5f, 10f);
         _player.GetComponent<AbstractCharacter>().getHit(_damage);
 
@@ -414,7 +453,7 @@ public class Mage : AbstractCharacter
 
         Instantiate(fireburstPrefab, sightPosition(_player.transform.position) + _player.transform.forward * 0.2f, Quaternion.identity);
 
-        StartCoroutine(_player.GetComponent<RelativeMovement>().Explosion(1f, 0.1f, 0.15f, -0.1f, 0.15f));
+        StartCoroutine(_player.GetComponent<RelativeMovement>().Explosion(1f, 0.1f, 0.25f, -0.1f, 0.3f));
 
         yield return new WaitForSeconds(1f);
 

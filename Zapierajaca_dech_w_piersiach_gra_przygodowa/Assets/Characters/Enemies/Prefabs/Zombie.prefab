@@ -1095,8 +1095,36 @@ MonoBehaviour:
     loop: 0
     scapeSound: 1
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 164a76beb72071a418eab30cc40ea7b7, type: 3}
+    name: Death
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8525728aff5b30e4893fd65097f7a084, type: 3}
+    name: Spotted
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
   footStep:
   - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
     name: Step
     volume: 0
     pitch: 0

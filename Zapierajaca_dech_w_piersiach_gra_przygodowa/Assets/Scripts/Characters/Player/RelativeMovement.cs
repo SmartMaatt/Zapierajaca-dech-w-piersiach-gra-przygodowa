@@ -50,7 +50,7 @@ public class RelativeMovement : MonoBehaviour
 
         _runStaminaCounter = runStamina;
         _canSprint = true;
-        _staminaBar.setUpBar((int)(runStamina*100));
+        _staminaBar.setUpBar((int)(runStamina * 100));
     }
 
     private void Update()
@@ -60,8 +60,8 @@ public class RelativeMovement : MonoBehaviour
     }
 
     private void Move()
-    { 
-        if(Physics.CheckSphere(transform.position, groundCheckDistance, groundMask) || Physics.CheckSphere(transform.position, groundCheckDistance, wallMask))
+    {
+        if (Physics.CheckSphere(transform.position, groundCheckDistance, groundMask) || Physics.CheckSphere(transform.position, groundCheckDistance, wallMask))
             isGrounded = true;
         else
             isGrounded = false;
@@ -71,7 +71,7 @@ public class RelativeMovement : MonoBehaviour
             _velocity.y = -2f;
             isJumping = false;
         }
-       
+
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
         _moveDirection = new Vector3(horInput, 0, vertInput);
@@ -119,7 +119,7 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = 0.0f;
         _animator.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
 
-        if(_runStaminaCounter < runStamina && _canSprint)
+        if (_runStaminaCounter < runStamina && _canSprint)
             _runStaminaCounter += Time.deltaTime;
     }
 
@@ -128,7 +128,7 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = walkSpeed;
         _animator.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
 
-        _audioManager.Play("Step", UnityEngine.Random.Range(0.3f, 0.5f), 1f, false, false);
+        _audioManager.Play("Step", UnityEngine.Random.Range(0.2f, 0.4f), 1f, false, false);
 
         if (_runStaminaCounter < runStamina && _canSprint)
         {
@@ -144,7 +144,7 @@ public class RelativeMovement : MonoBehaviour
         moveSpeed = runSpeed;
         _animator.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
 
-        _audioManager.Play("Step", UnityEngine.Random.Range(0.4f, 0.6f), 1.3f, false, false);
+        _audioManager.Play("Step", UnityEngine.Random.Range(0.3f, 0.5f), 1.3f, false, false);
 
         if (_damageScript.isEquiped())
             _runStaminaCounter -= Time.deltaTime * 2;
@@ -184,6 +184,9 @@ public class RelativeMovement : MonoBehaviour
     public void addRunStamina(float stamina)
     {
         runStamina += stamina;
+        _runStaminaCounter += stamina;
+        _staminaBar.setUpBar((int)(_runStaminaCounter * 100));
+        _staminaBar.setUpBar((int)(runStamina * 100));
     }
 
     public void CheckForPortal()
@@ -208,7 +211,7 @@ public class RelativeMovement : MonoBehaviour
         while (elapsedTime < time)
         {
             elapsedTime += Time.deltaTime / time;
-            _controller.Move(moveDirection * power + new Vector3(0, Mathf.Lerp(max,min, elapsedTime), 0));
+            _controller.Move(moveDirection * power + new Vector3(0, Mathf.Lerp(max, min, elapsedTime), 0));
             yield return new WaitForEndOfFrame();
         }
     }

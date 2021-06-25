@@ -2288,6 +2288,7 @@ GameObject:
   - component: {fileID: 5127888083951456070}
   - component: {fileID: 1222144202611441520}
   - component: {fileID: 6546510729000094526}
+  - component: {fileID: 8169619794107093181}
   m_Layer: 9
   m_Name: Fire Zombie
   m_TagString: Untagged
@@ -2500,6 +2501,7 @@ MonoBehaviour:
   sightConeRange: 130
   maxRestTime: 7
   minRestTime: 2
+  idleSoundCount: 2
   timeBetweenAttacks: 2.5
   attackRange: 1.5
   minTimeAttackStartDelay: 0
@@ -2588,6 +2590,132 @@ MonoBehaviour:
     m_Bits: 16
   radius: 1
   waterDamage: 30
+--- !u!114 &8169619794107093181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6228767853298727178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990de03ad0bb95848be01cb94e815c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 0}
+    name: 0
+    volume: 1
+    pitch: 0.8
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 42b9d78d603435244a9ae2707aa65eec, type: 3}
+    name: Drawning
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 164a76beb72071a418eab30cc40ea7b7, type: 3}
+    name: Death
+    volume: 0.1
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 10a3c4c8468eeb94aa868bef480098cb, type: 3}
+    name: Idle1
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a516e3b07db7a5b4a90e3b77b400b862, type: 3}
+    name: Idle2
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7d1296619b415db4bbbed279fc09c1bf, type: 3}
+    name: Attack1
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b75604a3061e4f14b84904bfd07aa909, type: 3}
+    name: Attack2
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 326a46ba628350d49aeee6a29394f59c, type: 3}
+    name: Attack3
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: cf11219bf9608b24db5363665adf1374, type: 3}
+    name: Damage1
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e16bc0a0dd52e9c4a97184a680a933f1, type: 3}
+    name: Damage2
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 631229694e3bd354696551fb98ebc794, type: 3}
+    name: Spawn
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 164a76beb72071a418eab30cc40ea7b7, type: 3}
+    name: Death
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8525728aff5b30e4893fd65097f7a084, type: 3}
+    name: Spotted
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  footStep:
+  - clip: {fileID: 8300000, guid: c9597e1e5fab48544aeb611698fe6d9c, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3674a9679f9160b4db0151dac44ea6f2, type: 3}
+    name: Step
+    volume: 0
+    pitch: 0
+    loop: 0
+    scapeSound: 1
+    source: {fileID: 0}
 --- !u!1 &6313462156930661320
 GameObject:
   m_ObjectHideFlags: 0

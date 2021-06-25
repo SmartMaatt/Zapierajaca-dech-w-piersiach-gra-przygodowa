@@ -9,6 +9,7 @@ public class Shrek : AbstractCharacter
 {
     Animator _animator;
     EnemyAI _enemyInteligence;
+    AudioManager _audioManager;
     [SerializeField] float hitCoolDownTime;
     string _mobName = "Shrek";
 
@@ -16,6 +17,7 @@ public class Shrek : AbstractCharacter
     {
         _animator = GetComponent<Animator>();
         _enemyInteligence = GetComponent<EnemyAI>();
+        _audioManager = GetComponent<AudioManager>();
     }
 
     public override void getHit(int damage)
@@ -24,6 +26,7 @@ public class Shrek : AbstractCharacter
         {
             StartCoroutine(hitCoolDown(hitCoolDownTime));
             _animator.SetTrigger("isHit");
+            _audioManager.Play("Damage");
             changeHealth(-damage);
         }
     }
@@ -97,7 +100,7 @@ public class Shrek : AbstractCharacter
                 if (target != null)
                 {
                     target.getHit(_damage);
-
+                    _audioManager.Play("Attack" + Random.Range((int)1, (int)3).ToString());
                 }
             }
         }

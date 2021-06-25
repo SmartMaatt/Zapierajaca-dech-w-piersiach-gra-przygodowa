@@ -6,9 +6,9 @@ using UnityEngine;
 public class MakeDamage : MonoBehaviour
 {
     [SerializeField] private float radius = 1.5f;
-    [Range(1,10)]
+    [Range(1, 10)]
     [SerializeField] private float attackCooldown;
-    [Range(1,10)]
+    [Range(1, 10)]
     [SerializeField] private float blockCooldown;
     [SerializeField] private int shieldArmor;
     [SerializeField] private float shieldBlockMaxTime;
@@ -69,7 +69,7 @@ public class MakeDamage : MonoBehaviour
         Block();
         MagicAttack();
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             EquipeWeapon weapon = GetComponent<EquipeWeapon>();
             if (weapon != null)
@@ -78,15 +78,15 @@ public class MakeDamage : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Managers.Save.Save(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Managers.Save.Save(1);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Managers.Save.Load();
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Managers.Save.Load();
+        //}
     }
 
     private void Attack()
@@ -114,6 +114,8 @@ public class MakeDamage : MonoBehaviour
                         }
                         else if (shield)
                         {
+                            Managers.Inventory.GetAudioManager().Play("FireShield");
+
                             Vector3 playerShowder = new Vector3(transform.position.x, transform.position.y + 1.4f, transform.position.z);
                             Ray ray = new Ray(playerShowder, direction);
                             RaycastHit hit;
@@ -241,10 +243,10 @@ public class MakeDamage : MonoBehaviour
     private IEnumerator attackUIChange()
     {
         float elapsedTime = 0.0f;
-        while(elapsedTime < 1)
+        while (elapsedTime < 1)
         {
             elapsedTime += Time.deltaTime / attackCooldown;
-            swordUI.setBarValue((int)(elapsedTime*100));
+            swordUI.setBarValue((int)(elapsedTime * 100));
             yield return new WaitForEndOfFrame();
         }
         swordUI.setBarValue(100);
@@ -262,7 +264,7 @@ public class MakeDamage : MonoBehaviour
     private IEnumerator MagicColDownCor()
     {
         float elapsedTime = 0.0f;
-        while(elapsedTime < 1)
+        while (elapsedTime < 1)
         {
             elapsedTime += Time.deltaTime / magicSpellTime;
             magicSwordUI.setBarValue((int)(elapsedTime * 100 * magicSpellTime));
